@@ -13,7 +13,7 @@ export default function Header() {
         </Link>
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
           <Link href="/" className="hover:text-gray-900 transition-colors">All Tools</Link>
-          <a href="https://github.com/ArhamAshfaqt/devtoolslabs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">GitHub</a>
+          <a href="https://github.com/ArhamAshfaqft/devtoolslabs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">GitHub</a>
         </nav>
       </div>
     </header>

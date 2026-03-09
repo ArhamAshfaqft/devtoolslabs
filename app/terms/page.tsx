@@ -50,7 +50,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">7. Contact</h2>
-            <p>If you have questions about these Terms, please open an issue on our <a href="https://github.com/ArhamAshfaqt/devtoolslabs" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub repository</a>.</p>
+            <p>If you have questions about these Terms, please open an issue on our <a href="https://github.com/ArhamAshfaqft/devtoolslabs" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub repository</a>.</p>
           </section>
         </div>
       </main>
