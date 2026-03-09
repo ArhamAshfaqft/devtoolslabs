@@ -1,0 +1,176 @@
+'use client';
+import React, { useState, useEffect } from 'react';
+
+export default function HtmlMinifierTool() {
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [stats, setStats] = useState({ original: 0, minified: 0, saved: 0, percent: 0 });
+
+  // Options configuration
+  const [removeComments, setRemoveComments] = useState(true);
+  const [removeOptionalTags, setRemoveOptionalTags] = useState(false);
+  const [collapseWhitespace, setCollapseWhitespace] = useState(true);
+
+  const minifyHtml = () => {
+    if (!input) {
+      setOutput('');
+      setStats({ original: 0, minified: 0, saved: 0, percent: 0 });
+      return;
+    }
+
+    let minified = input;
+
+    if (removeComments) {
+      // Remove HTML comments but preserve conditional IE comments (if any) and structured data
+      minified = minified.replace(/<!--(?!\s*(?:\[if [^\]]+]|<!|>))(?:(?!-->)[\s\S])*-->/g, '');
+    }
+
+    if (collapseWhitespace) {
+      // Collapse newlines and tabs into single spaces
+      minified = minified.replace(/[\r\n\t]+/g, ' ');
+      
+      // Collapse multiple spaces into a single space
+      minified = minified.replace(/ +/g, ' ');
+      
+      // Remove spaces around common tags (aggressive)
+      minified = minified.replace(/\s*<\/?\s*[a-zA-Z0-9-]+\s*[^>]*>\s*/g, (match) => {
+        return match.trim();
+      });
+    }
+
+    if (removeOptionalTags) {
+      // Very basic structural tag dropping (HTML5 permits removing closing tags for p, li, etc)
+      // Note: Full AST parsing is needed for completely safe closing tag removal, 
+      // so we use a safe subset here.
+      minified = minified.replace(/<\/(html|head|body|li|dt|dd|p|rt|rp|optgroup|option|colgroup|caption|thead|tbody|tfoot|tr|td|th)>/gi, '');
+    }
+
+    setOutput(minified);
+
+    // Calculate compression stats
+    const origSize = new Blob([input]).size;
+    const minSize = new Blob([minified]).size;
+    const diff = origSize - minSize;
+    const pct = origSize > 0 ? ((diff / origSize) * 100).toFixed(1) : '0.0';
+
+    setStats({
+      original: origSize,
+      minified: minSize,
+      saved: diff,
+      percent: parseFloat(pct)
+    });
+  };
+
+  useEffect(() => {
+    minifyHtml();
+  }, [input, removeComments, removeOptionalTags, collapseWhitespace]);
+
+  const handleCopy = () => {
+    if (output) navigator.clipboard.writeText(output);
+  };
+
+  const formatBytes = (bytes: number) => {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  return (
+    <div className="w-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      
+      {/* Options Bar */}
+      <div className="bg-gray-50 border-b border-gray-200 p-4 flex flex-wrap gap-6 items-center">
+        <span className="font-semibold text-sm text-gray-700 uppercase tracking-widest hidden md:inline-block">Options</span>
+        <label className="flex items-center gap-2 text-sm text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">
+          <input 
+            type="checkbox" 
+            checked={collapseWhitespace} 
+            onChange={e => setCollapseWhitespace(e.target.checked)} 
+            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          Collapse Whitespace
+        </label>
+        <label className="flex items-center gap-2 text-sm text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">
+          <input 
+            type="checkbox" 
+            checked={removeComments} 
+            onChange={e => setRemoveComments(e.target.checked)} 
+            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          Remove Comments
+        </label>
+        <label className="flex items-center gap-2 text-sm text-gray-800 cursor-pointer hover:text-blue-600 transition-colors">
+          <input 
+            type="checkbox" 
+            checked={removeOptionalTags} 
+            onChange={e => setRemoveOptionalTags(e.target.checked)} 
+            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          Remove Optional Tags <span className="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded uppercase font-bold ml-1">Risky</span>
+        </label>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+        
+        {/* Input */}
+        <div className="p-0 flex flex-col h-[500px]">
+          <div className="p-3 bg-white border-b border-gray-200 flex justify-between items-center">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Original HTML</h3>
+            <button onClick={() => setInput('')} className="text-xs text-blue-600 hover:underline">Clear</button>
+          </div>
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="<!-- Paste your raw, unoptimized HTML code here -->&#10;<div class='container'>&#10;  <h1>Hello World</h1>&#10;</div>"
+            className="w-full flex-1 p-4 bg-gray-50 font-mono text-sm resize-none focus:outline-none focus:ring-inset focus:ring-2 focus:ring-blue-500 text-gray-800"
+            spellCheck="false"
+          />
+        </div>
+
+        {/* Output */}
+        <div className="p-0 flex flex-col h-[500px]">
+          <div className="p-3 bg-white border-b border-gray-200 flex justify-between items-center">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Minified HTML</h3>
+            <button 
+              onClick={handleCopy} 
+              disabled={!output} 
+              className="text-xs font-medium text-white bg-gray-900 border border-transparent px-4 py-1.5 rounded hover:bg-gray-800 disabled:opacity-50 transition-colors"
+            >
+              Copy Minified
+            </button>
+          </div>
+          <textarea
+            value={output}
+            readOnly
+            placeholder="Minified output will appear here..."
+            className="w-full flex-1 p-4 bg-gray-900 font-mono text-sm resize-none outline-none text-green-400 break-all whitespace-pre-wrap"
+            spellCheck="false"
+          />
+        </div>
+
+      </div>
+
+      {/* Analytics Bar */}
+      <div className="bg-gray-50 border-t border-gray-200 p-4 flex flex-wrap gap-8 justify-center md:justify-start items-center text-sm">
+         <div className="flex flex-col">
+           <span className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Original Size</span>
+           <span className="font-mono text-gray-900 font-semibold">{formatBytes(stats.original)}</span>
+         </div>
+         <div className="flex flex-col">
+           <span className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Minified Size</span>
+           <span className="font-mono text-gray-900 font-semibold">{formatBytes(stats.minified)}</span>
+         </div>
+         <div className="flex flex-col">
+           <span className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Bytes Saved</span>
+           <span className="font-mono text-green-600 font-semibold">{formatBytes(stats.saved)}</span>
+         </div>
+         <div className="flex flex-col">
+           <span className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Compression Ratio</span>
+           <span className="font-mono text-blue-600 font-bold">{stats.percent}% Smaller</span>
+         </div>
+      </div>
+    </div>
+  );
+}
