@@ -11,8 +11,27 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Developer Tools",
-  description: "Free online developer tools",
+  title: {
+    template: "%s | DevToolsLabs",
+    default: "DevToolsLabs - 100% Free Client-Side Developer Utilities"
+  },
+  description: "A free, offline, privacy-first collection of web developer tools. Format JSON, convert UNIX timestamps, decode Base64, and minify CSS entirely inside your browser.",
+  generator: "Next.js",
+  applicationName: "DevToolsLabs",
+  keywords: ["developer tools", "JSON formatter", "JWT decoder", "Base64 encoder", "HTML minifier", "client-side tools", "free online tools"],
+  authors: [{ name: "ArhamAshfaqft" }],
+  creator: "ArhamAshfaqft",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

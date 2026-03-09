@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import ToolGrid from '@/components/ToolGrid';
 
 export const metadata: Metadata = {
-  title: 'DevToolsHub - Free Client-Side Developer Utilities',
+  title: 'DevToolsLabs - Free Client-Side Developer Utilities',
   description: '100% offline, privacy-first web utilities for developers. Format JSON, decode Base64, validate JWTs, and compress CSS natively in your browser.',
 };
 

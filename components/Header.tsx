@@ -9,11 +9,11 @@ export default function Header() {
           <div className="w-8 h-8 bg-gray-900 text-white flex items-center justify-center rounded-md font-bold text-lg group-hover:bg-blue-600 transition-colors">
             {'{ }'}
           </div>
-          <span className="font-bold text-xl tracking-tight text-gray-900">DevTools<span className="text-gray-400">Hub</span></span>
+          <span className="font-bold text-xl tracking-tight text-gray-900">DevTools<span className="text-blue-600">Labs</span></span>
         </Link>
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
           <Link href="/" className="hover:text-gray-900 transition-colors">All Tools</Link>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">GitHub</a>
+          <a href="https://github.com/ArhamAshfaqt/devtoolslabs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">GitHub</a>
         </nav>
       </div>
     </header>
