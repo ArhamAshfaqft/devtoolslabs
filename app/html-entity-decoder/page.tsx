@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function HtmlEntityDecoderPage() {
   return (
     <ToolLayout
-      title="HTML Entity Encoder & Decoder"
+      title="HTML Entity Encoder & Decoder (Convert HTML Characters Online)"
       intro="Easily translate confusing HTML entities (like &amp;lt; or &amp;quot;) back into their actual readable characters, or secure your text by converting standard characters into HTML entities to prevent XSS (Cross-Site Scripting) attacks."
       toolNode={<HtmlEntityDecoderTool />}
       howTo={[

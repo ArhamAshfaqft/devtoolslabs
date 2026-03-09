@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function HashGeneratorPage() {
   return (
     <ToolLayout
-      title="Secure Hash Generator"
+      title="Hash Generator (Calculate SHA256, SHA512 & MD5 Online)"
       intro="Cryptographic hashes are purely mathematically derived signatures used to verify data integrity and secure passwords. Our generator utilizes the blazing-fast native browser Web Crypto API to simultaneously calculate MD5, SHA-1, SHA-256, and SHA-512 hashes in real-time. Everything happens in your local device memory."
       toolNode={<HashGeneratorTool />}
       howTo={[

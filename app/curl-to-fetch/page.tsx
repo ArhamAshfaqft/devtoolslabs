@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CurlToFetchPage() {
   return (
     <ToolLayout
-      title="cURL to JavaScript Fetch Converter"
+      title="cURL to Fetch Converter (Convert Bash Commands to JavaScript Online)"
       intro="If you are copying API examples from documentation (like Stripe or GitHub), they are almost always written in raw bash cURL. This tool instantly translates those complex cURL commands—including nested JSON data, Authorization headers, and POST methods—into modern, production-ready JavaScript `fetch()` code."
       toolNode={<CurlToFetchTool />}
       howTo={[

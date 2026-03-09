@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function HtmlMinifierPage() {
   return (
     <ToolLayout
-      title="HTML Code Minifier"
+      title="HTML Minifier (Compress & Minify HTML Code Online)"
       intro="Extra spaces, line breaks, and developer comments inside your HTML source code are ignored by browsers, but they consume valuable network bandwidth. Use our blazing-fast local HTML compressor to strip unnecessary characters and dramatically reduce your initial page load payload size securely."
       toolNode={<HtmlMinifierTool />}
       howTo={[

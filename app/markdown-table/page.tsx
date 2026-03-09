@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function MarkdownTableGeneratorPage() {
   return (
     <ToolLayout
-      title="Markdown Table Generator"
+      title="Markdown Table Generator (Create Tables from CSV Online)"
       intro="Manually typing out Markdown tables is tedious. Paste your Excel data, CSV, or plain text into this tool to instantly generate a perfectly formatted Markdown table ready for GitHub, Notion, or your blog."
       toolNode={<MarkdownTableGeneratorTool />}
       howTo={[

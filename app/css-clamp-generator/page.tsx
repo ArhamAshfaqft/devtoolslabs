@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CssClampGeneratorPage() {
   return (
     <ToolLayout
-      title="CSS Clamp() Generator"
+      title="CSS Clamp() Generator (Create Fluid Typography Online)"
       intro="Fluid typography makes websites perfectly responsive across all devices without needing dozens of media queries. Just input your minimum and maximum screen sizes and your desired font sizes, and this tool will calculate the exact CSS clamp() mathematical formula for you."
       toolNode={<CssClampGeneratorTool />}
       howTo={[

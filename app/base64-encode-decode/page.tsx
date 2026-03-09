@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Base64EncodeDecodePage() {
   return (
     <ToolLayout
-      title="Base64 Text Encoder & Decoder"
+      title="Base64 Encoder & Decoder (Convert Text to Base64 Online)"
       intro="Base64 is a standard encoding scheme used to securely transmit binary data and complex text character sets across HTTP requests, JSON payloads, and HTML attributes. This tool provides instant, bi-directional conversion. Your input is processed entirely in your web browser, guaranteeing that sensitive keys or tokens are never sent to external servers."
       toolNode={<Base64EncodeDecodeTool />}
       howTo={[

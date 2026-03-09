@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JsonValidatorPage() {
   return (
     <ToolLayout
-      title="JSON Schema Syntax Validator"
+      title="JSON Validator & Syntax Checker (Verify Valid JSON Online)"
       intro="A single missing comma or unescaped quote can bring down an entire production API. Paste your JSON payload into this validator to instantly catch and diagnose RFC-8259 syntax errors. It securely runs in your browser, providing exact line-number error tracing when possible."
       toolNode={<JsonValidatorTool />}
       howTo={[

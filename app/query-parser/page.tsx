@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function QueryParserPage() {
   return (
     <ToolLayout
-      title="URL Query String Parser"
+      title="URL Query String Parser (Decode & Extract URL Parameters Online)"
       intro="Working with long, encoded URL parameters can be messy. Paste any URL or raw query string into this tool to instantly decode it and break it down into a clean, easy-to-read table. Process runs entirely in your browser safely."
       toolNode={<QueryParserTool />}
       howTo={[

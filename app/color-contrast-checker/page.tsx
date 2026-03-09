@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ColorContrastCheckerPage() {
   return (
     <ToolLayout
-      title="WCAG Color Contrast Checker"
+      title="WCAG Color Contrast Checker (Verify Accessibility Online)"
       intro="Web accessibility (a11y) is a critical requirement for modern software development. This tool calculates the luminance contrast ratio between a foreground text color and a background color. It verifies whether your chosen color palette passes the strict WCAG (Web Content Accessibility Guidelines) AA and AAA standard thresholds."
       toolNode={<ColorContrastCheckerTool />}
       howTo={[

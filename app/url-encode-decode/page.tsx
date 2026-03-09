@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function UrlEncodeDecodePage() {
   return (
     <ToolLayout
-      title="URL Percent Encoder & Decoder"
+      title="URL Encoder & Decoder (Percent-Encode URLs Online)"
       intro="URLs can only be sent over the Internet using the ASCII character set. If your tracking link or API endpoint contains spaces, emojis, or reserved characters (like & or ?), they must be mathematically translated into a valid percent-encoded format. This tool instantly drives bi-directional URL encoding completely in your local browser."
       toolNode={<UrlEncodeDecodeTool />}
       howTo={[

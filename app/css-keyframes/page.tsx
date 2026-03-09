@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CssKeyframesPage() {
   return (
     <ToolLayout
-      title="CSS Keyframe Animation Builder"
+      title="CSS Keyframe Animation Builder (Create @keyframes Online)"
       intro="Writing CSS `@keyframes` logic entirely by hand requires a lot of mental overhead and constant browser refreshing. This visual builder allows you to construct complex, multi-stage CSS animations, edit their timing functions natively, and preview the exact animation rendered directly in the DOM."
       toolNode={<CssKeyframesTool />}
       howTo={[

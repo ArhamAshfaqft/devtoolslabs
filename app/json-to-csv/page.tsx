@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JsonToCsvPage() {
   return (
     <ToolLayout
-      title="JSON to CSV Converter"
+      title="JSON to CSV Converter (Export JSON Arrays to Excel Online)"
       intro="It is incredibly common to fetch a massive payload of data from a REST API (like a user list) and need to hand it off to a marketing team strictly utilizing Microsoft Excel or Google Sheets. This offline converter takes any array of valid JSON objects, automatically maps disparate header keys, strictly comma-escapes internal strings, and outputs a perfectly formatted CSV document ready for download."
       toolNode={<JsonToCsvTool />}
       howTo={[

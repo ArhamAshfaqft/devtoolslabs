@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JsonEscapePage() {
   return (
     <ToolLayout
-      title="JSON Escape & Unescape"
+      title="JSON Escape & Unescape (Format JSON Strings Online)"
       intro="Safely convert raw JSON into a valid escaped string format for use in code, databases, or API requests. You can also reverse the process by unescaping stringified JSON back into readable format. This tool processes everything locally in your browser so your data never leaves your computer."
       toolNode={<JsonEscapeTool />}
       howTo={[

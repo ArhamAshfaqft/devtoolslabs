@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Base64ImageDecoderPage() {
   return (
     <ToolLayout
-      title="Base64 Image Decoder"
+      title="Base64 Image Decoder (View & Download Encoded Images Online)"
       intro="Developers often need to copy Base64 image strings from JSON APIs, CSS files, or database rows. Instead of writing a script to save it, simply paste the long Base64 string here to instantly view the image, check its file size, and download it locally. All processing is 100% secure and runs entirely inside your browser."
       toolNode={<Base64ImageDecoderTool />}
       howTo={[

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SqlFormatterPage() {
   return (
     <ToolLayout
-      title="SQL Formatter & Beautifier"
+      title="SQL Formatter & Beautifier (Format SQL Queries Online)"
       intro="Are you tired of debugging massive, single-line SQL queries dumped from server logs? This tool takes minified or poorly formatted SQL and intelligently beautifies it into readable, standardized code. It understands dialect-specific syntax for all major database engines and forces consistent capitalization for SQL keywords."
       toolNode={<SqlFormatterTool />}
       howTo={[

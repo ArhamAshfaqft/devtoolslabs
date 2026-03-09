@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function RegexReplacePage() {
   return (
     <ToolLayout
-      title="Regex Replace Tester"
+      title="Regex Replace Tester (Test JavaScript Regular Expressions Online)"
       intro="Stop guessing if your Regex replacement logic works. This tool perfectly simulates the JavaScript String.replace() method inside the browser. Type your expression, define your capture groups, and watch the output text update instantaneously."
       toolNode={<RegexReplaceTool />}
       howTo={[

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JwtValidatorPage() {
   return (
     <ToolLayout
-      title="JWT Decoder & Validator"
+      title="JWT Decoder & Validator (Parse JSON Web Tokens Online)"
       intro="JSON Web Tokens (JWT) are widely used for authentication. Paste your encoded token below to securely decode it and inspect the underlying JSON payload and header algorithms. All decoding runs entirely client-side using native JavaScript API, keeping your sensitive tokens safe."
       toolNode={<JwtValidatorTool />}
       howTo={[

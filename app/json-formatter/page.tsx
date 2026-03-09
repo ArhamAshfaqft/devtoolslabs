@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JsonFormatterPage() {
   return (
     <ToolLayout
-      title="JSON Formatter & Beautifier"
+      title="JSON Formatter & Beautifier (Pretty Print JSON Online)"
       intro="Working with minified, un-indented JSON data dumps from a REST API or database log is a massive headache. This tool instantly formats and beautifies complex JSON payloads into perfectly legible, multi-line structures. You can pick your indentation (Spaces or Tabs) or minify an already-large payload down to zero spaces to save bytes."
       toolNode={<JsonFormatterTool />}
       howTo={[

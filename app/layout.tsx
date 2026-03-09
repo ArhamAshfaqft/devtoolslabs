@@ -11,6 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://devtoolslabs.com'),
   title: {
     template: "%s | DevToolsLabs",
     default: "DevToolsLabs - 100% Free Client-Side Developer Utilities"
@@ -31,6 +32,22 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'DevToolsLabs',
+    title: 'DevToolsLabs - 100% Free Client-Side Developer Utilities',
+    description: 'A free, offline, privacy-first collection of web developer tools. Format JSON, convert UNIX timestamps, decode Base64, and minify CSS entirely inside your browser.',
+    url: 'https://devtoolslabs.com',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DevToolsLabs - 100% Free Client-Side Developer Utilities',
+    description: 'A free, offline, privacy-first collection of web developer tools. No data leaves your browser.',
+  },
+  alternates: {
+    canonical: 'https://devtoolslabs.com',
   },
 };
 

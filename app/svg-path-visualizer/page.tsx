@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SvgPathVisualizerPage() {
   return (
     <ToolLayout
-      title="SVG Path Visualizer"
+      title="SVG Path Visualizer (Preview & Debug SVG Paths Online)"
       intro="If you are manually tweaking cubic bezier curves or fixing an exported icon from Adobe Illustrator, SVG path coordinates (the `d` attribute) look like absolute gibberish. This tool provides a live, instant visualization canvas. Type or paste your raw path data to immediately see the vector shape render precisely on a checkerboard background."
       toolNode={<SvgPathVisualizerTool />}
       howTo={[

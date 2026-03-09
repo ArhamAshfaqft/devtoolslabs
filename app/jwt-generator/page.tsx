@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JwtGeneratorPage() {
   return (
     <ToolLayout
-      title="JWT Protocol Generator"
+      title="JWT Generator & Encoder (Create JSON Web Tokens Online)"
       intro="JSON Web Tokens (JWT) are an open, industry standard (RFC 7519) method for representing authentication claims securely between two parties. Generate and simulate complete signed tokens manually using this tool. Your raw secret keys and PII payloads are natively signed client-side using WebCrypto, bypassing network vulnerabilities."
       toolNode={<JwtGeneratorTool />}
       howTo={[

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CssMinifierPage() {
   return (
     <ToolLayout
-      title="CSS Code Minifier"
+      title="CSS Minifier (Compress & Minify CSS Code Online)"
       intro="Bloated CSS stylesheets block browser rendering and hurt your Google Core Web Vital scores. This offline tool intelligently parses standard Cascade Style Sheet logic, stripping away comments, empty spaces, and optional terminations to guarantee maximum compression with zero external dependencies."
       toolNode={<CssMinifierTool />}
       howTo={[

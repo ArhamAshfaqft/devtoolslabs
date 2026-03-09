@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TimestampConverterPage() {
   return (
     <ToolLayout
-      title="Unix Epoch Timestamp Converter"
+      title="Unix Timestamp Converter (Convert Epoch to Date Online)"
       intro="Bridging the gap between computer time and human time. A Unix Timestamp is simply the number of seconds that have elapsed since January 1st, 1970. This tool bidirectionally translates native integer timestamps directly into your exact local timezone, UTC string, and ISO-8601 format."
       toolNode={<TimestampConverterTool />}
       howTo={[

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CronParserPage() {
   return (
     <ToolLayout
-      title="Cron Job Parser & Explainer"
+      title="Cron Job Parser & Explainer (Translate Cron Expressions Online)"
       intro="If you manage Linux servers, CI/CD pipelines, or background Node.js task queues, you are inevitably forced to write crontab schedules. This parser takes complex cron strings (e.g. `*/15 0 1,15 * 1-5`) and translates them into an instantly readable human language description, ensuring your automated tasks trigger exactly when you intend them to."
       toolNode={<CronParserTool />}
       howTo={[
