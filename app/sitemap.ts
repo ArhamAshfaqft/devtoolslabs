@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/jwt-expiry-checker',
+    '/csv-to-json',
     '/json-diff',
     '/uuid-generator',
     '/json-escape-unescape',

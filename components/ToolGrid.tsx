@@ -14,6 +14,22 @@ interface Tool {
 
 const ALL_TOOLS: Tool[] = [
   {
+    id: 'jwt-expiry',
+    name: 'JWT Expiry Checker',
+    description: 'Instantly check if a JSON Web Token (JWT) is valid, expired, or active.',
+    href: '/jwt-expiry-checker',
+    categories: ['Security', 'Data Parsing'],
+    isHot: true,
+  },
+  {
+    id: 'csv-to-json',
+    name: 'CSV to JSON',
+    description: 'Convert CSV spreadsheets to JSON arrays with automatic type inference.',
+    href: '/csv-to-json',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'json-diff',
     name: 'JSON Diff Tool',
     description: 'Instantly compare two JSON payloads to find deep structural differences.',
