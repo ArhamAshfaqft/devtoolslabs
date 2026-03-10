@@ -28,7 +28,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Resources</h3>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><a href="https://github.com/ArhamAshfaqft/devtoolslabs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">API Documentation</a></li>
+              <li><Link href="/guides" className="hover:text-gray-900 transition-colors">Developer Guides</Link></li>
               <li><a href="https://github.com/ArhamAshfaqft/devtoolslabs" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">GitHub Repository</a></li>
               <li><Link href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-gray-900 transition-colors">Terms of Service</Link></li>

@@ -23,6 +23,30 @@ const GUIDES = [
     readTime: '6 min',
     category: 'Security'
   },
+  {
+    title: 'Understanding Base64 Encoding: How It Works & Why We Use It',
+    slug: 'understanding-base64',
+    description: 'Learn the binary-to-text algorithm behind Base64, its character set, and common use cases in web development.',
+    date: 'March 10, 2026',
+    readTime: '5 min',
+    category: 'Encoding'
+  },
+  {
+    title: 'Regex Explained for Beginners: A Friendly Guide to Regular Expressions',
+    slug: 'regex-explained',
+    description: 'Master the basics of Regular Expressions. Learn about character classes, quantifiers, and flags with real-world examples.',
+    date: 'March 10, 2026',
+    readTime: '8 min',
+    category: 'Development'
+  },
+  {
+    title: 'How Unix Timestamps Work: The Developer Guide to Epoch Time',
+    slug: 'unix-timestamps',
+    description: 'Learn about the Unix epoch, seconds vs milliseconds, and how to handle timezones in your web applications.',
+    date: 'March 10, 2026',
+    readTime: '6 min',
+    category: 'Data'
+  },
   // Upcoming guides placeholders
 ];
 
