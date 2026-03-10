@@ -14,6 +14,29 @@ interface Tool {
 
 const ALL_TOOLS: Tool[] = [
   {
+    id: 'regex-generator',
+    name: 'Regex Generator',
+    description: 'Instantly generate standard Regular Expressions for emails, IPs, and dates.',
+    href: '/regex-generator',
+    categories: ['Data Parsing', 'Web'],
+    isHot: true,
+  },
+  {
+    id: 'password-entropy',
+    name: 'Password Entropy',
+    description: 'Calculate cryptographic password strength (bits) and brute-force time.',
+    href: '/password-entropy',
+    categories: ['Security'],
+    isHot: true,
+  },
+  {
+    id: 'html-encoder',
+    name: 'HTML Entity Encoder',
+    description: 'Safely encode reserved characters to prevent XSS string injection.',
+    href: '/html-entity-encoder',
+    categories: ['Encoding', 'Security'],
+  },
+  {
     id: 'jwt-expiry',
     name: 'JWT Expiry Checker',
     description: 'Instantly check if a JSON Web Token (JWT) is valid, expired, or active.',

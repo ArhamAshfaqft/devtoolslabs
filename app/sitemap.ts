@@ -5,6 +5,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/regex-generator',
+    '/password-entropy',
+    '/html-entity-encoder',
     '/jwt-expiry-checker',
     '/csv-to-json',
     '/json-diff',
