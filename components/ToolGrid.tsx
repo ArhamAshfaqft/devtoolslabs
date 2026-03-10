@@ -14,6 +14,22 @@ interface Tool {
 
 const ALL_TOOLS: Tool[] = [
   {
+    id: 'http-header-parser',
+    name: 'HTTP Header Parser',
+    description: 'Parse raw HTTP request/response headers into a clean JSON object.',
+    href: '/http-header-parser',
+    categories: ['Data Parsing', 'Web'],
+    isHot: true,
+  },
+  {
+    id: 'color-palette',
+    name: 'Color Palette Generator',
+    description: 'Generate beautiful 5-color palettes with hex codes for your designs.',
+    href: '/color-palette-generator',
+    categories: ['Design', 'Frontend'],
+    isHot: true,
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Instantly generate standard Regular Expressions for emails, IPs, and dates.',

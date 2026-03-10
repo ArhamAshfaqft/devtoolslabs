@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/http-header-parser',
+    '/color-palette-generator',
     '/regex-generator',
     '/password-entropy',
     '/html-entity-encoder',
