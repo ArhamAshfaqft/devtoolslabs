@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/guides',
+    '/guides/how-to-decode-jwt',
     '/http-header-parser',
     '/color-palette-generator',
     '/regex-generator',
