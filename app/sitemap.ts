@@ -5,6 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     '',
+    '/json-diff',
+    '/uuid-generator',
     '/json-escape-unescape',
     '/json-formatter',
     '/json-validator',

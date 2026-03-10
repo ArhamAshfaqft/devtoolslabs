@@ -14,6 +14,22 @@ interface Tool {
 
 const ALL_TOOLS: Tool[] = [
   {
+    id: 'json-diff',
+    name: 'JSON Diff Tool',
+    description: 'Instantly compare two JSON payloads to find deep structural differences.',
+    href: '/json-diff',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
+    id: 'uuid-generator',
+    name: 'UUID Generator',
+    description: 'Bulk generate secure Version 4 UUIDs natively in your browser.',
+    href: '/uuid-generator',
+    categories: ['Security', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'json-escape',
     name: 'JSON Escape',
     description: 'Safely escape or unescape JSON strings for embedded configurations.',
