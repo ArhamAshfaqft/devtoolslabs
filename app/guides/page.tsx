@@ -16,6 +16,22 @@ export const metadata: Metadata = {
 
 const GUIDES = [
   {
+    title: 'The Ultimate Guide to cURL Commands: Examples & Best Practices',
+    slug: 'ultimate-curl-guide',
+    description: 'Master cURL for API testing, file downloads, and server debugging. A comprehensive guide with real-world examples for developers and DevOps engineers.',
+    date: 'March 12, 2026',
+    readTime: '8 min',
+    category: 'Development'
+  },
+  {
+    title: 'Understanding CORS: The Definitive Guide for Developers',
+    slug: 'understanding-cors',
+    description: 'Master Cross-Origin Resource Sharing. Learn how preflight requests, Access-Control headers, and security policies work to protect your web applications.',
+    date: 'March 12, 2026',
+    readTime: '10 min',
+    category: 'Security'
+  },
+  {
     title: 'How to Decode JWT Tokens (Step-by-Step Guide)',
     slug: 'how-to-decode-jwt',
     description: 'Learn the internal structure of JSON Web Tokens and how to safely decode them in your frontend or backend applications.',

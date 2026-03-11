@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/http-status-codes',
     '/header-mime-hub',
     '/diagram-playground',
+    '/guides/understanding-cors',
+    '/guides/ultimate-curl-guide',
     '/http-header-parser',
     '/color-palette-generator',
     '/regex-generator',
