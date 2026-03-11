@@ -52,6 +52,7 @@ const ITEMS: SearchItem[] = [
   { id: 'svg-path', name: 'SVG Path Visualizer', description: 'Visualize and debug SVG path definitions.', href: '/svg-path-visualizer', type: 'tool', category: 'Design' },
   // Guides
   { id: 'guide-contrast', name: 'WCAG & ADA Contrast Guide', description: 'Master accessibility compliance.', href: '/guides/wcag-contrast-guide', type: 'guide', category: 'Security' },
+  { id: 'guide-sql', name: 'SQL Best Practices & Optimization', description: 'Write performant, clean SQL.', href: '/guides/sql-best-practices', type: 'guide', category: 'Development' },
   { id: 'guide-curl', name: 'Ultimate Guide to cURL', description: 'Master API testing and data transfer.', href: '/guides/ultimate-curl-guide', type: 'guide', category: 'Development' },
   { id: 'guide-cors', name: 'Understanding CORS', description: 'Fix cross-origin errors securely.', href: '/guides/understanding-cors', type: 'guide', category: 'Security' },
   { id: 'guide-jwt', name: 'How to Decode JWT Tokens', description: 'Step-by-step guide to token anatomy.', href: '/guides/how-to-decode-jwt', type: 'guide', category: 'Security' },

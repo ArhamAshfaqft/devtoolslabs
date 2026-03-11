@@ -71,6 +71,14 @@ const GUIDES = [
     readTime: '12 min',
     category: 'Security'
   },
+  {
+    title: "SQL Best Practices: Query Optimization & Formatting Guide",
+    slug: 'sql-best-practices',
+    description: 'Master SQL maintainability. Learn how to format complex queries, use indexes effectively, and optimize MySQL/Postgres performance.',
+    date: 'March 12, 2026',
+    readTime: '10 min',
+    category: 'Development'
+  },
   // Upcoming guides placeholders
 ];
 
