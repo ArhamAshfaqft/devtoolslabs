@@ -143,15 +143,17 @@ const ToolLayout = ({
       <main className="max-w-4xl mx-auto px-6 py-6">
         {/* Header & Intro */}
         <header className="mb-6 border-b border-gray-100 pb-8">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-              <div className="flex items-center gap-4">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-4">
+             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 flex-1 leading-tight">{title}</h1>
+             
+             <div className="flex items-center gap-2 shrink-0">
+                {/* Favorite Button */}
                 <button 
                   onClick={toggleFav}
-                  className={`p-1.5 rounded-lg border transition-all ${
+                  className={`w-10 h-10 flex items-center justify-center rounded-xl border transition-all ${
                     isFav 
                       ? "bg-yellow-50 border-yellow-200 text-yellow-500 shadow-sm" 
-                      : "bg-white border-gray-200 text-gray-400 hover:border-yellow-200 hover:text-yellow-500"
+                      : "bg-white border-gray-200 text-gray-400 hover:border-yellow-200 hover:text-yellow-500 shadow-sm"
                   }`}
                   title={isFav ? "Remove from Favorites" : "Add to Favorites"}
                 >
@@ -159,27 +161,27 @@ const ToolLayout = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
                 </button>
-              </div>
-             
-             {/* Social Sharing Buttons */}
-             {currentUrl && (
-               <div className="flex gap-2">
-                 <a 
-                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(`Check out this free developer tool: ${title}`)}`}
-                   target="_blank" rel="noopener noreferrer"
-                   className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-[#000000] text-white rounded hover:bg-gray-800 transition-colors"
-                 >
-                   Share on X
-                 </a>
-                 <a 
-                   href={`https://reddit.com/submit?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(`A free browser-based ${title} for developers`)}`}
-                   target="_blank" rel="noopener noreferrer"
-                   className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-[#FF4500] text-white rounded hover:bg-[#e03d00] transition-colors"
-                 >
-                   Reddit
-                 </a>
-               </div>
-             )}
+
+                {/* Social Sharing Buttons */}
+                {currentUrl && (
+                  <div className="flex gap-2">
+                    <a 
+                      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(`Check out this free developer tool: ${title}`)}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center h-10 px-4 text-[10px] font-black uppercase tracking-widest bg-black text-white rounded-xl hover:bg-gray-800 transition-all shadow-sm"
+                    >
+                      Share on X
+                    </a>
+                    <a 
+                      href={`https://reddit.com/submit?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(`A free browser-based ${title} for developers`)}`}
+                      target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center h-10 px-4 text-[10px] font-black uppercase tracking-widest bg-[#FF4500] text-white rounded-xl hover:bg-[#e03d00] transition-all shadow-sm"
+                    >
+                      Reddit
+                    </a>
+                  </div>
+                )}
+             </div>
           </div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">{intro}</p>
           <div className="mt-4">
