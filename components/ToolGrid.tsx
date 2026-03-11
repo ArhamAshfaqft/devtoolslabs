@@ -268,6 +268,7 @@ const CATEGORIES = [
 
 export default function ToolGrid() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
@@ -284,12 +285,37 @@ export default function ToolGrid() {
   }, []);
 
   const favTools = ALL_TOOLS.filter(t => favorites.includes(t.href));
-  const filteredTools = activeCategory === 'All' 
-    ? ALL_TOOLS 
-    : ALL_TOOLS.filter(tool => tool.categories.includes(activeCategory));
+  
+  const filteredTools = ALL_TOOLS.filter(tool => {
+    const matchesCategory = activeCategory === 'All' || tool.categories.includes(activeCategory);
+    const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
     
   return (
     <div className="w-full flex flex-col items-center">
+      
+      {/* Search Bar */}
+      <div className="w-full max-w-2xl mb-10 relative group">
+        <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+          <svg className="h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="text"
+          placeholder="Search 35+ developer tools..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="block w-full pl-14 pr-12 py-5 bg-white border border-gray-200 rounded-2xl text-lg font-poppins text-gray-900 placeholder-gray-400 shadow-sm focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500 transition-all outline-none"
+        />
+        <div className="absolute inset-y-0 right-0 pr-5 flex items-center">
+            <kbd className="hidden sm:inline-block px-2 py-1 bg-gray-50 border border-gray-200 rounded text-[10px] font-bold text-gray-400 shadow-xs uppercase tracking-widest">
+                Ctrl+K
+            </kbd>
+        </div>
+      </div>
       
       {/* Favorites / Pinned Section */}
       {favTools.length > 0 && activeCategory === 'All' && (
