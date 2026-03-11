@@ -63,6 +63,14 @@ const GUIDES = [
     readTime: '6 min',
     category: 'Data'
   },
+  {
+    title: "The Developer's Guide to WCAG Color Contrast & ADA Compliance",
+    slug: 'wcag-contrast-guide',
+    description: 'Everything you need to know about web accessibility contrast standards. Master WCAG 2.1 Level AA/AAA and ensure your site is ADA compliant.',
+    date: 'March 12, 2026',
+    readTime: '12 min',
+    category: 'Security'
+  },
   // Upcoming guides placeholders
 ];
 
