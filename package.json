@@ -12,6 +12,7 @@
     "cronstrue": "^3.13.0",
     "curlconverter": "^4.12.0",
     "diff": "^8.0.3",
+    "mermaid": "^11.13.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",

@@ -22,9 +22,10 @@ interface ToolLayoutProps {
   useCases: string[];
   faqs: FAQ[];
   relatedTools: { name: string; url: string }[];
+  children?: ReactNode;
 }
 
-export default function ToolLayout({
+const ToolLayout = ({
   title,
   intro,
   toolNode,
@@ -33,15 +34,49 @@ export default function ToolLayout({
   useCases,
   faqs,
   relatedTools,
-}: ToolLayoutProps) {
+  children,
+}: ToolLayoutProps) => {
   const [currentUrl, setCurrentUrl] = useState('');
   const [copiedBadge, setCopiedBadge] = useState(false);
-
+  const [isFav, setIsFav] = useState(false);
+  
+  // Use a local state for fav to avoid hydration mismatch if needed, 
+  // though we'll sync with helper
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentUrl(window.location.href);
+      const favs = JSON.parse(localStorage.getItem("devtoolslabs_favorites") || "[]");
+      const path = window.location.pathname;
+      setIsFav(favs.includes(path));
     }
-  }, []);
+  }, [title]);
+
+  const toggleFav = () => {
+    const favs = JSON.parse(localStorage.getItem("devtoolslabs_favorites") || "[]");
+    const path = window.location.pathname;
+    let newFavs;
+    if (favs.includes(path)) {
+      newFavs = favs.filter((p: string) => p !== path);
+      setIsFav(false);
+    } else {
+      newFavs = [...favs, path];
+      setIsFav(true);
+    }
+    localStorage.setItem("devtoolslabs_favorites", JSON.stringify(newFavs));
+    window.dispatchEvent(new Event('storage')); // Notify other components
+  };
+
+  // Log recent usage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+       const recent = JSON.parse(localStorage.getItem("devtoolslabs_recent") || "[]");
+       const path = window.location.pathname;
+       const filtered = recent.filter((p: string) => p !== path);
+       const newRecent = [path, ...filtered].slice(0, 5);
+       localStorage.setItem("devtoolslabs_recent", JSON.stringify(newRecent));
+       window.dispatchEvent(new Event('storage'));
+    }
+  }, [title]);
 
   const handleCopyBadge = () => {
     try {
@@ -109,7 +144,22 @@ export default function ToolLayout({
         {/* Header & Intro */}
         <header className="mb-6 border-b border-gray-100 pb-8">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-             <h1 className="text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
+              <div className="flex items-center gap-4">
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
+                <button 
+                  onClick={toggleFav}
+                  className={`p-1.5 rounded-lg border transition-all ${
+                    isFav 
+                      ? "bg-yellow-50 border-yellow-200 text-yellow-500 shadow-sm" 
+                      : "bg-white border-gray-200 text-gray-400 hover:border-yellow-200 hover:text-yellow-500"
+                  }`}
+                  title={isFav ? "Remove from Favorites" : "Add to Favorites"}
+                >
+                  <svg className="w-5 h-5" fill={isFav ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                </button>
+              </div>
              
              {/* Social Sharing Buttons */}
              {currentUrl && (
@@ -228,8 +278,16 @@ export default function ToolLayout({
               </div>
             </section>
           )}
+
+          {children && (
+            <div className="mt-12">
+              {children}
+            </div>
+          )}
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default ToolLayout;

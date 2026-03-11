@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface Tool {
@@ -268,14 +268,52 @@ const CATEGORIES = [
 
 export default function ToolGrid() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [favorites, setFavorites] = useState<string[]>([]);
 
+  useEffect(() => {
+    const stored = localStorage.getItem("devtoolslabs_favorites");
+    if (stored) setFavorites(JSON.parse(stored));
+
+    const handleStorage = () => {
+      const updated = localStorage.getItem("devtoolslabs_favorites");
+      if (updated) setFavorites(JSON.parse(updated));
+    };
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
+
+  const favTools = ALL_TOOLS.filter(t => favorites.includes(t.href));
   const filteredTools = activeCategory === 'All' 
     ? ALL_TOOLS 
     : ALL_TOOLS.filter(tool => tool.categories.includes(activeCategory));
-
+    
   return (
     <div className="w-full flex flex-col items-center">
       
+      {/* Favorites / Pinned Section */}
+      {favTools.length > 0 && activeCategory === 'All' && (
+        <div className="w-full mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <h2 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Pinned Favorites</h2>
+            <div className="flex-1 h-px bg-gray-100"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {favTools.map((tool) => (
+              <Link href={tool.href} key={tool.id} className="block p-5 border border-blue-100 rounded-xl hover:border-blue-400 bg-blue-50/30 transition-all relative group shadow-sm hover:shadow-md">
+                <div className="absolute top-3 right-3 text-yellow-500">
+                  <svg className="w-4 h-4" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.382-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-1 text-gray-900 group-hover:text-blue-600">{tool.name}</h3>
+                <p className="text-xs text-gray-500 line-clamp-2">{tool.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Filter Pills */}
       <div className="flex flex-wrap justify-center gap-2 mb-10 w-full max-w-4xl">
         {CATEGORIES.map(category => {
