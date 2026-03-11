@@ -10,11 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/guides/understanding-base64',
     '/guides/regex-explained',
     '/guides/unix-timestamps',
+    '/guides/understanding-cors',
+    '/guides/ultimate-curl-guide',
+    '/guides/wcag-contrast-guide',
     '/http-status-codes',
     '/header-mime-hub',
     '/diagram-playground',
-    '/guides/understanding-cors',
-    '/guides/ultimate-curl-guide',
     '/http-header-parser',
     '/color-palette-generator',
     '/regex-generator',
@@ -53,6 +54,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/encoding-tools',
     '/frontend-tools',
     '/security-tools',
+    '/privacy',
+    '/terms',
   ];
 
   return routes.map((route) => ({
