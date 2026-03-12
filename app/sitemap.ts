@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/guides/ultimate-curl-guide',
     '/guides/wcag-contrast-guide',
     '/guides/sql-best-practices',
+    '/accessibility-tools',
     '/http-status-codes',
     '/header-mime-hub',
     '/diagram-playground',

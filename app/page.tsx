@@ -69,6 +69,10 @@ export default function Home() {
                  <h4 className="font-semibold text-gray-900 mb-1">Frontend Design</h4>
                  <p className="text-sm text-gray-500">CSS Clamp math, keyframes, and SVG visualizers.</p>
                </a>
+               <a href="/accessibility-tools" className="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors">
+                 <h4 className="font-semibold text-gray-900 mb-1">Accessibility (WCAG)</h4>
+                 <p className="text-sm text-gray-500">Color contrast checkers and ADA compliance audits.</p>
+               </a>
                <a href="/security-tools" className="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors">
                  <h4 className="font-semibold text-gray-900 mb-1">Security & Crypto</h4>
                  <p className="text-sm text-gray-500">MD5, SHA256 hashes, and local cryptographic algorithms.</p>
