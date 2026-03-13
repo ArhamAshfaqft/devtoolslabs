@@ -33,7 +33,7 @@ export default function JsonToYamlPage() {
       faqs={[
         {
           question: "What indentation does it use?",
-          answer: "We use the industry-standard 2-space indentation for all YAML generation to ensure maximum compatibility with modern cloud providers like AWS, GCP, and Azure."
+          answer: "We use the industry-standard 2-space indentation for all YAML generation to ensure maximum compatibility with modern cloud providers like AWS, GCP, Azure, and DigitalOcean."
         },
         {
           question: "How does it handle complex arrays?",
@@ -41,7 +41,15 @@ export default function JsonToYamlPage() {
         },
         {
           question: "Is this tool secure for private data?",
-          answer: "Yes. All conversion logic runs locally in your browser. No data is transmitted over the network."
+          answer: "Yes. All conversion logic runs locally in your browser. No data is transmitted over the network, ensuring your proprietary JSON configs remain confidential."
+        },
+        {
+          question: "Can I use this for Docker Compose?",
+          answer: "Yes! Many developers prefer drafting their service structures in JSON and then using this tool to generate the final indentation-sensitive docker-compose.yml file."
+        },
+        {
+          question: "Does it support JSON strings with special characters?",
+          answer: "Yes, the generator correctly escapes special characters and handles multi-line strings according to the YAML 1.2 specification, ensuring your data integrity is preserved."
         }
       ]}
       relatedTools={[

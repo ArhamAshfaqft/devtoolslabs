@@ -33,15 +33,23 @@ export default function YamlToJsonPage() {
       faqs={[
         {
           question: "Does it support multiple YAML documents?",
-          answer: "Currently, this tool parses the first document in a YAML stream. For multiple documents (separated by ---), we recommend parsing them individually for the most accurate JSON results."
+          answer: "Currently, this tool parses the first document in a YAML stream. For multiple documents (separated by --- in K8s), we recommend parsing them individually for the most accurate JSON results."
+        },
+        {
+          question: "Does it support YAML anchors and aliases?",
+          answer: "Yes! Our parser uses the standard js-yaml engine which fully supports YAML anchors (&) and aliases (*). This makes it perfect for expanding complex Docker Compose files."
         },
         {
           question: "Is it safe for production secrets?",
-          answer: "Yes. Processing is 100% client-side via your browser's V8 engine. Your sensitive Kubernetes secrets or API keys never leave your device."
+          answer: "Yes. Processing is 100% client-side via your browser's V8 engine. Your sensitive Kubernetes secrets, environment variables, or API keys never leave your machine."
         },
         {
           question: "Can I convert JSON back to YAML?",
-          answer: "Absolutely. Simply use the 'JSON to YAML' toggle at the top of the tool or visit our dedicated JSON to YAML page."
+          answer: "Absolutely. Simply use the 'JSON to YAML' toggle at the top of the tool or visit our dedicated JSON to YAML page for a more specialized experience."
+        },
+        {
+          question: "Why convert YAML to JSON for Kubernetes?",
+          answer: "While human engineers prefer YAML for readability, many automated CI/CD tools, monitoring dashboards, and the underlying Kubernetes API controllers process configurations as JSON objects."
         }
       ]}
       relatedTools={[

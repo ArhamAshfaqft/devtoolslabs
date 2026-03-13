@@ -36,12 +36,20 @@ export default function CspGeneratorPage() {
           answer: "'self' is a keyword that refers to the origin from which the protected document is being served, including the same URL scheme and port number."
         },
         {
+          question: "What is the difference between frame-src and child-src?",
+          answer: "frame-src specifies valid sources for nested browsing contexts (iframes). child-src was intended to cover both iframes and workers, but it is deprecated in favor of frame-src and worker-src in newer CSP versions."
+        },
+        {
+          question: "Does CSP prevent all Cross-Site Scripting (XSS)?",
+          answer: "While CSP is an incredibly powerful defense-in-depth layer, it should be used alongside input sanitization and output encoding for a complete security posture."
+        },
+        {
           question: "Why use CSP?",
           answer: "It is one of the most effective ways to prevent hackers from executing malicious JavaScript on your site. Modern browsers won't run external scripts unless they are specifically whitelisted in your policy."
         },
         {
           question: "Can I use CSP in a <meta> tag?",
-          answer: "Yes, you can place your policy in an HTML meta tag like this: <meta http-equiv='Content-Security-Policy' content='...'>, though setting it via server headers is generally preferred."
+          answer: "Yes, you can place your policy in an HTML meta tag like this: <meta http-equiv='Content-Security-Policy' content='...'>, though setting it via server headers is generally preferred for performance and edge-case support."
         }
       ]}
       relatedTools={[

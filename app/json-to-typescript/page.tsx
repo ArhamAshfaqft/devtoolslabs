@@ -37,12 +37,20 @@ export default function JsonToTypescriptPage() {
           answer: "Our generator recursively traverses your JSON. Every nested object is extracted into its own interface, named based on its key in PascalCase, ensuring clean and reusable code."
         },
         {
-          question: "Can it handle arrays?",
-          answer: "Yes. It detects the type of the first element in the array and generates the appropriate array notation (e.g., string[] or User[])."
+          question: "Can it handle arrays of different types?",
+          answer: "It detects the internal type of the first element in the array. For mixed-type arrays, it defaults to an 'any[]' or a union type if possible, ensuring your TypeScript project remains type-safe."
+        },
+        {
+          question: "Does it support optional properties (Optional Chaining)?",
+          answer: "Currently, it maps all keys to required properties. However, you can easily add '?' to any property in the generated output to mark them as optional if your API response is inconsistent."
         },
         {
           question: "Is my JSON data secure?",
-          answer: "Absolutely. Processing is done 100% client-side in your browser. No data ever reaches our servers."
+          answer: "Absolutely. Processing is done 100% client-side in your browser. No data ever reaches our servers, making it safe for processing proprietary business logic or private API keys."
+        },
+        {
+          question: "Can I use the output in React or Angular?",
+          answer: "Yes. The generated interfaces follow standard TypeScript syntax (ES6+), making them perfect for defining State, Props, or Service response types in React, Angular, Vue, and even Node.js backends."
         }
       ]}
       relatedTools={[
