@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description: 'A free, offline, privacy-first collection of web developer tools. No data leaves your browser.',
   },
   alternates: {
-    canonical: 'https://devtoolslabs.com',
+    canonical: '/',
   },
 };
 

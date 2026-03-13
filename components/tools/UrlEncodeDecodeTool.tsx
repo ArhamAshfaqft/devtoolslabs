@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 
-export default function UrlEncodeDecodeTool() {
-  const [mode, setMode] = useState<'encode' | 'decode'>('encode');
+export default function UrlEncodeDecodeTool({ defaultMode = 'encode' }: { defaultMode?: 'encode' | 'decode' }) {
+  const [mode, setMode] = useState<'encode' | 'decode'>(defaultMode);
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState<string | null>(null);

@@ -144,7 +144,14 @@ const ALL_TOOLS: Tool[] = [
     id: 'url-encoder',
     name: 'URL Encoder',
     description: 'Percent-encode reserved characters and URLs for safe API transmission.',
-    href: '/url-encode-decode',
+    href: '/url-encoder',
+    categories: ['Encoding', 'Web'],
+  },
+  {
+    id: 'url-decoder',
+    name: 'URL Decoder',
+    description: 'Reverse percent-encoding and decode messy tracking URLs into readable text.',
+    href: '/url-decoder',
     categories: ['Encoding', 'Web'],
   },
   {
