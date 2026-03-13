@@ -28,6 +28,8 @@ const ITEMS: SearchItem[] = [
   { id: 'json-validator', name: 'JSON Validator', description: 'Validate strict JSON syntax logic.', href: '/json-validator', type: 'tool', category: 'JSON' },
   { id: 'json-to-csv', name: 'JSON to CSV', description: 'Convert JSON arrays into CSV files.', href: '/json-to-csv', type: 'tool', category: 'JSON' },
   { id: 'json-to-typescript', name: 'JSON to TypeScript', description: 'Generate TS interfaces and types from JSON.', href: '/json-to-typescript', type: 'tool', category: 'JSON' },
+  { id: 'yaml-to-json', name: 'YAML to JSON', description: 'Convert Kubernetes/Docker YAML to JSON.', href: '/yaml-to-json', type: 'tool', category: 'Data Parsing' },
+  { id: 'json-to-yaml', name: 'JSON to YAML', description: 'Convert JSON to human-readable YAML configs.', href: '/json-to-yaml', type: 'tool', category: 'Data Parsing' },
   { id: 'jwt-validator', name: 'JWT Decoder', description: 'Offline JWT header and payload inspection.', href: '/jwt-validator', type: 'tool', category: 'Encoding' },
   { id: 'jwt-generator', name: 'JWT Generator', description: 'Sign custom Payload sets into JWTs.', href: '/jwt-generator', type: 'tool', category: 'Encoding' },
   { id: 'base64-encode', name: 'Base64 Encoder', description: 'Base64 string encoding and decoding.', href: '/base64-encode-decode', type: 'tool', category: 'Encoding' },

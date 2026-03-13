@@ -114,6 +114,21 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'yaml-to-json',
+    name: 'YAML to JSON',
+    description: 'Convert Kubernetes manifests or Docker YAML to JSON objects instantly.',
+    href: '/yaml-to-json',
+    categories: ['Data Parsing', 'Web'],
+    isHot: true,
+  },
+  {
+    id: 'json-to-yaml',
+    name: 'JSON to YAML',
+    description: 'Transform JSON data into clean, human-readable YAML for cloud configs.',
+    href: '/json-to-yaml',
+    categories: ['Data Parsing', 'Web'],
+  },
+  {
     id: 'jwt-validator',
     name: 'JWT Decoder',
     description: 'Offline JWT header and payload inspection via Base64Url decoding.',
