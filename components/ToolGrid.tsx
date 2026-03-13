@@ -106,11 +106,12 @@ const ALL_TOOLS: Tool[] = [
     categories: ['JSON'],
   },
   {
-    id: 'json-to-csv',
-    name: 'JSON to CSV',
-    description: 'Instantly convert JSON arrays into downloadable CSV files offline.',
-    href: '/json-to-csv',
+    id: 'json-to-typescript',
+    name: 'JSON to TypeScript',
+    description: 'Instantly generate clean TypeScript interfaces and types from JSON payloads.',
+    href: '/json-to-typescript',
     categories: ['JSON', 'Data Parsing'],
+    isHot: true,
   },
   {
     id: 'jwt-validator',
@@ -160,6 +161,14 @@ const ALL_TOOLS: Tool[] = [
     description: 'Convert encoded HTML entities back to their original characters.',
     href: '/html-entity-decoder',
     categories: ['Encoding', 'Web'],
+  },
+  {
+    id: 'csp-generator',
+    name: 'CSP Header Generator',
+    description: 'Build robust Content Security Policy (CSP) headers to prevent XSS attacks.',
+    href: '/csp-generator',
+    categories: ['Security', 'Web'],
+    isHot: true,
   },
   {
     id: 'hash-generator',
@@ -217,6 +226,14 @@ const ALL_TOOLS: Tool[] = [
     description: 'Beautify minified SQL for PostgreSQL, MySQL, T-SQL and more.',
     href: '/sql-formatter',
     categories: ['Formatting'],
+  },
+  {
+    id: 'sql-to-object',
+    name: 'SQL Schema to Code',
+    description: 'Transform SQL CREATE TABLE statements into TypeScript interfaces or JSON.',
+    href: '/sql-to-object',
+    categories: ['Data Parsing', 'Web'],
+    isHot: true,
   },
   {
     id: 'html-minifier',
