@@ -14,6 +14,14 @@ interface Tool {
 
 const ALL_TOOLS: Tool[] = [
   {
+    id: 'dns-lookup',
+    name: 'DNS Lookup Tool',
+    description: 'Query global A, MX, TXT, and CNAME records instantly via secure DNS over HTTPS.',
+    href: '/dns-lookup',
+    categories: ['Web', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'http-header-parser',
     name: 'HTTP Header Parser',
     description: 'Parse raw HTTP request/response headers into a clean JSON object.',
