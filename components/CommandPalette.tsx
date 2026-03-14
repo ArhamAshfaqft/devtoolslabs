@@ -18,6 +18,7 @@ const ITEMS: SearchItem[] = [
   { id: 'color-palette', name: 'Color Palette Generator', description: 'Generate beautiful 5-color palettes with hex codes.', href: '/color-palette-generator', type: 'tool', category: 'Design' },
   { id: 'regex-generator', name: 'Regex Generator', description: 'Generate Regular Expressions for emails, IPs, and more.', href: '/regex-generator', type: 'tool', category: 'Data Parsing' },
   { id: 'regex-generator', name: 'Regex Generator', description: 'Generate common regular expressions.', href: '/regex-generator', type: 'tool', category: 'String' },
+  { id: 'bcrypt-generator', name: 'Bcrypt Hash Generator', description: 'Generate and verify Bcrypt password hashes.', href: '/bcrypt-generator', type: 'tool', category: 'Security' },
   { id: 'password-entropy', name: 'Password Entropy', description: 'Calculate password strength and crack time.', href: '/password-entropy', type: 'tool', category: 'Security' },
   { id: 'html-encoder', name: 'HTML Entity Encoder', description: 'Encode reserved characters to prevent XSS.', href: '/html-entity-encoder', type: 'tool', category: 'Encoding' },
   { id: 'jwt-expiry', name: 'JWT Expiry Checker', description: 'Check if a JWT is valid, expired, or active.', href: '/jwt-expiry-checker', type: 'tool', category: 'Security' },

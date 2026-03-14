@@ -62,10 +62,17 @@ const ALL_TOOLS: Tool[] = [
   },
   {
     id: 'password-entropy',
-    name: 'Password Entropy',
-    description: 'Calculate cryptographic password strength (bits) and brute-force time.',
+    name: 'Password Entropy Calculator',
+    description: 'Calculate cryptographic password strength, character sets, and brute-force time.',
     href: '/password-entropy',
-    categories: ['Security'],
+    categories: ['Security', 'String'],
+  },
+  {
+    id: 'bcrypt-generator',
+    name: 'Bcrypt Hash Generator',
+    description: 'Securely generate and verify Bcrypt password hashes with custom salt rounds.',
+    href: '/bcrypt-generator',
+    categories: ['Security', 'Encoding'],
     isHot: true,
   },
   {

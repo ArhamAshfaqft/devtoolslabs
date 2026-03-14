@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/csp-generator',
     '/regexp-tester',
     '/dns-lookup',
+    '/bcrypt-generator',
     '/sql-to-object',
     '/yaml-to-json',
     '/json-to-yaml',
