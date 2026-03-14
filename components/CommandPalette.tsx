@@ -26,6 +26,7 @@ const ITEMS: SearchItem[] = [
   { id: 'json-diff', name: 'JSON Diff Tool', description: 'Compare two JSON payloads for differences.', href: '/json-diff', type: 'tool', category: 'JSON' },
   { id: 'uuid-generator', name: 'UUID Generator', description: 'Bulk generate secure Version 4 UUIDs.', href: '/uuid-generator', type: 'tool', category: 'Security' },
   { id: 'json-escape-unescape', name: 'JSON Escape / Unescape', description: 'Escape or unescape JSON strings.', href: '/json-escape-unescape', type: 'tool', category: 'JSON' },
+  { id: 'mock-json-generator', name: 'Mock JSON Generator', description: 'Construct realistic fake JSON/CSV data.', href: '/mock-json-generator', type: 'tool', category: 'JSON' },
   { id: 'json-formatter', name: 'JSON Formatter', description: 'Beautify and indent minified JSON.', href: '/json-formatter', type: 'tool', category: 'JSON' },
   { id: 'json-validator', name: 'JSON Validator', description: 'Validate strict JSON syntax logic.', href: '/json-validator', type: 'tool', category: 'JSON' },
   { id: 'json-to-csv', name: 'JSON to CSV', description: 'Convert JSON arrays into CSV files.', href: '/json-to-csv', type: 'tool', category: 'JSON' },

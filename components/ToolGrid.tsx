@@ -136,6 +136,14 @@ const ALL_TOOLS: Tool[] = [
     categories: ['JSON'],
   },
   {
+    id: 'mock-json-generator',
+    name: 'Mock JSON API Generator',
+    description: 'Instantly construct realistic, massive fake JSON datasets using faker.js blueprints.',
+    href: '/mock-json-generator',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'json-to-typescript',
     name: 'JSON to TypeScript',
     description: 'Instantly generate clean TypeScript interfaces and types from JSON payloads.',
