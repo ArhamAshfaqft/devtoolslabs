@@ -3,15 +3,15 @@ import ToolLayout from '@/components/ToolLayout';
 import ColorContrastCheckerTool from '@/components/tools/ColorContrastCheckerTool';
 
 export const metadata: Metadata = {
-  title: 'WCAG 2.1 & ADA Color Contrast Checker (Pass/Fail) | DevToolsLabs',
+  title: 'WCAG 2.1 AA Color Contrast Checker (ADA Pass/Fail) | DevToolsLabs',
   description: 'Instantly calculate color contrast ratios for WCAG 2.1 AA & AAA compliance. Get automatic color fixes to meet ADA accessibility standards. 100% free & private.',
 };
 
 export default function ColorContrastCheckerPage() {
   return (
     <ToolLayout
-      title="WCAG & ADA Color Contrast Checker (Free Online a11y Tool)"
-      intro="Web accessibility (a11y) is a legal and ethical requirement for modern software. Our advanced contrast checker calculates relative luminance ratios and provides instant 'Fix' suggestions to help your designs meet WCAG 2.1 and ADA compliance standards."
+      title="WCAG 2.1 AA Color Contrast Checker (Free Online a11y Tool)"
+      intro="Web accessibility (a11y) is a legal and ethical requirement for modern software. Our advanced contrast checker calculates relative luminance ratios and provides instant 'Fix' suggestions to help your designs meet WCAG 2.1 AA and ADA compliance standards."
       toolNode={<ColorContrastCheckerTool />}
       howTo={[
         "Type your foreground text color and background color in HEX format.",

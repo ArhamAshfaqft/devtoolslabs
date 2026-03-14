@@ -45,6 +45,14 @@ export default function JwtExpiryCheckerPage() {
         {
           question: "Why does it say 'Invalid JWT structure'?",
           answer: "If you receive this error, either the string you pasted is not a properly formatted JWT (Header.Payload.Signature), or the decoded payload does not contain an 'exp' field. Some tokens are designed to live forever and omit the expiration claim entirely."
+        },
+        {
+          question: "Can I use this to refresh an expired token?",
+          answer: "No. A JWT cannot be modified or 'renewed' once its expiration time has passed, because changing the payload alters the signature. You must request a brand new token from your authentication server."
+        },
+        {
+          question: "What timezone does the expiration date use?",
+          answer: "The tool converts the Unix standard UTC timestamp baked into the token into your browser's local timezone for easier reading."
         }
       ]}
       relatedTools={[

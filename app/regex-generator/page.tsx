@@ -4,15 +4,15 @@ import ToolLayout from '@/components/ToolLayout';
 import RegexGeneratorTool from '@/components/tools/RegexGeneratorTool';
 
 export const metadata: Metadata = {
-  title: 'Regular Expression Generator (Learn & Write Regex Online)',
+  title: 'Regex Generator & Creator (Write Regular Expressions Online)',
   description: 'Instantly generate standard regular expressions for emails, URLs, IP addresses, dates, and passwords. Copy and paste ready-to-use Regex patterns.',
 };
 
 export default function RegexGeneratorPage() {
   return (
     <ToolLayout
-      title="Regex Generator (Create Regular Expressions Online)"
-      intro="Struggling to remember complex Regex syntax? You are not alone. This Regular Expression Generator provides instant, battle-tested standard regex patterns for the most common development use cases. Simply click what you need to match, adjust your flags, and copy the pattern directly into your codebase."
+      title="Regex Generator & Creator (Build Regular Expressions)"
+      intro="Struggling to remember complex Regex syntax? You are not alone. This Regular Expression Generator and Creator provides instant, battle-tested standard regex patterns for the most common development use cases. Simply click what you need to match, adjust your flags, and copy the pattern directly into your codebase."
       toolNode={<RegexGeneratorTool />}
       howTo={[
         "Select the type of data you want to match from the list (Email, URL, Phone Number, etc).",
