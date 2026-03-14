@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/url-decoder',
     '/json-to-typescript',
     '/csp-generator',
+    '/regexp-tester',
     '/sql-to-object',
     '/yaml-to-json',
     '/json-to-yaml',

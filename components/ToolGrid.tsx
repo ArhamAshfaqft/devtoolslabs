@@ -30,6 +30,21 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'regex-replace',
+    name: 'Regex Replace',
+    description: 'Test complex Regular Expression find and replace operations instantly.',
+    href: '/regex-replace',
+    categories: ['String', 'Web'],
+  },
+  {
+    id: 'regex-tester',
+    name: 'Regex Match & Extract',
+    description: 'Debug standard regex patterns and extract named capture groups visually.',
+    href: '/regex-tester',
+    categories: ['String', 'Web'],
+    isHot: true,
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Instantly generate standard Regular Expressions for emails, IPs, and dates.',
