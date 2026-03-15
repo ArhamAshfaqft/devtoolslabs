@@ -16,14 +16,6 @@ export const metadata: Metadata = {
 
 const GUIDES = [
   {
-    title: 'The Ultimate Guide to cURL Commands: Examples & Best Practices',
-    slug: 'ultimate-curl-guide',
-    description: 'Master cURL for API testing, file downloads, and server debugging. A comprehensive guide with real-world examples for developers and DevOps engineers.',
-    date: 'March 12, 2026',
-    readTime: '8 min',
-    category: 'Development'
-  },
-  {
     title: 'Advanced React Design Patterns & JSX Best Practices',
     slug: 'react-jsx-patterns',
     description: 'Master the transition from HTML to React. Learn JSX best practices, attribute mapping, styles, and architecture patterns for modern web apps.',
@@ -56,12 +48,36 @@ const GUIDES = [
     category: 'DevOps'
   },
   {
+    title: 'The Ultimate Guide to cURL Commands: Examples & Best Practices',
+    slug: 'ultimate-curl-guide',
+    description: 'Master cURL for API testing, file downloads, and server debugging. A comprehensive guide with real-world examples for developers and DevOps engineers.',
+    date: 'March 12, 2026',
+    readTime: '8 min',
+    category: 'Development'
+  },
+  {
     title: 'Understanding CORS: The Definitive Guide for Developers',
     slug: 'understanding-cors',
     description: 'Master Cross-Origin Resource Sharing. Learn how preflight requests, Access-Control headers, and security policies work to protect your web applications.',
     date: 'March 12, 2026',
     readTime: '10 min',
     category: 'Security'
+  },
+  {
+    title: "The Developer's Guide to WCAG Color Contrast & ADA Compliance",
+    slug: 'wcag-contrast-guide',
+    description: 'Everything you need to know about web accessibility contrast standards. Master WCAG 2.1 Level AA/AAA and ensure your site is ADA compliant.',
+    date: 'March 12, 2026',
+    readTime: '12 min',
+    category: 'Security'
+  },
+  {
+    title: "SQL Best Practices: Query Optimization & Formatting Guide",
+    slug: 'sql-best-practices',
+    description: 'Master SQL maintainability. Learn how to format complex queries, use indexes effectively, and optimize MySQL/Postgres performance.',
+    date: 'March 12, 2026',
+    readTime: '10 min',
+    category: 'Development'
   },
   {
     title: 'How to Decode JWT Tokens (Step-by-Step Guide)',
@@ -94,22 +110,6 @@ const GUIDES = [
     date: 'March 10, 2026',
     readTime: '6 min',
     category: 'Data'
-  },
-  {
-    title: "The Developer's Guide to WCAG Color Contrast & ADA Compliance",
-    slug: 'wcag-contrast-guide',
-    description: 'Everything you need to know about web accessibility contrast standards. Master WCAG 2.1 Level AA/AAA and ensure your site is ADA compliant.',
-    date: 'March 12, 2026',
-    readTime: '12 min',
-    category: 'Security'
-  },
-  {
-    title: "SQL Best Practices: Query Optimization & Formatting Guide",
-    slug: 'sql-best-practices',
-    description: 'Master SQL maintainability. Learn how to format complex queries, use indexes effectively, and optimize MySQL/Postgres performance.',
-    date: 'March 12, 2026',
-    readTime: '10 min',
-    category: 'Development'
   }
 ];
 
