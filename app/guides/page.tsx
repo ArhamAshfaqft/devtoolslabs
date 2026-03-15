@@ -24,6 +24,38 @@ const GUIDES = [
     category: 'Development'
   },
   {
+    title: 'Advanced React Design Patterns & JSX Best Practices',
+    slug: 'react-jsx-patterns',
+    description: 'Master the transition from HTML to React. Learn JSX best practices, attribute mapping, styles, and architecture patterns for modern web apps.',
+    date: 'March 15, 2026',
+    readTime: '8 min',
+    category: 'Frontend'
+  },
+  {
+    title: 'Go Service Architecture: Mapping JSON to Structs',
+    slug: 'go-service-architecture',
+    description: 'Master the transition from loose JSON to strongly-typed Go services. Learn struct tagging, unmarshalling, and backend design patterns.',
+    date: 'March 15, 2026',
+    readTime: '7 min',
+    category: 'Backend'
+  },
+  {
+    title: 'Enterprise Password Security Standards (NIST & OWASP)',
+    slug: 'password-security-standards',
+    description: 'Master the shift from complexity to entropy. Learn the NIST 800-63B standards and how to architect secure authentication systems.',
+    date: 'March 15, 2026',
+    readTime: '9 min',
+    category: 'Security'
+  },
+  {
+    title: 'The DevOps Kubernetes YAML Blueprint',
+    slug: 'devops-kubernetes-yaml',
+    description: 'Master Kubernetes manifest design. Learn YAML best practices, common syntax pitfalls, and how to build reusable cloud-native infrastructure.',
+    date: 'March 15, 2026',
+    readTime: '10 min',
+    category: 'DevOps'
+  },
+  {
     title: 'Understanding CORS: The Definitive Guide for Developers',
     slug: 'understanding-cors',
     description: 'Master Cross-Origin Resource Sharing. Learn how preflight requests, Access-Control headers, and security policies work to protect your web applications.',
@@ -78,8 +110,7 @@ const GUIDES = [
     date: 'March 12, 2026',
     readTime: '10 min',
     category: 'Development'
-  },
-  // Upcoming guides placeholders
+  }
 ];
 
 export default function GuidesPage() {

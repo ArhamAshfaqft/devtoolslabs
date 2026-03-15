@@ -57,6 +57,7 @@ export default function CronParserPage() {
         }
       ]}
       relatedTools={[
+        { name: "Unix Timestamp Converter", url: "/timestamp-converter" },
         { name: "Regex Replace Tester", url: "/regex-replace" },
         { name: "URL Query Parser", url: "/query-parser" }
       ]}
