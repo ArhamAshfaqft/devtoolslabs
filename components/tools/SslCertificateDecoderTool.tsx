@@ -30,11 +30,6 @@ export default function SslCertificateDecoderTool() {
 
       const cert = forge.pki.certificateFromPem(pem);
       
-      const getAttr = (attrs: any[], name: string) => {
-        const attr = attrs.find(a => a.name === name || a.shortName === name);
-        return attr ? attr.value : 'N/A';
-      };
-
       const formatDN = (attrs: any[]) => {
         return attrs.map(a => `${a.shortName || a.name}=${a.value}`).join(', ');
       };
@@ -53,13 +48,13 @@ export default function SslCertificateDecoderTool() {
 
       // Extract SAN (Subject Alternative Names)
       const altNamesExt = cert.extensions.find(e => e.name === 'subjectAltName');
-      if (altNamesExt && altNamesExt.altNames) {
-        info.san = altNamesExt.altNames.map((n: any) => `${n.type === 2 ? 'DNS' : n.type === 7 ? 'IP' : 'Other'}:${n.value}`);
+      if (altNamesExt && (altNamesExt as any).altNames) {
+        info.san = (altNamesExt as any).altNames.map((n: any) => `${n.type === 2 ? 'DNS' : n.type === 7 ? 'IP' : 'Other'}:${n.value}`);
       }
 
       setCertInfo(info);
     } catch (err: any) {
-      setError('Invalid PEM certificate. Please ensure it starts with -----BEGIN CERTIFICATE-----');
+      setError(err.message || 'Invalid PEM certificate. Please ensure it starts with -----BEGIN CERTIFICATE-----');
       setCertInfo(null);
     }
   };
@@ -71,23 +66,23 @@ export default function SslCertificateDecoderTool() {
   };
 
   const handleExample = () => {
-    // A dummy self-signed cert example PEM to show how it works
     const examplePem = `-----BEGIN CERTIFICATE-----
-MIIDRjCCAi6gAwIBAgIUS8E6I2K4M2I4M2I4M2I4M2I4M2I4MA0GCSqGSIb3DQEB
-CwUAMBoxGDAWBgNVBAMMD2RldnRvb2xzbGFicy5jb20wHhcNMjYwMzE1MTIwMDAw
-WhcNMjcwMzE1MTIwMDAwWjAaMRgwFgYDVQQDDA9kZXZ0b29sc2xhYnMuY29tMIIB
-IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy75oXG5S9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9QIDAQABoyEwHzAdBgNVHQ4EFgQU8E6I2K4M2I4M2I4M2I4M2I4M2I4MA0GCSqG
-SIb3DQEBCwUAA4IBAQCy75oXG5S9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
-9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q9Q
+MIICljCCAX6gAwIBAgIUBY9/K2X7u1Z2c3Q4ZDVhNTk3MzIwMTAwDQYJKoZIhvcN
+AQELBQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTI0MDMxNzAwMDAwMFoXDTI1
+MDMxNzAwMDAwMFowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0B
+AQEFAAOCAQ8AMIIBCgKCAQEAyY60oGND5S9u1Z2c3Q4ZDVhNTk3MzIwMTAwYmFk
+YzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OTBh
+YmFkYzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4
+OTBhYmFkYzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1
+Njc4OTBhYmFkYzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiY2RlZjEy
+MzQ1Njc4OTAgYmFkYzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2I0IDAgEBMB0G
+A1UdDgQWBBSf7W8pYvG7VnZzdDhkNWE1OTczMjAxMDANBgkqhkiG9w0BAQsFAAOC
+AQEAf7W8pYvG7VnZzdDhkNWE1OTczMjAxMDBiYWRjOWRlZjEyMzQ1Njc4OTBhYmNk
+ZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiYWRjOWRlZjEyMzQ1Njc4OTBh
+YmNkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiYWRjOWRlZjEyMzQ1Njc4
+OTBhYmNkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiYWRjOWRlZjEyMzQ1
+Njc4OTBhYmNkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2Nzg5MGFiYWRjOWRlZjEy
+MzQ1Njc4OTAgYmFkYzlkZWYxMjM0NTY3ODkwYWJjZGVmMTIzNDU2
 -----END CERTIFICATE-----`;
     setInput(examplePem);
     decodeCertificate(examplePem);

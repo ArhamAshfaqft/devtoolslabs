@@ -44,6 +44,26 @@ export default function SslCertificateDecoderPage() {
         {
           question: "What are Subject Alternative Names (SANs)?",
           answer: "The SAN extension allows a single SSL certificate to protect multiple domains, such as `example.com` and `api.example.com`. Our decoder lists all of these for easy verification."
+        },
+        {
+          question: "Can I decode a .crt or .cer file?",
+          answer: "Yes, as long as the file is text-based (PEM format). If your .crt file starts with '-----BEGIN CERTIFICATE-----', you can paste it directly."
+        },
+        {
+          question: "How do I check if my SSL certificate is expired?",
+          answer: "Paste your certificate into the decoder. The 'Valid To' section will show the expiration date. Our tool will highlight the date in red if the certificate has already expired."
+        },
+        {
+          question: "What does the SHA-256 Fingerprint represent?",
+          answer: "The fingerprint is a unique hash of the entire certificate. It is used by developers to uniquely identify a certificate for certificate pinning or audit logging."
+        },
+        {
+          question: "Why does my certificate say 'RSA (2048 bits)'?",
+          answer: "This describes the public key algorithm and its strength. RSA is the standard for web encryption, and 2048 bits is currently the minimum recommended length for modern security."
+        },
+        {
+          question: "Does this tool work for Wildcard certificates?",
+          answer: "Yes. Wildcard certificates (e.g., *.example.com) will be correctly identified in the Subject and Subject Alternative Names (SAN) fields."
         }
       ]}
       relatedTools={[
