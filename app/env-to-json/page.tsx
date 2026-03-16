@@ -40,6 +40,22 @@ export default function EnvToJsonPage() {
         {
           question: "How are quoted values handled?",
           answer: "The parser automatically detects and removes both single (') and double (\") quotes from around values, following standard .env formatting rules."
+        },
+        {
+          question: "What happens to empty lines?",
+          answer: "Empty lines or lines containing only whitespace are skipped to ensure the resulting JSON is clean and valid."
+        },
+        {
+          question: "Can it handle complex values with '=' signs?",
+          answer: "Yes. The parser only splits on the first `=` found in a line, allowing values like connection strings or URLs to contain `=` characters without breaking the parse."
+        },
+        {
+          question: "Is it safe for secrets and API keys?",
+          answer: "Yes, 100%. All processing happens in your browser's memory. No network requests are made, so your secrets never touch our infrastructure."
+        },
+        {
+          question: "Can I convert the JSON back to .env?",
+          answer: "Currently, this tool is one-way (Env to JSON). We are working on a reverse converter for an upcoming release."
         }
       ]}
       relatedTools={[

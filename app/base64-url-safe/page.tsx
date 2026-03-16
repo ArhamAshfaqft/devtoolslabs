@@ -39,11 +39,27 @@ export default function Base64UrlSafePage() {
       faqs={[
         {
           question: "How is this different from standard Base64?",
-          answer: "Standard Base64 uses characters (+, /, =) that are reserved in URLs and can break navigation. The URL-Safe variant uses '-' and '_' instead, and eliminates padding '=' characters."
+          answer: "Standard Base64 uses characters (+, /, =) that are reserved in URLs and can break navigation or tracking. The URL-Safe variant swaps them for '-' and '_' respectively, and removes trailing padding '='."
         },
         {
           question: "Is this safe for sensitive data?",
           answer: "Yes. All encoding and decoding happens locally in your browser. No data is ever sent to our servers, ensuring your strings remain private."
+        },
+        {
+          question: "Why remove the padding (=)?",
+          answer: "URL-safe Base64 often omits padding because the `=` character is used to separate query parameters in URLs. Most modern decoders can handle strings without padding automatically."
+        },
+        {
+          question: "Is this the same as 'base64url' in Node.js?",
+          answer: "Yes. This tool implements the exact RFC 4648 'base64url' standard used in modern web APIs and authentication frameworks."
+        },
+        {
+          question: "Can I use this for JWT troubleshooting?",
+          answer: "Absolutely. JWT headers and payloads are almost always encoded using Base64 URL-safe. This tool helps you manually decode those segments to verify data."
+        },
+        {
+          question: "Does it support binary data?",
+          answer: "This web version supports UTF-8 text strings. For raw binary data (like images), we recommend our specialized 'Base64 to Image' tool."
         }
       ]}
       relatedTools={[

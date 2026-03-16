@@ -35,11 +35,27 @@ export default function XmlToJsonPage() {
       faqs={[
         {
           question: "How are XML attributes handled?",
-          answer: "By default, attributes are prefixed with `@_` to distinguish them from standard tags, ensuring no data loss during conversion."
+          answer: "By default, attributes are prefixed with `@_` (e.g., id='1' becomes '@_id': 1) to distinguish them from standard tags, ensuring no data loss during conversion."
         },
         {
           question: "Is my XML data secure?",
-          answer: "Yes. All conversion happens locally in your browser using JavaScript. No data is ever uploaded to our servers."
+          answer: "Yes. All conversion happens locally in your browser using JavaScript. No data is ever uploaded to our servers, making it safe for sensitive enterprise configuration parsing."
+        },
+        {
+          question: "Does it support nested tags and arrays?",
+          answer: "Yes. The converter intelligently identifies repeating elements and groups them into JSON arrays, while maintain the hierarchy of nested tags."
+        },
+        {
+          question: "What is the maximum file size supported?",
+          answer: "Since the tool runs in your browser, it can handle several megabytes of XML data depending on your available RAM. For extremely large datasets (100MB+), specialized streaming parsers are recommended."
+        },
+        {
+          question: "Can I convert SOAP responses to JSON?",
+          answer: "Absolutely. This tool is designed to help developers modernize legacy SOAP-based services by transforming the XML-encoded body into a format easily consumable by React or Vue applications."
+        },
+        {
+          question: "Are CDATA sections supported?",
+          answer: "Yes, the parser correctly identifies and extracts content from `<![CDATA[...]]>` blocks, preserving the literal text inside without escaping."
         }
       ]}
       relatedTools={[

@@ -35,11 +35,27 @@ export default function JsonToXmlPage() {
       faqs={[
         {
           question: "Can I generate XML attributes?",
-          answer: "Yes! If you prefix a JSON key with `@_` (e.g., '@_id': 123), it will be converted into an attribute (id='123') rather than a tag."
+          answer: "Yes! If you prefix a JSON key with `@_` (e.g., '@_id': 123), it will be converted into an attribute (id='123') rather than a nested tag."
         },
         {
           question: "Is the XML output formatted?",
-          answer: "Yes, the output is automatically beautified with 2-space indentation for maximum readability."
+          answer: "Yes, the output is automatically beautified with 2-space indentation and line breaks for maximum readability."
+        },
+        {
+          question: "Does it support custom root nodes?",
+          answer: "The resulting XML structure mirrors your JSON object. To define a root node, simply wrap your data in a single top-level JSON key."
+        },
+        {
+          question: "How are JSON arrays converted to XML?",
+          answer: "Arrays are converted into repeating XML elements. For example, `{ 'item': [1, 2] }` becomes `<item>1</item><item>2</item>`."
+        },
+        {
+          question: "Is there a limit to nesting depth?",
+          answer: "No. The converter handles deep recursion, making it suitable for generating complex XML schemas used in enterprise middleware."
+        },
+        {
+          question: "Is my JSON data kept private?",
+          answer: "Yes. Like all tools on DevToolsLabs, the conversion is performed client-side. Your data never leaves your machine."
         }
       ]}
       relatedTools={[
