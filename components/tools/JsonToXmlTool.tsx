@@ -26,7 +26,7 @@ export default function JsonToXmlTool() {
       const xml = builder.build(jsonObj);
       setXmlOutput(`<?xml version="1.0" encoding="UTF-8"?>\n${xml}`);
     } catch (err: any) {
-      setError('Invalid JSON format. Please check your syntax.');
+      setError(err.message || 'Invalid JSON format. Please check for missing commas or quotes.');
       setXmlOutput('');
     }
   };
@@ -40,6 +40,7 @@ export default function JsonToXmlTool() {
   const handleExample = () => {
     const exampleJson = {
       note: {
+        "@_id": "501",
         to: "Tove",
         from: "Jani",
         heading: "Reminder",

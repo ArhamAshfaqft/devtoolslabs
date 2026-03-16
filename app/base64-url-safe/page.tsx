@@ -64,7 +64,7 @@ export default function Base64UrlSafePage() {
       ]}
       relatedTools={[
         { name: "Base64 Image Decoder", url: "/base64-image-decoder" },
-        { name: "URL Encode/Decode", url: "/url-encode-decode" },
+        { name: "URL Encoder", url: "/url-encoder" },
         { name: "JWT Validator", url: "/jwt-validator" }
       ]}
     />

@@ -28,7 +28,7 @@ export default function XmlToJsonTool() {
       const jsonObj = parser.parse(xml);
       setJsonOutput(JSON.stringify(jsonObj, null, 2));
     } catch (err: any) {
-      setError('Invalid XML format. Please check your syntax.');
+      setError(err.message || 'Invalid XML format. Please check for unclosed tags or syntax errors.');
       setJsonOutput('');
     }
   };
