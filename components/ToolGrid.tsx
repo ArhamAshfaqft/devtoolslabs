@@ -152,6 +152,34 @@ const ALL_TOOLS: Tool[] = [
     categories: ['JSON'],
   },
   {
+    id: 'ssl-certificate-decoder',
+    name: 'SSL Certificate Decoder',
+    description: 'Decode SSL certificates to view expiration, issuer, and SAN details.',
+    href: '/ssl-certificate-decoder',
+    categories: ['Security'],
+  },
+  {
+    id: 'xml-to-json',
+    name: 'XML to JSON Converter',
+    description: 'Convert XML data to JSON instantly with attribute support.',
+    href: '/xml-to-json',
+    categories: ['Data Parsing'],
+  },
+  {
+    id: 'json-to-xml',
+    name: 'JSON to XML Converter',
+    description: 'Convert JSON objects into structured, formatted XML.',
+    href: '/json-to-xml',
+    categories: ['Data Parsing'],
+  },
+  {
+    id: 'env-to-json',
+    name: 'Env to JSON Parser',
+    description: 'Transform .env config files into structured JSON objects.',
+    href: '/env-to-json',
+    categories: ['Data Parsing'],
+  },
+  {
     id: 'url-slug-generator',
     name: 'URL Slug Generator',
     description: 'Instantly generate clean, SEO-optimized URL slugs. Removes stop-words and diacritics.',
@@ -224,6 +252,13 @@ const ALL_TOOLS: Tool[] = [
     name: 'Base64 Encoder',
     description: 'Bi-directional Base64 string encoding and decoding. 100% offline.',
     href: '/base64-encode-decode',
+    categories: ['Encoding'],
+  },
+  {
+    id: 'base64-url-safe',
+    name: 'Base64 URL-Safe',
+    description: 'Encode/decode Base64 strings for use in URLs and JWTs.',
+    href: '/base64-url-safe',
     categories: ['Encoding'],
   },
   {
