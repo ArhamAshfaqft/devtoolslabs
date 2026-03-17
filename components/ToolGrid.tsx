@@ -203,6 +203,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'json-to-pydantic',
+    name: 'JSON to Python Pydantic',
+    description: 'Instantly generate production-ready Pydantic V2 models from JSON.',
+    href: '/json-to-pydantic',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'json-to-go',
     name: 'JSON to Go Struct',
     description: 'Instantly generate strongly-typed Golang structs from JSON payloads.',

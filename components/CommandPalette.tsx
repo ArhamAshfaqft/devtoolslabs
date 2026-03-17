@@ -70,6 +70,7 @@ const ITEMS: SearchItem[] = [
   { id: 'diagram', name: 'Mermaid Diagram Builder', description: 'Text-to-diagram playground for architects.', href: '/diagram-playground', type: 'tool', category: 'Design' },
   { id: 'color-contrast', name: 'WCAG Contrast Checker', description: 'Calculate luminance for UX contrast.', href: '/color-contrast-checker', type: 'tool', category: 'Design' },
   { id: 'svg-path', name: 'SVG Path Visualizer', description: 'Visualize and debug SVG path definitions.', href: '/svg-path-visualizer', type: 'tool', category: 'Design' },
+  { id: 'json-to-pydantic', name: 'JSON to Python Pydantic Models', description: 'Generate Pydantic V2 models from JSON.', href: '/json-to-pydantic', type: 'tool', category: 'Formatting' },
   // Guides
   { id: 'guide-contrast', name: 'WCAG & ADA Contrast Guide', description: 'Master accessibility compliance.', href: '/guides/wcag-contrast-guide', type: 'guide', category: 'Security' },
   { id: 'guide-sql', name: 'SQL Best Practices & Optimization', description: 'Write performant, clean SQL.', href: '/guides/sql-best-practices', type: 'guide', category: 'Development' },

@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/base64-url-safe',
     '/base64-decode',
     '/json-to-typescript',
+    '/json-to-pydantic',
     '/json-to-go',
     '/csp-generator',
     '/regexp-tester',
