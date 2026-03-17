@@ -57,6 +57,7 @@ const ITEMS: SearchItem[] = [
   { id: 'env-to-json', name: 'Env to JSON Parser', description: 'Convert .env config files to structured JSON objects.', href: '/env-to-json', type: 'tool', category: 'Data Parsing' },
   { id: 'timestamp-converter', name: 'Unix Timestamp', description: 'Convert epoch integers to readable dates.', href: '/timestamp-converter', type: 'tool', category: 'Data Parsing' },
   { id: 'cron-parser', name: 'Cron Explainer', description: 'Translate cron schedules into easy text.', href: '/cron-parser', type: 'tool', category: 'Data Parsing' },
+  { id: 'crontab-builder', name: 'Crontab GUI Builder', description: 'Visually construct and parse Linux cron schedules.', href: '/crontab-builder', type: 'tool', category: 'Data Parsing' },
   { id: 'regex-tester', name: 'Regex Replace Tester', description: 'Simulate JavaScript String.replace().', href: '/regex-replace', type: 'tool', category: 'Data Parsing' },
   { id: 'http-status', name: 'HTTP Status Codes', description: 'Interactive reference for all HTTP response codes.', href: '/http-status-codes', type: 'tool', category: 'Web' },
   { id: 'markdown-table', name: 'Markdown Table', description: 'Generate formatted markdown tables.', href: '/markdown-table', type: 'tool', category: 'Formatting' },

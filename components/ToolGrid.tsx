@@ -180,6 +180,14 @@ const ALL_TOOLS: Tool[] = [
     categories: ['Data Parsing'],
   },
   {
+    id: 'crontab-builder',
+    name: 'Crontab GUI Builder',
+    description: 'Interactive, visual generator and parser for complex Linux cron schedules.',
+    href: '/crontab-builder',
+    categories: ['Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'url-slug-generator',
     name: 'URL Slug Generator',
     description: 'Instantly generate clean, SEO-optimized URL slugs. Removes stop-words and diacritics.',

@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/query-parser',
     '/timestamp-converter',
     '/cron-parser',
+    '/crontab-builder',
     '/regex-replace',
     '/markdown-table',
     '/sql-formatter',
