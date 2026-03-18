@@ -6,7 +6,7 @@ import addFormats from 'ajv-formats';
 
 export default function JsonSchemaValidatorTool() {
   const [schemaInput, setSchemaInput] = useState('{\n  "$schema": "http://json-schema.org/draft-07/schema#",\n  "type": "object",\n  "properties": {\n    "id": { "type": "integer" },\n    "name": { "type": "string" },\n    "email": { "type": "string", "format": "email" }\n  },\n  "required": ["id", "name"]\n}');
-  const [jsonInput, setJsonInput] = useState('{\n  "id": "123",\n  "name": "Alice",\n  "email": "invalid-email"\n}');
+  const [jsonInput, setJsonInput] = useState('{\n  "id": 123,\n  "name": "Alice",\n  "email": "alice@example.com"\n}');
   const [validationResult, setValidationResult] = useState<{ valid: boolean | null; errors: any[] | null; message: string | null }>({
     valid: null,
     errors: null,
