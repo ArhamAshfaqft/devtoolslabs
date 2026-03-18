@@ -27,12 +27,12 @@ export default function JsonSchemaValidatorPage() {
       ]}
       examples={[
         {
-          input: "Schema: { \"type\": \"object\", \"required\": [\"id\"] }\nData: { \"name\": \"Bob\" }",
-          output: "Validation Failed\nroot must have required property 'id'"
+          input: "{\n  \"type\": \"object\",\n  \"required\": [\"id\"]\n}",
+          output: "// If payload is { \"name\": \"Bob\" }\n\nValidation Failed\nroot must have required property 'id'"
         },
         {
-          input: "Schema: { \"properties\": {\"email\": {\"format\": \"email\"}} }\nData: { \"email\": \"not-an-email\" }",
-          output: "Validation Failed\n/email must match format \"email\""
+          input: "{\n  \"properties\": {\n    \"email\": { \"format\": \"email\" }\n  }\n}",
+          output: "// If payload is { \"email\": \"not-an-email\" }\n\nValidation Failed\n/email must match format \"email\""
         }
       ]}
       useCases={[
