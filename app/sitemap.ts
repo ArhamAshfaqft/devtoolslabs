@@ -55,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/json-formatter',
     '/curl-to-fetch',
     '/json-schema-validator',
+    '/git-command-generator',
     '/query-parser',
     '/timestamp-converter',
     '/cron-parser',

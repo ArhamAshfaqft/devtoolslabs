@@ -188,6 +188,14 @@ const ALL_TOOLS: Tool[] = [
     categories: ['Data Parsing'],
   },
   {
+    id: 'git-command-generator',
+    name: 'Git Command Generator',
+    description: 'Stop guessing syntax. Interactively generate complex, safe Git commands like reset, squash, and rebase.',
+    href: '/git-command-generator',
+    categories: ['Web', 'Formatting'],
+    isHot: true,
+  },
+  {
     id: 'crontab-builder',
     name: 'Crontab GUI Builder',
     description: 'Interactive, visual generator and parser for complex Linux cron schedules.',
