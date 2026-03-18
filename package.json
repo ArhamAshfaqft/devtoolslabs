@@ -12,6 +12,8 @@
     "@faker-js/faker": "^10.3.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
+    "ajv": "^8.18.0",
+    "ajv-formats": "^3.0.1",
     "bcryptjs": "^3.0.3",
     "cronstrue": "^3.13.0",
     "curlconverter": "^4.12.0",

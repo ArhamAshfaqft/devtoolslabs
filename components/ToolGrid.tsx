@@ -152,6 +152,14 @@ const ALL_TOOLS: Tool[] = [
     categories: ['JSON'],
   },
   {
+    id: 'json-schema-validator',
+    name: 'JSON Schema Validator',
+    description: 'Enforce structured data rules by validating JSON against draft-07/2020-12 schemas.',
+    href: '/json-schema-validator',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'ssl-certificate-decoder',
     name: 'SSL Certificate Decoder',
     description: 'Decode SSL certificates to view expiration, issuer, and SAN details.',

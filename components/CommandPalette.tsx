@@ -56,6 +56,7 @@ const ITEMS: SearchItem[] = [
   { id: 'query-parser', name: 'URL Query Parser', description: 'Decode and parse URL query strings.', href: '/query-parser', type: 'tool', category: 'Web' },
   { id: 'env-to-json', name: 'Env to JSON Parser', description: 'Convert .env config files to structured JSON objects.', href: '/env-to-json', type: 'tool', category: 'Data Parsing' },
   { id: 'timestamp-converter', name: 'Unix Timestamp', description: 'Convert epoch integers to readable dates.', href: '/timestamp-converter', type: 'tool', category: 'Data Parsing' },
+  { id: 'json-schema-validator', name: 'JSON Schema Validator', description: 'Validate JSON against draft-07 schemas via AJV.', href: '/json-schema-validator', type: 'tool', category: 'Data Parsing' },
   { id: 'cron-parser', name: 'Cron Explainer', description: 'Translate cron schedules into easy text.', href: '/cron-parser', type: 'tool', category: 'Data Parsing' },
   { id: 'crontab-builder', name: 'Crontab GUI Builder', description: 'Visually construct and parse Linux cron schedules.', href: '/crontab-builder', type: 'tool', category: 'Data Parsing' },
   { id: 'regex-tester', name: 'Regex Replace Tester', description: 'Simulate JavaScript String.replace().', href: '/regex-replace', type: 'tool', category: 'Data Parsing' },
