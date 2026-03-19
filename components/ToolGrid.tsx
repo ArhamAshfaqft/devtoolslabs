@@ -243,6 +243,13 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'css-triangle-generator',
+    name: 'CSS Triangle Generator',
+    description: 'Hack CSS borders instantly to create perfect tooltips, speech bubbles, and arrows.',
+    href: '/css-triangle-generator',
+    categories: ['Design', 'Formatting'],
+  },
+  {
     id: 'glassmorphism-generator',
     name: 'Glassmorphism Generator',
     description: 'Design beautiful, frosted glass UI components and grab the CSS output instantly.',
