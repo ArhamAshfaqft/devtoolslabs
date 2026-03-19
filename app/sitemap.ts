@@ -70,6 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/mock-json-generator',
     '/base64-encoder-decoder',
     '/css-keyframes',
+    '/glassmorphism-generator',
     '/color-contrast-checker',
     '/svg-path-visualizer',
     '/dev-utilities',

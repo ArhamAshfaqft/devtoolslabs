@@ -235,6 +235,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'glassmorphism-generator',
+    name: 'Glassmorphism Generator',
+    description: 'Design beautiful, frosted glass UI components and grab the CSS output instantly.',
+    href: '/glassmorphism-generator',
+    categories: ['Design', 'Formatting'],
+    isHot: true,
+  },
+  {
     id: 'json-to-go',
     name: 'JSON to Go Struct',
     description: 'Instantly generate strongly-typed Golang structs from JSON payloads.',
