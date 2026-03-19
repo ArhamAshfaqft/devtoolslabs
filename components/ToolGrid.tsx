@@ -235,6 +235,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'svg-shape-divider',
+    name: 'SVG Shape Divider Generator',
+    description: 'Design beautiful, responsive SVG waves and slanted section transitions.',
+    href: '/svg-shape-divider',
+    categories: ['Design', 'Web'],
+    isHot: true,
+  },
+  {
     id: 'glassmorphism-generator',
     name: 'Glassmorphism Generator',
     description: 'Design beautiful, frosted glass UI components and grab the CSS output instantly.',

@@ -73,6 +73,7 @@ const ITEMS: SearchItem[] = [
   { id: 'diagram', name: 'Mermaid Diagram Builder', description: 'Text-to-diagram playground for architects.', href: '/diagram-playground', type: 'tool', category: 'Design' },
   { id: 'color-contrast', name: 'WCAG Contrast Checker', description: 'Calculate luminance for UX contrast.', href: '/color-contrast-checker', type: 'tool', category: 'Design' },
   { id: 'svg-path', name: 'SVG Path Visualizer', description: 'Visualize and debug SVG path definitions.', href: '/svg-path-visualizer', type: 'tool', category: 'Design' },
+  { id: 'svg-shape-divider', name: 'SVG Shape Divider Generator', description: 'Generate wavy website section transitions.', href: '/svg-shape-divider', type: 'tool', category: 'Design' },
   { id: 'glassmorphism-generator', name: 'Glassmorphism CSS Generator', description: 'Build frosted glass UI blocks instantly.', href: '/glassmorphism-generator', type: 'tool', category: 'Design' },
   { id: 'box-shadow-generator', name: 'Advanced Box-Shadow Generator', description: 'Visually generate smooth CSS elevation shadows.', href: '/box-shadow-generator', type: 'tool', category: 'Design' },
   { id: 'json-to-pydantic', name: 'JSON to Python Pydantic Models', description: 'Generate Pydantic V2 models from JSON.', href: '/json-to-pydantic', type: 'tool', category: 'Formatting' },
