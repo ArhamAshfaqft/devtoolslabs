@@ -243,6 +243,13 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'box-shadow-generator',
+    name: 'Advanced Box-Shadow',
+    description: 'Visually construct smooth drop shadows and neumorphic inset elevations.',
+    href: '/box-shadow-generator',
+    categories: ['Design', 'Formatting'],
+  },
+  {
     id: 'json-to-go',
     name: 'JSON to Go Struct',
     description: 'Instantly generate strongly-typed Golang structs from JSON payloads.',

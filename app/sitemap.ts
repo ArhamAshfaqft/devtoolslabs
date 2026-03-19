@@ -71,6 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/base64-encoder-decoder',
     '/css-keyframes',
     '/glassmorphism-generator',
+    '/box-shadow-generator',
     '/color-contrast-checker',
     '/svg-path-visualizer',
     '/dev-utilities',
