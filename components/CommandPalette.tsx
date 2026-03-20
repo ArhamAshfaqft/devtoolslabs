@@ -76,6 +76,7 @@ const ITEMS: SearchItem[] = [
   { id: 'svg-shape-divider', name: 'SVG Shape Divider Generator', description: 'Generate wavy website section transitions.', href: '/svg-shape-divider', type: 'tool', category: 'Design' },
   { id: 'css-triangle-generator', name: 'CSS Triangle Generator', description: 'Visually generate pure CSS directional arrows.', href: '/css-triangle-generator', type: 'tool', category: 'Design' },
   { id: 'flexbox-generator', name: 'CSS Flexbox Generator', description: 'Interactive layout and alignment sandbox.', href: '/flexbox-generator', type: 'tool', category: 'Design' },
+  { id: 'grid-generator', name: 'CSS Grid Generator', description: 'Interactive visual 2D grid builder.', href: '/grid-generator', type: 'tool', category: 'Design' },
   { id: 'glassmorphism-generator', name: 'Glassmorphism CSS Generator', description: 'Build frosted glass UI blocks instantly.', href: '/glassmorphism-generator', type: 'tool', category: 'Design' },
   { id: 'box-shadow-generator', name: 'Advanced Box-Shadow Generator', description: 'Visually generate smooth CSS elevation shadows.', href: '/box-shadow-generator', type: 'tool', category: 'Design' },
   { id: 'json-to-pydantic', name: 'JSON to Python Pydantic Models', description: 'Generate Pydantic V2 models from JSON.', href: '/json-to-pydantic', type: 'tool', category: 'Formatting' },

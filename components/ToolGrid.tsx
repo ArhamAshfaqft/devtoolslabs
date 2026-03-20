@@ -243,6 +243,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'grid-generator',
+    name: 'CSS Grid Generator',
+    description: 'Visually construct robust 2-dimensional grid layouts, columns, and rows.',
+    href: '/grid-generator',
+    categories: ['Design', 'Formatting'],
+    isHot: true,
+  },
+  {
     id: 'flexbox-generator',
     name: 'Interactive Flexbox Builder',
     description: 'Visually learn and generate CSS flexbox layouts, alignments, and gaps.',
