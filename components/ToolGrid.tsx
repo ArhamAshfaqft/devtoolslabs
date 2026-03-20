@@ -342,6 +342,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'chmod-calculator',
+    name: 'Chmod Calculator',
+    description: 'Quickly calculate and generate numeric / symbolic Linux file permissions online.',
+    href: '/chmod-calculator',
+    categories: ['Security', 'Generators'],
+    isHot: true,
+  },
+  {
     id: 'base64-encode-decode',
     name: 'Base64 Encode / Decode',
     description: 'Bi-directional Base64 string encoding and decoding. 100% offline.',

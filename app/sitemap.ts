@@ -89,6 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/jwt-validator',
     '/jwt-generator',
     '/jwt-decoder',
+    '/chmod-calculator',
     '/base64-encode-decode',
     '/base64-image-decoder',
     '/html-entity-decoder',
