@@ -350,6 +350,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'htpasswd-generator',
+    name: 'Htpasswd Generator',
+    description: 'Create secure Bcrypt and SHA-1 hashed credential rows for Nginx basic auth.',
+    href: '/htpasswd-generator',
+    categories: ['Security', 'Generators'],
+    isHot: true,
+  },
+  {
     id: 'base64-encode-decode',
     name: 'Base64 Encode / Decode',
     description: 'Bi-directional Base64 string encoding and decoding. 100% offline.',

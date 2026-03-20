@@ -45,6 +45,7 @@ const ITEMS: SearchItem[] = [
   { id: 'jwt-generator', name: 'JWT Generator', description: 'Create and sign custom JSON Web Tokens.', href: '/jwt-generator', type: 'tool', category: 'Security' },
   { id: 'jwt-decoder', name: 'JWT Decoder', description: 'Decode JWT Header and Payload data instantly.', href: '/jwt-decoder', type: 'tool', category: 'Security' },
   { id: 'chmod-calculator', name: 'Chmod Calculator', description: 'Calculate Linux server file permissions visually.', href: '/chmod-calculator', type: 'tool', category: 'Security' },
+  { id: 'htpasswd-generator', name: 'Htpasswd Generator', description: 'Generate Apache/Nginx .htpasswd basic auth strings.', href: '/htpasswd-generator', type: 'tool', category: 'Security' },
   { id: 'base64-encode-decode', name: 'Base64 Encode/Decode', description: 'Convert text to and from Base64 encoding.', href: '/base64-encode-decode', type: 'tool', category: 'Encoding' },
   { id: 'base64-image', name: 'Base64 to Image', description: 'Decode base64 strings into viewable images.', href: '/base64-image-decoder', type: 'tool', category: 'Encoding' },
   { id: 'base64-url-safe', name: 'Base64 URL-Safe', description: 'Specialized Base64 encoding for JWTs and URLs.', href: '/base64-url-safe', type: 'tool', category: 'Encoding' },
