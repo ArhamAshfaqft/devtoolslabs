@@ -243,6 +243,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'css-gradient-generator',
+    name: 'CSS Gradient Generator',
+    description: 'Visually construct stunning linear and radial backgrounds with multiple color stops.',
+    href: '/css-gradient-generator',
+    categories: ['Design', 'Web'],
+    isHot: true,
+  },
+  {
     id: 'grid-generator',
     name: 'CSS Grid Generator',
     description: 'Visually construct robust 2-dimensional grid layouts, columns, and rows.',
