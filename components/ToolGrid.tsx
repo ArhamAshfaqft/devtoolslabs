@@ -243,6 +243,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'flexbox-generator',
+    name: 'Interactive Flexbox Builder',
+    description: 'Visually learn and generate CSS flexbox layouts, alignments, and gaps.',
+    href: '/flexbox-generator',
+    categories: ['Design', 'Formatting'],
+    isHot: true,
+  },
+  {
     id: 'css-triangle-generator',
     name: 'CSS Triangle Generator',
     description: 'Hack CSS borders instantly to create perfect tooltips, speech bubbles, and arrows.',
