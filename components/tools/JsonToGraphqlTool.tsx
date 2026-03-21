@@ -3,7 +3,18 @@
 import React, { useState, useEffect } from 'react';
 
 export default function JsonToGraphqlTool() {
-  const [jsonInput, setJsonInput] = useState('{\n  "user": {\n    "id": 1,\n    "name": "Jane Doe",\n    "isActive": true,\n    "roles": ["admin", "editor"],\n    "profile": {\n      "avatarUrl": "https://example.com/avatar.jpg",\n      "age": 28\n    }\n  }\n}');
+  const [jsonInput, setJsonInput] = useState(`{
+  "user": {
+    "id": 1,
+    "name": "Jane Doe",
+    "isActive": true,
+    "roles": ["admin", "editor"],
+    "profile": {
+      "avatarUrl": "https://example.com/avatar.jpg",
+      "age": 28
+    }
+  }
+}`);
   const [graphqlOutput, setGraphqlOutput] = useState('');
   const [rootName, setRootName] = useState('RootType');
   const [error, setError] = useState('');
@@ -98,7 +109,20 @@ export default function JsonToGraphqlTool() {
   };
 
   const loadExample = () => {
-    setJsonInput('{\n  "movie": {\n    "title": "Inception",\n    "releaseYear": 2010,\n    "rating": 8.8,\n    "isSciFi": true,\n    "cast": [\n      {\n        "actorName": "Leonardo DiCaprio",\n        "role": "Cobb"\n      }\n    ]\n  }\n}');
+    setJsonInput(`{
+  "movie": {
+    "title": "Inception",
+    "releaseYear": 2010,
+    "rating": 8.8,
+    "isSciFi": true,
+    "cast": [
+      {
+        "actorName": "Leonardo DiCaprio",
+        "role": "Cobb"
+      }
+    ]
+  }
+}`);
     setRootName('CinemaData');
   };
 
