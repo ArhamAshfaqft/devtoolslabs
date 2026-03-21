@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/base64-decode',
     '/json-to-typescript',
     '/json-to-pydantic',
+    '/json-to-graphql',
     '/json-to-go',
     '/csp-generator',
     '/regexp-tester',

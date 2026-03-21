@@ -228,10 +228,18 @@ const ALL_TOOLS: Tool[] = [
   },
   {
     id: 'json-to-pydantic',
-    name: 'JSON to Python Pydantic',
-    description: 'Instantly generate production-ready Pydantic V2 models from JSON.',
+    name: 'JSON to Pydantic Models',
+    description: 'Instantly convert complex JSON objects into strict Python Pydantic validation classes.',
     href: '/json-to-pydantic',
-    categories: ['JSON', 'Data Parsing'],
+    categories: ['Data', 'Web'],
+    isHot: true,
+  },
+  {
+    id: 'json-to-graphql',
+    name: 'JSON to GraphQL Schema',
+    description: 'Instantly transpile deep JSON objects into strict GraphQL Schema Definition Language (SDL) types.',
+    href: '/json-to-graphql',
+    categories: ['Data', 'Web'],
     isHot: true,
   },
   {
