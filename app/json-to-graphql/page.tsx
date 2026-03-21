@@ -27,12 +27,12 @@ export default function JsonToGraphqlPage() {
       ]}
       examples={[
         {
-          input: "{\\n  \"isActive\": true,\\n  \"loginCount\": 12,\\n  \"balance\": 12.50\\n}",
-          output: "type RootType {\\n  isActive: Boolean\\n  loginCount: Int\\n  balance: Float\\n}"
+          input: "{\n  \"isActive\": true,\n  \"loginCount\": 12,\n  \"balance\": 12.50\n}",
+          output: "type RootType {\n  isActive: Boolean\n  loginCount: Int\n  balance: Float\n}"
         },
         {
-          input: "{\\n  \"tags\": [\"react\", \"graphql\"]\\n}",
-          output: "type RootType {\\n  tags: [String]\\n}"
+          input: "{\n  \"tags\": [\"react\", \"graphql\"]\n}",
+          output: "type RootType {\n  tags: [String]\n}"
         }
       ]}
       useCases={[
