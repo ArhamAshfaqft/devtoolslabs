@@ -5,20 +5,26 @@ import React, { useState, useEffect } from 'react';
 interface Mapping {
   firstName: string;
   lastName: string;
+  fullName: string;
   phone: string;
   email: string;
   organization: string;
+  jobTitle: string;
+  address: string;
 }
 
 export default function CsvToVcardTool() {
-  const [csvInput, setCsvInput] = useState('FirstName,LastName,Email,Phone,Company\nJohn,Smith,john@example.com,+1234567890,Acme Corp\nJane,Doe,jane@test.org,+0987654321,Globex');
+  const [csvInput, setCsvInput] = useState('FirstName,LastName,Email,Phone,Company,JobTitle,Address\nJohn,Smith,john@example.com,+1234567890,Acme Corp,Software Engineer,123 Main St New York NY\nJane,Doe,jane@test.org,+0987654321,Globex,Designer,456 Market St San Francisco CA');
   const [headers, setHeaders] = useState<string[]>([]);
   const [mapping, setMapping] = useState<Mapping>({
     firstName: '',
     lastName: '',
+    fullName: '',
     phone: '',
     email: '',
-    organization: ''
+    organization: '',
+    jobTitle: '',
+    address: ''
   });
   const [vcardOutput, setVcardOutput] = useState('');
   const [error, setError] = useState('');
@@ -28,10 +34,26 @@ export default function CsvToVcardTool() {
     const lines = csv.split(/\r?\n/).filter(line => line.trim() !== '');
     if (lines.length === 0) return { headers: [], rows: [] };
     
-    const rawHeaders = lines[0].split(',').map(h => h.trim());
+    // Naive CSV split that handles basic quotes natively
+    const splitCsvLine = (line: string) => {
+       const result = [];
+       let current = '';
+       let inQuotes = false;
+       for (let i = 0; i < line.length; i++) {
+         if (line[i] === '"') inQuotes = !inQuotes;
+         else if (line[i] === ',' && !inQuotes) {
+           result.push(current.trim().replace(/^"|"$/g, ''));
+           current = '';
+         } else current += line[i];
+       }
+       result.push(current.trim().replace(/^"|"$/g, ''));
+       return result;
+    };
+
+    const rawHeaders = splitCsvLine(lines[0]);
     const parsedHeaders = rawHeaders.map((h, i) => h || `Column ${i+1}`); // Fallback for empty headers
     
-    const rows = lines.slice(1).map(line => line.split(',').map(c => c.trim()));
+    const rows = lines.slice(1).map(splitCsvLine);
     return { headers: parsedHeaders, rows };
   };
 
@@ -47,14 +69,17 @@ export default function CsvToVcardTool() {
       const { headers: parsedHeaders, rows } = parseCsv(csvInput);
       setHeaders(parsedHeaders);
       
-      // Auto-map if headers match common names, only on first valid parse
+      // Auto-map if headers match common names
       if (parsedHeaders.length > 0) {
          setMapping(prev => ({
-           firstName: prev.firstName || parsedHeaders.find(h => /first.?name/i.test(h)) || '',
-           lastName: prev.lastName || parsedHeaders.find(h => /last.?name/i.test(h)) || '',
+           firstName: prev.firstName || parsedHeaders.find(h => /^first.?name$/i.test(h)) || '',
+           lastName: prev.lastName || parsedHeaders.find(h => /^last.?name$/i.test(h)) || '',
+           fullName: prev.fullName || parsedHeaders.find(h => /^name$|^full.?name$/i.test(h)) || '',
            phone: prev.phone || parsedHeaders.find(h => /phone|tel|mobile/i.test(h)) || '',
            email: prev.email || parsedHeaders.find(h => /email|mail/i.test(h)) || '',
-           organization: prev.organization || parsedHeaders.find(h => /company|org|business/i.test(h)) || ''
+           organization: prev.organization || parsedHeaders.find(h => /company|org|business/i.test(h)) || '',
+           jobTitle: prev.jobTitle || parsedHeaders.find(h => /title|role|position/i.test(h)) || '',
+           address: prev.address || parsedHeaders.find(h => /address|location|city/i.test(h)) || ''
          }));
       }
 
@@ -77,20 +102,36 @@ export default function CsvToVcardTool() {
           return idx !== -1 && row[idx] ? row[idx] : '';
        };
 
-       const fn = getVal(mapping.firstName);
-       const ln = getVal(mapping.lastName);
+       const fullN = getVal(mapping.fullName);
+       let fn = getVal(mapping.firstName);
+       let ln = getVal(mapping.lastName);
+       
+       // Fallback logic
+       if (fullN && !fn && !ln) {
+          const parts = fullN.split(' ');
+          fn = parts[0];
+          ln = parts.length > 1 ? parts.slice(1).join(' ') : '';
+       }
+
        const eml = getVal(mapping.email);
        const tel = getVal(mapping.phone);
        const org = getVal(mapping.organization);
+       const title = getVal(mapping.jobTitle);
+       const adr = getVal(mapping.address);
        
-       if (!fn && !ln && !eml && !tel && !org) continue; // Skip entirely empty mapped rows
+       if (!fn && !ln && !eml && !tel && !org && !title && !adr && !fullN) continue;
+
+       // Use Full Name if provided, otherwise reconstruct it
+       const finalFn = fullN || `${fn} ${ln}`.trim() || 'Unknown Contact';
 
        let card = 'BEGIN:VCARD\nVERSION:3.0\n';
        card += `N:${ln};${fn};;;\n`;
-       card += `FN:${fn} ${ln}`.trim() + '\n';
+       card += `FN:${finalFn}\n`;
        if (org) card += `ORG:${org}\n`;
+       if (title) card += `TITLE:${title}\n`;
        if (tel) card += `TEL;TYPE=CELL:${tel}\n`;
        if (eml) card += `EMAIL;TYPE=WORK:${eml}\n`;
+       if (adr) card += `ADR;TYPE=HOME:;;${adr};;;;\n`;
        card += 'END:VCARD\n\n';
        
        generatedVcards += card;
@@ -129,13 +170,16 @@ export default function CsvToVcardTool() {
             {error && <span className="text-xs font-bold text-red-500 bg-red-50 px-3 py-1.5 rounded">{error}</span>}
          </div>
 
-         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
              {Object.entries({
                firstName: 'First Name',
                lastName: 'Last Name',
-               email: 'Email Address',
-               phone: 'Phone Number',
-               organization: 'Company'
+               fullName: 'Full Name',
+               email: 'Email',
+               phone: 'Phone',
+               organization: 'Company',
+               jobTitle: 'Job Title',
+               address: 'Address'
              }).map(([key, label]) => (
                 <div key={key}>
                    <label className="block text-xs font-bold text-gray-500 mb-1">{label}</label>
