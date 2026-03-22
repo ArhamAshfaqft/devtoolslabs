@@ -107,6 +107,22 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'json-to-csv',
+    name: 'JSON to CSV Converter',
+    description: 'Instantly convert nested JSON arrays into flat, Excel-ready CSV sheets.',
+    href: '/json-to-csv',
+    categories: ['JSON', 'Data Parsing'],
+    isHot: true,
+  },
+  {
+    id: 'csv-to-vcard',
+    name: 'CSV to vCard (VCF)',
+    description: 'Privately convert entire CSV contact lists to standard vCard (.vcf) arrays entirely completely offline.',
+    href: '/csv-to-vcard',
+    categories: ['Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'csv-to-json',
     name: 'CSV to JSON',
     description: 'Convert CSV spreadsheets to JSON arrays with automatic type inference.',

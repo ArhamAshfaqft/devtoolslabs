@@ -34,6 +34,7 @@ const ITEMS: SearchItem[] = [
   { id: 'json-formatter', name: 'JSON Formatter', description: 'Beautify and indent minified JSON.', href: '/json-formatter', type: 'tool', category: 'JSON' },
   { id: 'json-validator', name: 'JSON Validator', description: 'Validate strict JSON syntax logic.', href: '/json-validator', type: 'tool', category: 'JSON' },
   { id: 'json-to-csv', name: 'JSON to CSV', description: 'Convert JSON arrays into CSV files.', href: '/json-to-csv', type: 'tool', category: 'JSON' },
+  { id: 'csv-to-vcard', name: 'CSV to vCard (VCF)', description: 'Convert CSV contacts to vCard files offline.', href: '/csv-to-vcard', type: 'tool', category: 'JSON' },
   { id: 'json-to-typescript', name: 'JSON to TypeScript', description: 'Convert JSON to fully typed TypeScript interfaces.', href: '/json-to-typescript', type: 'tool', category: 'Data Parsing' },
   { id: 'json-to-pydantic', name: 'JSON to Pydantic', description: 'Convert JSON to robust Python Pydantic models.', href: '/json-to-pydantic', type: 'tool', category: 'Data Parsing' },
   { id: 'json-to-graphql', name: 'JSON to GraphQL', description: 'Convert JSON objects to strict GraphQL Schemas.', href: '/json-to-graphql', type: 'tool', category: 'Data Parsing' },
