@@ -27,8 +27,14 @@ export default function CsvToVcardPage() {
       ]}
       examples={[
         {
-          input: "Name,Phone\\nJohn Doe,+1234567890",
-          output: "BEGIN:VCARD\\nVERSION:3.0\\nN:;John Doe;;;\\nFN:John Doe\\nTEL;TYPE=CELL:+1234567890\\nEND:VCARD"
+          input: `Name,Phone
+John Doe,+1234567890`,
+          output: `BEGIN:VCARD
+VERSION:3.0
+N:;John Doe;;;
+FN:John Doe
+TEL;TYPE=CELL:+1234567890
+END:VCARD`
         }
       ]}
       useCases={[
