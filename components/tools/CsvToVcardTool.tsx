@@ -10,31 +10,28 @@ interface Mapping {
   email: string;
   organization: string;
   jobTitle: string;
-  address: string;
+  addressFull: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
 }
 
 export default function CsvToVcardTool() {
-  const [csvInput, setCsvInput] = useState('FirstName,LastName,Email,Phone,Company,JobTitle,Address\nJohn,Smith,john@example.com,+1234567890,Acme Corp,Software Engineer,123 Main St New York NY\nJane,Doe,jane@test.org,+0987654321,Globex,Designer,456 Market St San Francisco CA');
+  const [csvInput, setCsvInput] = useState('FirstName,LastName,Email,Phone,Company,JobTitle,Street,City,State,Zip,Country\nJohn,Smith,john.doe@example.com,+1234567890,TechCorp,Software Engineer,123 Main St,New York,NY,10001,USA\nJane,Doe,jane.smith@example.com,+0987654321,Designify,Designer,456 Park Ave,Los Angeles,CA,90001,USA');
   const [headers, setHeaders] = useState<string[]>([]);
   const [mapping, setMapping] = useState<Mapping>({
-    firstName: '',
-    lastName: '',
-    fullName: '',
-    phone: '',
-    email: '',
-    organization: '',
-    jobTitle: '',
-    address: ''
+    firstName: '', lastName: '', fullName: '', phone: '', email: '',
+    organization: '', jobTitle: '', addressFull: '', street: '', city: '', state: '', zip: '', country: ''
   });
   const [vcardOutput, setVcardOutput] = useState('');
   const [error, setError] = useState('');
 
-  // Simple CSV parser ignoring complex quotes for speed & offline use.
   const parseCsv = (csv: string) => {
     const lines = csv.split(/\r?\n/).filter(line => line.trim() !== '');
     if (lines.length === 0) return { headers: [], rows: [] };
     
-    // Naive CSV split that handles basic quotes natively
     const splitCsvLine = (line: string) => {
        const result = [];
        let current = '';
@@ -51,8 +48,7 @@ export default function CsvToVcardTool() {
     };
 
     const rawHeaders = splitCsvLine(lines[0]);
-    const parsedHeaders = rawHeaders.map((h, i) => h || `Column ${i+1}`); // Fallback for empty headers
-    
+    const parsedHeaders = rawHeaders.map((h, i) => h || `Column ${i+1}`);
     const rows = lines.slice(1).map(splitCsvLine);
     return { headers: parsedHeaders, rows };
   };
@@ -69,18 +65,31 @@ export default function CsvToVcardTool() {
       const { headers: parsedHeaders, rows } = parseCsv(csvInput);
       setHeaders(parsedHeaders);
       
-      // Auto-map if headers match common names
+      // Auto-map if headers match common names. Discard mappings that don't exist in new headers!
       if (parsedHeaders.length > 0) {
-         setMapping(prev => ({
-           firstName: prev.firstName || parsedHeaders.find(h => /^first.?name$/i.test(h)) || '',
-           lastName: prev.lastName || parsedHeaders.find(h => /^last.?name$/i.test(h)) || '',
-           fullName: prev.fullName || parsedHeaders.find(h => /^name$|^full.?name$/i.test(h)) || '',
-           phone: prev.phone || parsedHeaders.find(h => /phone|tel|mobile/i.test(h)) || '',
-           email: prev.email || parsedHeaders.find(h => /email|mail/i.test(h)) || '',
-           organization: prev.organization || parsedHeaders.find(h => /company|org|business/i.test(h)) || '',
-           jobTitle: prev.jobTitle || parsedHeaders.find(h => /title|role|position/i.test(h)) || '',
-           address: prev.address || parsedHeaders.find(h => /address|location|city/i.test(h)) || ''
-         }));
+         setMapping(prev => {
+           const getValid = (key: keyof Mapping, regex: RegExp) => {
+              // If the previous mapping is STILL valid, keep it. Otherwise regex search.
+              if (prev[key] && parsedHeaders.includes(prev[key])) return prev[key];
+              return parsedHeaders.find(h => regex.test(h)) || '';
+           };
+           
+           return {
+             firstName: getValid('firstName', /^first.?name$/i),
+             lastName: getValid('lastName', /^last.?name$/i),
+             fullName: getValid('fullName', /^name$|^full.?name$/i),
+             phone: getValid('phone', /phone|tel|mobile/i),
+             email: getValid('email', /email|mail/i),
+             organization: getValid('organization', /company|org|business/i),
+             jobTitle: getValid('jobTitle', /title|role|position/i),
+             addressFull: getValid('addressFull', /^address$|^location$|^full.?address$/i),
+             street: getValid('street', /street|addr1/i),
+             city: getValid('city', /city/i),
+             state: getValid('state', /state|province/i),
+             zip: getValid('zip', /zip|postal/i),
+             country: getValid('country', /country/i)
+           };
+         });
       }
 
       setError('');
@@ -92,7 +101,6 @@ export default function CsvToVcardTool() {
   useEffect(() => {
      if (headers.length === 0) return;
      const { rows } = parseCsv(csvInput);
-     
      let generatedVcards = '';
      
      for (const row of rows) {
@@ -106,22 +114,26 @@ export default function CsvToVcardTool() {
        let fn = getVal(mapping.firstName);
        let ln = getVal(mapping.lastName);
        
-       // Fallback logic
        if (fullN && !fn && !ln) {
           const parts = fullN.split(' ');
-          fn = parts[0];
-          ln = parts.length > 1 ? parts.slice(1).join(' ') : '';
+          ln = parts.pop() || '';
+          fn = parts.join(' ') || '';
        }
 
        const eml = getVal(mapping.email);
        const tel = getVal(mapping.phone);
        const org = getVal(mapping.organization);
        const title = getVal(mapping.jobTitle);
-       const adr = getVal(mapping.address);
        
-       if (!fn && !ln && !eml && !tel && !org && !title && !adr && !fullN) continue;
+       const adrFull = getVal(mapping.addressFull);
+       const street = getVal(mapping.street);
+       const city = getVal(mapping.city);
+       const state = getVal(mapping.state);
+       const zip = getVal(mapping.zip);
+       const country = getVal(mapping.country);
+       
+       if (!fn && !ln && !eml && !tel && !org && !title && !adrFull && !street && !fullN) continue;
 
-       // Use Full Name if provided, otherwise reconstruct it
        const finalFn = fullN || `${fn} ${ln}`.trim() || 'Unknown Contact';
 
        let card = 'BEGIN:VCARD\nVERSION:3.0\n';
@@ -131,18 +143,22 @@ export default function CsvToVcardTool() {
        if (title) card += `TITLE:${title}\n`;
        if (tel) card += `TEL;TYPE=CELL:${tel}\n`;
        if (eml) card += `EMAIL;TYPE=WORK:${eml}\n`;
-       if (adr) card += `ADR;TYPE=HOME:;;${adr};;;;\n`;
-       card += 'END:VCARD\n\n';
        
+       // Construct ADR
+       if (street || city || state || zip || country) {
+           card += `ADR;TYPE=HOME:;;${street};${city};${state};${zip};${country}\n`;
+       } else if (adrFull) {
+           card += `ADR;TYPE=HOME:;;${adrFull};;;;\n`;
+       }
+       
+       card += 'END:VCARD\n\n';
        generatedVcards += card;
      }
 
      setVcardOutput(generatedVcards.trim() || '// No data mapped. Select columns above to generate vCards.');
   }, [mapping, headers, csvInput]);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(vcardOutput);
-  };
+  const copyToClipboard = () => navigator.clipboard.writeText(vcardOutput);
 
   const downloadVcf = () => {
     if (!vcardOutput.trim() || vcardOutput.startsWith('//')) return;
@@ -159,8 +175,6 @@ export default function CsvToVcardTool() {
 
   return (
     <div className="flex flex-col gap-6 w-full">
-      
-      {/* Mapping Controls */}
       <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
          <div className="flex items-center justify-between mb-4 border-b border-gray-100 pb-4">
             <div>
@@ -170,16 +184,11 @@ export default function CsvToVcardTool() {
             {error && <span className="text-xs font-bold text-red-500 bg-red-50 px-3 py-1.5 rounded">{error}</span>}
          </div>
 
-         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
              {Object.entries({
-               firstName: 'First Name',
-               lastName: 'Last Name',
-               fullName: 'Full Name',
-               email: 'Email',
-               phone: 'Phone',
-               organization: 'Company',
-               jobTitle: 'Job Title',
-               address: 'Address'
+               firstName: 'First Name', lastName: 'Last Name', fullName: 'Full Name',
+               email: 'Email', phone: 'Phone', organization: 'Company', jobTitle: 'Job Title',
+               addressFull: 'Full Address', street: 'Street', city: 'City', state: 'State', zip: 'Zip', country: 'Country'
              }).map(([key, label]) => (
                 <div key={key}>
                    <label className="block text-xs font-bold text-gray-500 mb-1">{label}</label>
@@ -198,10 +207,7 @@ export default function CsvToVcardTool() {
          </div>
       </div>
 
-      {/* Editor Space */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-        
-        {/* CSV Input */}
         <div className="bg-white border border-gray-200 rounded-2xl flex flex-col overflow-hidden shadow-sm h-[500px]">
            <div className="bg-gray-50 border-b border-gray-100 p-4 flex justify-between items-center text-gray-800">
               <h3 className="font-bold text-sm flex items-center gap-2">
@@ -218,7 +224,6 @@ export default function CsvToVcardTool() {
            />
         </div>
 
-        {/* VCF Output */}
         <div className="bg-gray-900 border border-gray-800 rounded-2xl flex flex-col overflow-hidden shadow-lg h-[500px]">
            <div className="bg-gray-800 border-b border-gray-700 p-4 flex justify-between items-center text-gray-100">
               <h3 className="font-bold text-sm flex items-center gap-2">
@@ -230,9 +235,7 @@ export default function CsvToVcardTool() {
                    onClick={downloadVcf}
                    disabled={!vcardOutput || vcardOutput.startsWith('//')}
                    className="flex items-center gap-1.5 text-xs font-bold text-gray-800 bg-green-400 hover:bg-green-300 px-3 py-1.5 rounded transition-colors disabled:opacity-50"
-                   title="Download VCF File"
                  >
-                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                    Download
                  </button>
                  <button
@@ -250,7 +253,6 @@ export default function CsvToVcardTool() {
               </pre>
            </div>
         </div>
-
       </div>
     </div>
   );
