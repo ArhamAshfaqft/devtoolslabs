@@ -135,22 +135,28 @@ export default function CsvToVcardTool() {
        if (!fn && !ln && !eml && !tel && !org && !title && !adrFull && !street && !fullN) continue;
 
        const finalFn = fullN || `${fn} ${ln}`.trim() || 'Unknown Contact';
+       
+       // Pro Features: UID (for de-duplication) and REV (last updated)
+       const uidValue = eml || `uid-${Math.random().toString(36).substring(2, 11)}`;
+       const revTimestamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 
        let card = 'BEGIN:VCARD\nVERSION:3.0\n';
        card += `N:${ln};${fn};;;\n`;
        card += `FN:${finalFn}\n`;
        if (org) card += `ORG:${org}\n`;
        if (title) card += `TITLE:${title}\n`;
-       if (tel) card += `TEL;TYPE=CELL:${tel}\n`;
-       if (eml) card += `EMAIL;TYPE=WORK:${eml}\n`;
+       if (tel) card += `TEL;TYPE=CELL,VOICE:${tel}\n`;
+       if (eml) card += `EMAIL;TYPE=WORK,INTERNET:${eml}\n`;
        
-       // Construct ADR
+       // Construct ADR (vCard 3.0: P.O. Box; Extended; Street; Locality; Region; ZIP; Country)
        if (street || city || state || zip || country) {
            card += `ADR;TYPE=HOME:;;${street};${city};${state};${zip};${country}\n`;
        } else if (adrFull) {
            card += `ADR;TYPE=HOME:;;${adrFull};;;;\n`;
        }
        
+       card += `UID:${uidValue}\n`;
+       card += `REV:${revTimestamp}\n`;
        card += 'END:VCARD\n\n';
        generatedVcards += card;
      }
