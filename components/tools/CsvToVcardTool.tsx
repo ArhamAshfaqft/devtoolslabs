@@ -149,11 +149,11 @@ export default function CsvToVcardTool() {
        if (eml) card += `EMAIL;TYPE=WORK,INTERNET:${eml}\n`;
        
        // Construct ADR (vCard 3.0: P.O. Box; Extended; Street; Locality; Region; ZIP; Country)
-       if (street || city || state || zip || country) {
-           card += `ADR;TYPE=HOME:;;${street};${city};${state};${zip};${country}\n`;
-       } else if (adrFull) {
-           card += `ADR;TYPE=HOME:;;${adrFull};;;;\n`;
-       }
+        // Use adrFull as fallback for street to prevent field-shifting when "Address" is mapped but not "Street"
+        const streetValue = street || adrFull || '';
+        if (streetValue || city || state || zip || country) {
+            card += `ADR;TYPE=HOME:;;${streetValue};${city};${state};${zip};${country}\n`;
+        }
        
        card += `UID:${uidValue}\n`;
        card += `REV:${revTimestamp}\n`;
