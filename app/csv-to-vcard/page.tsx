@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Instantly convert CSV spreadsheets into standard vCard 3.0 (.vcf) formats for iCloud, Outlook, and Android. 100% client-side. We never upload your sensitive contact data.',
     url: 'https://devtoolslabs.com/csv-to-vcard',
   },
-  alternates: {
-    canonical: '/csv-to-vcard',
-  },
 };
 
 export default function CsvToVcardPage() {

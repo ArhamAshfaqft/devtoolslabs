@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Instantly generate Python Pydantic V2 models from JSON payloads. Automatic type inference, nested classes, and Field aliases for invalid identifiers.',
     url: 'https://devtoolslabs.com/json-to-pydantic',
   },
-  alternates: {
-    canonical: '/json-to-pydantic',
-  },
 };
 
 export default function JsonToPydanticPage() {

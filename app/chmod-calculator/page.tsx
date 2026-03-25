@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually calculate Linux UNIX file permissions. Convert Read, Write, and Execute checkboxes into octal values, symbolic strings, and ready-to-copy chmod terminal commands.',
     url: 'https://devtoolslabs.com/chmod-calculator',
   },
-  alternates: {
-    canonical: '/chmod-calculator',
-  },
 };
 
 export default function ChmodCalculatorPage() {

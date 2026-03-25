@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually build complex CSS Grid layouts instantly. Adjust columns, rows, and gaps using fractional units (1fr) and grab the compiled CSS code.',
     url: 'https://devtoolslabs.com/grid-generator',
   },
-  alternates: {
-    canonical: '/grid-generator',
-  },
 };
 
 export default function CssGridGeneratorPage() {

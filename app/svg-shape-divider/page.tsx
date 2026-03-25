@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually generate beautiful, responsive SVG shape dividers for landing pages. Create waves, curves, or slanted angles to separate sections smoothly with HTML and CSS.',
     url: 'https://devtoolslabs.com/svg-shape-divider',
   },
-  alternates: {
-    canonical: '/svg-shape-divider',
-  },
 };
 
 export default function SvgShapeDividerPage() {

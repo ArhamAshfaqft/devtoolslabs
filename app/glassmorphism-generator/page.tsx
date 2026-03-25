@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually generate copy-paste CSS for the popular Glassmorphism (frosted glass) UI trend. Adjust blur, transparency, borders, and colors instantly in the browser.',
     url: 'https://devtoolslabs.com/glassmorphism-generator',
   },
-  alternates: {
-    canonical: '/glassmorphism-generator',
-  },
 };
 
 export default function GlassmorphismGeneratorPage() {

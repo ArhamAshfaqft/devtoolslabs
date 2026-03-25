@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually generate complex Git commands for rebasing, squashing, undoing commits, and safe pushing. Stop memorizing Git syntax and use our interactive builder.',
     url: 'https://devtoolslabs.com/git-command-generator',
   },
-  alternates: {
-    canonical: '/git-command-generator',
-  },
 };
 
 export default function GitCommandGeneratorPage() {

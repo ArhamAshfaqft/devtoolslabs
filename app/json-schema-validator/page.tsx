@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Validate JSON payloads against JSON Schema specifications instantly. Secure, offline checking with detailed error paths and format validation (email, uuid, date-time).',
     url: 'https://devtoolslabs.com/json-schema-validator',
   },
-  alternates: {
-    canonical: '/json-schema-validator',
-  },
 };
 
 export default function JsonSchemaValidatorPage() {

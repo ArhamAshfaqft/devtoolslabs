@@ -15,9 +15,6 @@ export const metadata: Metadata = {
     description: 'Visually generate beautiful, smooth CSS box-shadows. Adjust X, Y, Blur, Spread, Opacity, and Inset properties to easily create neumorphic designs or modern card elevations.',
     url: 'https://devtoolslabs.com/box-shadow-generator',
   },
-  alternates: {
-    canonical: '/box-shadow-generator',
-  },
 };
 
 export default function BoxShadowGeneratorPage() {
