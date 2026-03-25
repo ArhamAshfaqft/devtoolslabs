@@ -6,6 +6,14 @@ import RegexGeneratorTool from '@/components/tools/RegexGeneratorTool';
 export const metadata: Metadata = {
   title: 'Regex Generator & Creator (Write Regular Expressions Online)',
   description: 'Instantly generate standard regular expressions for emails, URLs, IP addresses, dates, and passwords. Copy and paste ready-to-use Regex patterns.',
+  openGraph: {
+    title: 'Regex Generator & Creator (Write Regular Expressions Online)',
+    description: 'Instantly generate standard regular expressions for emails, URLs, IP addresses, dates, and passwords. Copy and paste ready-to-use Regex patterns.',
+    url: 'https://devtoolslabs.com/regex-generator',
+  },
+  alternates: {
+    canonical: '/regex-generator',
+  },
 };
 
 export default function RegexGeneratorPage() {

@@ -6,6 +6,14 @@ import JsonDiffTool from '@/components/tools/JsonDiffTool';
 export const metadata: Metadata = {
   title: 'JSON Diff Tool (Compare JSON Files Online)',
   description: 'Instantly compare two JSON objects side-by-side to find differences, added keys, and removed values. 100% offline, privacy-first JSON comparison.',
+  openGraph: {
+    title: 'JSON Diff Tool (Compare JSON Files Online)',
+    description: 'Instantly compare two JSON objects side-by-side to find differences, added keys, and removed values. 100% offline, privacy-first JSON comparison.',
+    url: 'https://devtoolslabs.com/json-diff',
+  },
+  alternates: {
+    canonical: '/json-diff',
+  },
 };
 
 export default function JsonDiffPage() {

@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/flexbox-generator',
   },
+  openGraph: {
+    title: 'CSS Flexbox Generator | Interactive Sandbox & Layout Builder',
+    description: 'Visually build and learn CSS Flexbox layouts. Tweak flex-direction, justify-content, align-items, and gap in real-time, then copy the auto-generated CSS code.',
+    url: 'https://devtoolslabs.com/flexbox-generator',
+  },
+  alternates: {
+    canonical: '/flexbox-generator',
+  },
 };
 
 export default function CssFlexboxGeneratorPage() {

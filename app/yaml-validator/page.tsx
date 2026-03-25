@@ -5,6 +5,14 @@ import YamlValidatorTool from '@/components/tools/YamlValidatorTool';
 export const metadata: Metadata = {
   title: 'YAML Validator & Linter | Online Kubernetes YAML Checker',
   description: 'Instantly validate your YAML syntax online. Identify indentation errors, illegal characters, and structural anomalies in Kubernetes manifests, Docker Compose, and CI/CD pipelines.',
+  openGraph: {
+    title: 'YAML Validator & Linter | Online Kubernetes YAML Checker',
+    description: 'Instantly validate your YAML syntax online. Identify indentation errors, illegal characters, and structural anomalies in Kubernetes manifests, Docker Compose, and CI/CD pipelines.',
+    url: 'https://devtoolslabs.com/yaml-validator',
+  },
+  alternates: {
+    canonical: '/yaml-validator',
+  },
 };
 
 export default function YamlValidatorPage() {

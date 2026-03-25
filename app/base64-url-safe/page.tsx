@@ -6,6 +6,14 @@ import Base64UrlSafeTool from '@/components/tools/Base64UrlSafeTool';
 export const metadata: Metadata = {
   title: 'Base64 URL-Safe Encode & Decode (Free Online Tool) | DevToolsLabs',
   description: 'Encode and decode Base64 URL-safe strings online. Automatically handles character replacement (+ to -, / to _) and padding removal for JWT and URL compatibility.',
+  openGraph: {
+    title: 'Base64 URL-Safe Encode & Decode (Free Online Tool) | DevToolsLabs',
+    description: 'Encode and decode Base64 URL-safe strings online. Automatically handles character replacement (+ to -, / to _) and padding removal for JWT and URL compatibility.',
+    url: 'https://devtoolslabs.com/base64-url-safe',
+  },
+  alternates: {
+    canonical: '/base64-url-safe',
+  },
 };
 
 export default function Base64UrlSafePage() {

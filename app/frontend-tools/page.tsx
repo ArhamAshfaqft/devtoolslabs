@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Free Frontend Design Tools | CSS Clamp, Keyframes, & SVG Vis',
   description: 'A suite of advanced frontend developer tools. Calculate fluid typography formulas, simulate CSS animations, and render mathematically perfect SVG vectors.',
+  openGraph: {
+    title: 'Free Frontend Design Tools | CSS Clamp, Keyframes, & SVG Vis',
+    description: 'A suite of advanced frontend developer tools. Calculate fluid typography formulas, simulate CSS animations, and render mathematically perfect SVG vectors.',
+    url: 'https://devtoolslabs.com/frontend-tools',
+  },
+  alternates: {
+    canonical: '/frontend-tools',
+  },
 };
 
 export default function FrontendToolsHub() {

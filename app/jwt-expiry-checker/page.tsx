@@ -6,6 +6,14 @@ import JwtExpiryCheckerTool from '@/components/tools/JwtExpiryCheckerTool';
 export const metadata: Metadata = {
   title: 'JWT Expiry Checker (Check JSON Web Token Expiration Online)',
   description: 'Instantly check if a JWT has expired. Decode the token payload securely in your browser to view exact expiration dates and time remaining.',
+  openGraph: {
+    title: 'JWT Expiry Checker (Check JSON Web Token Expiration Online)',
+    description: 'Instantly check if a JWT has expired. Decode the token payload securely in your browser to view exact expiration dates and time remaining.',
+    url: 'https://devtoolslabs.com/jwt-expiry-checker',
+  },
+  alternates: {
+    canonical: '/jwt-expiry-checker',
+  },
 };
 
 export default function JwtExpiryCheckerPage() {

@@ -6,6 +6,14 @@ import SslCertificateDecoderTool from '@/components/tools/SslCertificateDecoderT
 export const metadata: Metadata = {
   title: 'SSL Certificate Decoder (Parse PEM, CER & CRT Online) | DevToolsLabs',
   description: 'Decode SSL certificates online to view details like expiration, issuer, subject, and SANs. Supports PEM, CER, and CRT formats with 100% browser-side parsing.',
+  openGraph: {
+    title: 'SSL Certificate Decoder (Parse PEM, CER & CRT Online) | DevToolsLabs',
+    description: 'Decode SSL certificates online to view details like expiration, issuer, subject, and SANs. Supports PEM, CER, and CRT formats with 100% browser-side parsing.',
+    url: 'https://devtoolslabs.com/ssl-certificate-decoder',
+  },
+  alternates: {
+    canonical: '/ssl-certificate-decoder',
+  },
 };
 
 export default function SslCertificateDecoderPage() {

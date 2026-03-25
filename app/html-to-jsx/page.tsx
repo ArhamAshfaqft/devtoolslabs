@@ -5,6 +5,14 @@ import HtmlToJsxTool from '@/components/tools/HtmlToJsxTool';
 export const metadata: Metadata = {
   title: 'HTML to JSX Converter | Transform HTML to React Components Online',
   description: 'Instantly convert raw HTML code into clean, production-ready JSX for React and Next.js. Handles class to className, for to htmlFor, inline styles to objects, and more natively in your browser.',
+  openGraph: {
+    title: 'HTML to JSX Converter | Transform HTML to React Components Online',
+    description: 'Instantly convert raw HTML code into clean, production-ready JSX for React and Next.js. Handles class to className, for to htmlFor, inline styles to objects, and more natively in your browser.',
+    url: 'https://devtoolslabs.com/html-to-jsx',
+  },
+  alternates: {
+    canonical: '/html-to-jsx',
+  },
 };
 
 export default function HtmlToJsxPage() {

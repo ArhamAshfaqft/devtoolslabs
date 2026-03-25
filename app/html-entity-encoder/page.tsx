@@ -6,6 +6,14 @@ import HtmlEntityEncoderTool from '@/components/tools/HtmlEntityEncoderTool';
 export const metadata: Metadata = {
   title: 'HTML Entity Encoder (Convert Special Characters Online)',
   description: 'Instantly convert symbols, brackets, and special characters into HTML entities (e.g., < to &lt;). Protect your site from XSS injections.',
+  openGraph: {
+    title: 'HTML Entity Encoder (Convert Special Characters Online)',
+    description: 'Instantly convert symbols, brackets, and special characters into HTML entities (e.g., < to &lt;). Protect your site from XSS injections.',
+    url: 'https://devtoolslabs.com/html-entity-encoder',
+  },
+  alternates: {
+    canonical: '/html-entity-encoder',
+  },
 };
 
 export default function HtmlEntityEncoderPage() {

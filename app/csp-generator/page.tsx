@@ -5,6 +5,14 @@ import CspGeneratorTool from '@/components/tools/CspGeneratorTool';
 export const metadata: Metadata = {
   title: 'Content Security Policy (CSP) Header Generator | Free Online Wizard',
   description: 'Easily build robust Content Security Policy (CSP) headers for your website. Protect against XSS and data injection attacks with our visual policy builder.',
+  openGraph: {
+    title: 'Content Security Policy (CSP) Header Generator | Free Online Wizard',
+    description: 'Easily build robust Content Security Policy (CSP) headers for your website. Protect against XSS and data injection attacks with our visual policy builder.',
+    url: 'https://devtoolslabs.com/csp-generator',
+  },
+  alternates: {
+    canonical: '/csp-generator',
+  },
 };
 
 export default function CspGeneratorPage() {

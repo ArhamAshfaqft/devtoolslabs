@@ -6,6 +6,14 @@ import EnvToJsonTool from '@/components/tools/EnvToJsonTool';
 export const metadata: Metadata = {
   title: 'Environment Variable (.env) to JSON Converter | DevToolsLabs',
   description: 'Convert .env files to JSON online instantly. Easily parse environment variable strings into structured JSON objects for CI/CD and configuration management.',
+  openGraph: {
+    title: 'Environment Variable (.env) to JSON Converter | DevToolsLabs',
+    description: 'Convert .env files to JSON online instantly. Easily parse environment variable strings into structured JSON objects for CI/CD and configuration management.',
+    url: 'https://devtoolslabs.com/env-to-json',
+  },
+  alternates: {
+    canonical: '/env-to-json',
+  },
 };
 
 export default function EnvToJsonPage() {

@@ -5,6 +5,14 @@ import SvgPathVisualizerTool from '@/components/tools/SvgPathVisualizerTool';
 export const metadata: Metadata = {
   title: 'SVG Path Visualizer (Free Online Tool) | Test Coordinates Instantly',
   description: 'Instantly visualize and debug SVG path definitions online. Paste your raw d="..." attribute string (Bezier curves, arcs) directly into the sandbox.',
+  openGraph: {
+    title: 'SVG Path Visualizer (Free Online Tool) | Test Coordinates Instantly',
+    description: 'Instantly visualize and debug SVG path definitions online. Paste your raw d=',
+    url: 'https://devtoolslabs.com/svg-path-visualizer',
+  },
+  alternates: {
+    canonical: '/svg-path-visualizer',
+  },
 };
 
 export default function SvgPathVisualizerPage() {

@@ -5,6 +5,14 @@ import JwtGeneratorTool from '@/components/tools/JwtGeneratorTool';
 export const metadata: Metadata = {
   title: 'JWT Encoder & Generator (Free Online Tool) | Local Token Signer',
   description: 'Instantly generate securely signed HS256 JSON Web Tokens. Construct structured headers and claims payloads. 100% free, secure, and offline.',
+  openGraph: {
+    title: 'JWT Encoder & Generator (Free Online Tool) | Local Token Signer',
+    description: 'Instantly generate securely signed HS256 JSON Web Tokens. Construct structured headers and claims payloads. 100% free, secure, and offline.',
+    url: 'https://devtoolslabs.com/jwt-generator',
+  },
+  alternates: {
+    canonical: '/jwt-generator',
+  },
 };
 
 export default function JwtGeneratorPage() {

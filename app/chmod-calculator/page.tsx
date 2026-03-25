@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/chmod-calculator',
   },
+  openGraph: {
+    title: 'Chmod Calculator | Linux File Permissions Generator (755, 644)',
+    description: 'Visually calculate Linux UNIX file permissions. Convert Read, Write, and Execute checkboxes into octal values, symbolic strings, and ready-to-copy chmod terminal commands.',
+    url: 'https://devtoolslabs.com/chmod-calculator',
+  },
+  alternates: {
+    canonical: '/chmod-calculator',
+  },
 };
 
 export default function ChmodCalculatorPage() {

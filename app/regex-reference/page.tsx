@@ -5,6 +5,14 @@ import RegexReferenceTool from '@/components/tools/RegexReferenceTool';
 export const metadata: Metadata = {
   title: 'Regex Searchable Reference | Library of Common Regex Patterns',
   description: 'A searchable database of standard Regular Expression patterns for email, IP addresses, phone numbers, and more. Copy production-ready regex strings for your code instantly.',
+  openGraph: {
+    title: 'Regex Searchable Reference | Library of Common Regex Patterns',
+    description: 'A searchable database of standard Regular Expression patterns for email, IP addresses, phone numbers, and more. Copy production-ready regex strings for your code instantly.',
+    url: 'https://devtoolslabs.com/regex-reference',
+  },
+  alternates: {
+    canonical: '/regex-reference',
+  },
 };
 
 export default function RegexReferencePage() {

@@ -5,6 +5,14 @@ import AdvancedPasswordSecurityTool from '@/components/tools/AdvancedPasswordSec
 export const metadata: Metadata = {
   title: 'Advanced Password Security Meter | Time to Crack & Entropy Tool',
   description: 'Simulate how long it would take an attacker to crack your password. Calculate cryptographic entropy and identifies vulnerabilities like keyboard patterns or short lengths online.',
+  openGraph: {
+    title: 'Advanced Password Security Meter | Time to Crack & Entropy Tool',
+    description: 'Simulate how long it would take an attacker to crack your password. Calculate cryptographic entropy and identifies vulnerabilities like keyboard patterns or short lengths online.',
+    url: 'https://devtoolslabs.com/password-security-meter',
+  },
+  alternates: {
+    canonical: '/password-security-meter',
+  },
 };
 
 export default function AdvancedPasswordSecurityPage() {

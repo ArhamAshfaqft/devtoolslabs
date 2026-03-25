@@ -5,6 +5,14 @@ import SqlToObjectTool from '@/components/tools/SqlToObjectTool';
 export const metadata: Metadata = {
   title: 'SQL to TypeScript & JSON Generator (Free Online Tool) | Pro Backend Utility',
   description: 'Instantly convert SQL CREATE TABLE statements into TypeScript interfaces or JSON objects. Bridge the gap between your database schema and frontend data models securely.',
+  openGraph: {
+    title: 'SQL to TypeScript & JSON Generator (Free Online Tool) | Pro Backend Utility',
+    description: 'Instantly convert SQL CREATE TABLE statements into TypeScript interfaces or JSON objects. Bridge the gap between your database schema and frontend data models securely.',
+    url: 'https://devtoolslabs.com/sql-to-object',
+  },
+  alternates: {
+    canonical: '/sql-to-object',
+  },
 };
 
 export default function SqlToObjectPage() {

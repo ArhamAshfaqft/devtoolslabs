@@ -5,6 +5,14 @@ import MockJsonGeneratorTool from '@/components/tools/MockJsonGeneratorTool';
 export const metadata: Metadata = {
   title: 'Mock JSON Generator | Fake JSON API Data Creator Online',
   description: 'Generate massive, realistic mock JSON arrays for frontend UI testing and database seeding. Uses faker.js logic client-side to instantly create user avatars, UUIDs, dates, and commerce data.',
+  openGraph: {
+    title: 'Mock JSON Generator | Fake JSON API Data Creator Online',
+    description: 'Generate massive, realistic mock JSON arrays for frontend UI testing and database seeding. Uses faker.js logic client-side to instantly create user avatars, UUIDs, dates, and commerce data.',
+    url: 'https://devtoolslabs.com/mock-json-generator',
+  },
+  alternates: {
+    canonical: '/mock-json-generator',
+  },
 };
 
 export default function MockJsonGeneratorPage() {

@@ -5,6 +5,14 @@ import ColorContrastCheckerTool from '@/components/tools/ColorContrastCheckerToo
 export const metadata: Metadata = {
   title: 'WCAG 2.1 AA Color Contrast Checker (ADA Pass/Fail) | DevToolsLabs',
   description: 'Instantly calculate color contrast ratios for WCAG 2.1 AA & AAA compliance. Get automatic color fixes to meet ADA accessibility standards. 100% free & private.',
+  openGraph: {
+    title: 'WCAG 2.1 AA Color Contrast Checker (ADA Pass/Fail) | DevToolsLabs',
+    description: 'Instantly calculate color contrast ratios for WCAG 2.1 AA & AAA compliance. Get automatic color fixes to meet ADA accessibility standards. 100% free & private.',
+    url: 'https://devtoolslabs.com/color-contrast-checker',
+  },
+  alternates: {
+    canonical: '/color-contrast-checker',
+  },
 };
 
 export default function ColorContrastCheckerPage() {

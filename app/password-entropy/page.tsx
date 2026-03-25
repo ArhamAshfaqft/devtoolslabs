@@ -6,6 +6,14 @@ import PasswordEntropyTool from '@/components/tools/PasswordEntropyTool';
 export const metadata: Metadata = {
   title: 'Password Entropy Calculator (Check Password Strength Online)',
   description: 'Instantly calculate your password\'s Shannon Entropy (bits) and determine how long it would take an offline attacker to crack it. 100% private, client-side only.',
+  openGraph: {
+    title: 'Password Entropy Calculator (Check Password Strength Online)',
+    description: 'Instantly calculate your password\',
+    url: 'https://devtoolslabs.com/password-entropy',
+  },
+  alternates: {
+    canonical: '/password-entropy',
+  },
 };
 
 export default function PasswordEntropyPage() {

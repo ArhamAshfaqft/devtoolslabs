@@ -5,6 +5,14 @@ import CronParserTool from '@/components/tools/CronParserTool';
 export const metadata: Metadata = {
   title: 'Cron Job Parser & Explainer (Free Online Tool) | Translate to Text',
   description: 'Instantly translate complex, confusing Linux server cron schedules into easy-to-read human text sentences online in your browser.',
+  openGraph: {
+    title: 'Cron Job Parser & Explainer (Free Online Tool) | Translate to Text',
+    description: 'Instantly translate complex, confusing Linux server cron schedules into easy-to-read human text sentences online in your browser.',
+    url: 'https://devtoolslabs.com/cron-parser',
+  },
+  alternates: {
+    canonical: '/cron-parser',
+  },
 };
 
 export default function CronParserPage() {

@@ -5,6 +5,14 @@ import JwtValidatorTool from '@/components/tools/JwtValidatorTool';
 export const metadata: Metadata = {
   title: 'JWT Decoder & Validator (Free Online Tool) | Parse Tokens Securely',
   description: 'Instantly decode JSON Web Tokens (JWT) safely in your browser. View the algorithm header and payload claims securely without sending your token to a server.',
+  openGraph: {
+    title: 'JWT Decoder & Validator (Free Online Tool) | Parse Tokens Securely',
+    description: 'Instantly decode JSON Web Tokens (JWT) safely in your browser. View the algorithm header and payload claims securely without sending your token to a server.',
+    url: 'https://devtoolslabs.com/jwt-validator',
+  },
+  alternates: {
+    canonical: '/jwt-validator',
+  },
 };
 
 export default function JwtValidatorPage() {

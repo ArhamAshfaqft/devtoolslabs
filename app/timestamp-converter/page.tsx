@@ -5,6 +5,14 @@ import TimestampConverterTool from '@/components/tools/TimestampConverterTool';
 export const metadata: Metadata = {
   title: 'Unix Epoch Timestamp Converter (Free Online Tool)',
   description: 'Instantly convert Unix epoch timestamps to human-readable local dates, UTC, and ISO times. Automatically detects milliseconds or seconds. Free developer tool.',
+  openGraph: {
+    title: 'Unix Epoch Timestamp Converter (Free Online Tool)',
+    description: 'Instantly convert Unix epoch timestamps to human-readable local dates, UTC, and ISO times. Automatically detects milliseconds or seconds. Free developer tool.',
+    url: 'https://devtoolslabs.com/timestamp-converter',
+  },
+  alternates: {
+    canonical: '/timestamp-converter',
+  },
 };
 
 export default function TimestampConverterPage() {

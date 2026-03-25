@@ -5,6 +5,14 @@ import JsonFormatterTool from '@/components/tools/JsonFormatterTool';
 export const metadata: Metadata = {
   title: 'JSON Formatter & Beautifier (Free Online Tool) | Format Instantly',
   description: 'Instantly format, beautify, and strictly indent raw, unformatted, or minified JSON arrays and objects. 100% client side and secure.',
+  openGraph: {
+    title: 'JSON Formatter & Beautifier (Free Online Tool) | Format Instantly',
+    description: 'Instantly format, beautify, and strictly indent raw, unformatted, or minified JSON arrays and objects. 100% client side and secure.',
+    url: 'https://devtoolslabs.com/json-formatter',
+  },
+  alternates: {
+    canonical: '/json-formatter',
+  },
 };
 
 export default function JsonFormatterPage() {

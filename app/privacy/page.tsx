@@ -3,6 +3,14 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'DevToolsLabs privacy policy. All tools run 100% client-side in your browser. No data is ever sent to our servers.',
+  openGraph: {
+    title: 'Privacy Policy',
+    description: 'DevToolsLabs privacy policy. All tools run 100% client-side in your browser. No data is ever sent to our servers.',
+    url: 'https://devtoolslabs.com/privacy',
+  },
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {

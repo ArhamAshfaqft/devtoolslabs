@@ -5,6 +5,14 @@ import SqlFormatterTool from '@/components/tools/SqlFormatterTool';
 export const metadata: Metadata = {
   title: 'MySQL Beautifier & SQL Formatter (Free Online tool) | Minify SQL',
   description: 'The definitive online SQL beautifier. Format MySQL, PostgreSQL, and T-SQL in seconds. Supports SQL minification, keyword capitalization, and dialect optimization.',
+  openGraph: {
+    title: 'MySQL Beautifier & SQL Formatter (Free Online tool) | Minify SQL',
+    description: 'The definitive online SQL beautifier. Format MySQL, PostgreSQL, and T-SQL in seconds. Supports SQL minification, keyword capitalization, and dialect optimization.',
+    url: 'https://devtoolslabs.com/sql-formatter',
+  },
+  alternates: {
+    canonical: '/sql-formatter',
+  },
 };
 
 export default function SqlFormatterPage() {

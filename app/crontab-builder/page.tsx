@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/crontab-builder',
   },
+  openGraph: {
+    title: 'Crontab GUI Builder | Interactive Cron Expression Generator',
+    description: 'Generate, parse, and understand complex Linux cron schedule expressions instantly. Built for DevOps and backend engineers using plain English translations.',
+    url: 'https://devtoolslabs.com/crontab-builder',
+  },
+  alternates: {
+    canonical: '/crontab-builder',
+  },
 };
 
 export default function CrontabGuiBuilderPage() {

@@ -5,6 +5,14 @@ import UrlEncodeDecodeTool from '@/components/tools/UrlEncodeDecodeTool';
 export const metadata: Metadata = {
   title: 'URL Encoder (Free Online Percent-Encoding Tool) | ASCII Transliteration',
   description: 'Instantly convert reserve characters and emojis into RFC 3986 percent-encoded strings. Safely replace spaces with %20 and prepare URLs for API transmission.',
+  openGraph: {
+    title: 'URL Encoder (Free Online Percent-Encoding Tool) | ASCII Transliteration',
+    description: 'Instantly convert reserve characters and emojis into RFC 3986 percent-encoded strings. Safely replace spaces with %20 and prepare URLs for API transmission.',
+    url: 'https://devtoolslabs.com/url-encoder',
+  },
+  alternates: {
+    canonical: '/url-encoder',
+  },
 };
 
 export default function UrlEncoderPage() {

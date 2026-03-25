@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Free Developer Utility Tools | Timestamps, Regex, & Parsers',
   description: 'A suite of essential, everyday utilities for software engineers. Convert epoch timestamps, test complex regex patterns, and beautify arbitrary data schemas.',
+  openGraph: {
+    title: 'Free Developer Utility Tools | Timestamps, Regex, & Parsers',
+    description: 'A suite of essential, everyday utilities for software engineers. Convert epoch timestamps, test complex regex patterns, and beautify arbitrary data schemas.',
+    url: 'https://devtoolslabs.com/dev-utilities',
+  },
+  alternates: {
+    canonical: '/dev-utilities',
+  },
 };
 
 export default function DevUtilityToolsHub() {

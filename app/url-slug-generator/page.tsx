@@ -5,6 +5,14 @@ import UrlSlugGeneratorTool from '@/components/tools/UrlSlugGeneratorTool';
 export const metadata: Metadata = {
   title: 'URL Slug Generator | Create SEO-Friendly Permalinks Online',
   description: 'Instantly generate clean, SEO-optimized URL slugs from blog titles or text strings. Removes stop-words, special characters, and diacritics natively in your browser.',
+  openGraph: {
+    title: 'URL Slug Generator | Create SEO-Friendly Permalinks Online',
+    description: 'Instantly generate clean, SEO-optimized URL slugs from blog titles or text strings. Removes stop-words, special characters, and diacritics natively in your browser.',
+    url: 'https://devtoolslabs.com/url-slug-generator',
+  },
+  alternates: {
+    canonical: '/url-slug-generator',
+  },
 };
 
 export default function UrlSlugGeneratorPage() {

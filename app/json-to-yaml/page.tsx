@@ -5,6 +5,14 @@ import YamlConverterTool from '@/components/tools/YamlConverterTool';
 export const metadata: Metadata = {
   title: 'JSON to YAML Converter (Free Online Tool) | Docker & Cloud-Init YAML',
   description: 'Instantly convert JSON arrays and objects into clean, human-readable YAML format. Ideal for creating Docker Compose, Kubernetes manifests, and cloud-init files.',
+  openGraph: {
+    title: 'JSON to YAML Converter (Free Online Tool) | Docker & Cloud-Init YAML',
+    description: 'Instantly convert JSON arrays and objects into clean, human-readable YAML format. Ideal for creating Docker Compose, Kubernetes manifests, and cloud-init files.',
+    url: 'https://devtoolslabs.com/json-to-yaml',
+  },
+  alternates: {
+    canonical: '/json-to-yaml',
+  },
 };
 
 export default function JsonToYamlPage() {

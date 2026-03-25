@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/htpasswd-generator',
   },
+  openGraph: {
+    title: 'Htpasswd Generator | Bcrypt & SHA1 Authentication Hasher',
+    description: 'Generate highly secure .htpasswd credentials for Apache and Nginx basic HTTP authentication. Uses Bcrypt and SHA-1 algorithms to generate hashed passwords 100% in your browser.',
+    url: 'https://devtoolslabs.com/htpasswd-generator',
+  },
+  alternates: {
+    canonical: '/htpasswd-generator',
+  },
 };
 
 export default function HtpasswdGeneratorPage() {

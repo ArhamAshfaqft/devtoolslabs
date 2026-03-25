@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Free Security Developer Tools | SHA256 Hashes, SSL & Crypto',
   description: 'A suite of completely offline security and cryptography tools for developers. Generate MD5 or SHA256 hashes safely in your web browser with zero server data tracking.',
+  openGraph: {
+    title: 'Free Security Developer Tools | SHA256 Hashes, SSL & Crypto',
+    description: 'A suite of completely offline security and cryptography tools for developers. Generate MD5 or SHA256 hashes safely in your web browser with zero server data tracking.',
+    url: 'https://devtoolslabs.com/security-tools',
+  },
+  alternates: {
+    canonical: '/security-tools',
+  },
 };
 
 export default function SecurityToolsHub() {

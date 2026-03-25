@@ -5,6 +5,14 @@ import HtmlMinifierTool from '@/components/tools/HtmlMinifierTool';
 export const metadata: Metadata = {
   title: 'HTML Minifier (Free Online Tool) | Compress Code Instantly',
   description: 'Instantly strip whitespace, remove comments, and compress your HTML code to improve website loading speeds. 100% free, browser-based native execution.',
+  openGraph: {
+    title: 'HTML Minifier (Free Online Tool) | Compress Code Instantly',
+    description: 'Instantly strip whitespace, remove comments, and compress your HTML code to improve website loading speeds. 100% free, browser-based native execution.',
+    url: 'https://devtoolslabs.com/html-minifier',
+  },
+  alternates: {
+    canonical: '/html-minifier',
+  },
 };
 
 export default function HtmlMinifierPage() {

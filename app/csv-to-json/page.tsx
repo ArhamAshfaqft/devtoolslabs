@@ -6,6 +6,14 @@ import CsvToJsonTool from '@/components/tools/CsvToJsonTool';
 export const metadata: Metadata = {
   title: 'CSV to JSON Converter (Parse Excel to JSON Array Online)',
   description: 'Instantly convert CSV spreadsheets or Excel data into a clean, formatted JSON array. Supports custom delimiters, headers, and automatic type inference.',
+  openGraph: {
+    title: 'CSV to JSON Converter (Parse Excel to JSON Array Online)',
+    description: 'Instantly convert CSV spreadsheets or Excel data into a clean, formatted JSON array. Supports custom delimiters, headers, and automatic type inference.',
+    url: 'https://devtoolslabs.com/csv-to-json',
+  },
+  alternates: {
+    canonical: '/csv-to-json',
+  },
 };
 
 export default function CsvToJsonPage() {

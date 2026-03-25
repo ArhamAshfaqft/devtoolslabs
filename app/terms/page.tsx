@@ -3,6 +3,14 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'DevToolsLabs terms of service for using our free, client-side developer utilities.',
+  openGraph: {
+    title: 'Terms of Service',
+    description: 'DevToolsLabs terms of service for using our free, client-side developer utilities.',
+    url: 'https://devtoolslabs.com/terms',
+  },
+  alternates: {
+    canonical: '/terms',
+  },
 };
 
 export default function TermsPage() {

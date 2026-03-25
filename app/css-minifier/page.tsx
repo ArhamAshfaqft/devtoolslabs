@@ -5,6 +5,14 @@ import CssMinifierTool from '@/components/tools/CssMinifierTool';
 export const metadata: Metadata = {
   title: 'CSS Code Minifier (Free Online Tool) | Strip CSS Whitespace',
   description: 'Instantly remove comments, line breaks, and excess spaces from your CSS stylesheet code. Shrink file sizes to improve your Core Web Vitals.',
+  openGraph: {
+    title: 'CSS Code Minifier (Free Online Tool) | Strip CSS Whitespace',
+    description: 'Instantly remove comments, line breaks, and excess spaces from your CSS stylesheet code. Shrink file sizes to improve your Core Web Vitals.',
+    url: 'https://devtoolslabs.com/css-minifier',
+  },
+  alternates: {
+    canonical: '/css-minifier',
+  },
 };
 
 export default function CssMinifierPage() {

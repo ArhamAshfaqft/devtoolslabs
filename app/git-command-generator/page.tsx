@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/git-command-generator',
   },
+  openGraph: {
+    title: 'Git Command Generator | Interactive Cheatsheet & Builder',
+    description: 'Visually generate complex Git commands for rebasing, squashing, undoing commits, and safe pushing. Stop memorizing Git syntax and use our interactive builder.',
+    url: 'https://devtoolslabs.com/git-command-generator',
+  },
+  alternates: {
+    canonical: '/git-command-generator',
+  },
 };
 
 export default function GitCommandGeneratorPage() {

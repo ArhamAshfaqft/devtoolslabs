@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Free Encoding & Decoding Tools | Base64, URL, JWT & Entities',
   description: 'Securely decode JWT tokens, render Base64 images, parse URL query strings, and translate HTML entities 100% locally in your web browser.',
+  openGraph: {
+    title: 'Free Encoding & Decoding Tools | Base64, URL, JWT & Entities',
+    description: 'Securely decode JWT tokens, render Base64 images, parse URL query strings, and translate HTML entities 100% locally in your web browser.',
+    url: 'https://devtoolslabs.com/encoding-tools',
+  },
+  alternates: {
+    canonical: '/encoding-tools',
+  },
 };
 
 export default function EncodingToolsHub() {

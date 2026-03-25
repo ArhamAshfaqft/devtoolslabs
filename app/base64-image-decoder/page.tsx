@@ -5,6 +5,14 @@ import Base64ImageDecoderTool from '@/components/tools/Base64ImageDecoderTool';
 export const metadata: Metadata = {
   title: 'Base64 Image Decoder (Free Online Tool) | View Instantly',
   description: 'Instantly decode Base64 strings into images (PNG, JPG, webp, SVG). Preview the image directly in your browser without uploading to a server.',
+  openGraph: {
+    title: 'Base64 Image Decoder (Free Online Tool) | View Instantly',
+    description: 'Instantly decode Base64 strings into images (PNG, JPG, webp, SVG). Preview the image directly in your browser without uploading to a server.',
+    url: 'https://devtoolslabs.com/base64-image-decoder',
+  },
+  alternates: {
+    canonical: '/base64-image-decoder',
+  },
 };
 
 export default function Base64ImageDecoderPage() {

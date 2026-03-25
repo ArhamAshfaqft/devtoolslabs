@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/json-to-pydantic',
   },
+  openGraph: {
+    title: 'JSON to Python Pydantic Models | Free Online Code Generator',
+    description: 'Instantly generate Python Pydantic V2 models from JSON payloads. Automatic type inference, nested classes, and Field aliases for invalid identifiers.',
+    url: 'https://devtoolslabs.com/json-to-pydantic',
+  },
+  alternates: {
+    canonical: '/json-to-pydantic',
+  },
 };
 
 export default function JsonToPydanticPage() {

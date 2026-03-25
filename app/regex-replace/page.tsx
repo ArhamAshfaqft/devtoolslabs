@@ -5,6 +5,14 @@ import RegexReplaceTool from '@/components/tools/RegexReplaceTool';
 export const metadata: Metadata = {
   title: 'Regex Replace Tester (Free Online Tool) | Interactive Simulator',
   description: 'Test Javascript regular expression replacements dynamically. Simulate String.replace() with capture groups, global flags, and real-time previews instantly.',
+  openGraph: {
+    title: 'Regex Replace Tester (Free Online Tool) | Interactive Simulator',
+    description: 'Test Javascript regular expression replacements dynamically. Simulate String.replace() with capture groups, global flags, and real-time previews instantly.',
+    url: 'https://devtoolslabs.com/regex-replace',
+  },
+  alternates: {
+    canonical: '/regex-replace',
+  },
 };
 
 export default function RegexReplacePage() {

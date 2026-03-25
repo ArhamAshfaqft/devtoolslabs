@@ -5,6 +5,14 @@ import RegexTesterTool from '@/components/tools/RegexTesterTool';
 export const metadata: Metadata = {
   title: 'Regex Tester & Extractor (Online Regular Expression Matcher)',
   description: 'Test, debug, and extract data using Regular Expressions (Regex). Safely debug PCRE and JavaScript regex patterns with live capture group extraction.',
+  openGraph: {
+    title: 'Regex Tester & Extractor (Online Regular Expression Matcher)',
+    description: 'Test, debug, and extract data using Regular Expressions (Regex). Safely debug PCRE and JavaScript regex patterns with live capture group extraction.',
+    url: 'https://devtoolslabs.com/regex-tester',
+  },
+  alternates: {
+    canonical: '/regex-tester',
+  },
 };
 
 export default function RegexTesterPage() {

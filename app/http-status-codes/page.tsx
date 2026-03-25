@@ -6,6 +6,14 @@ import HttpStatusWizardTool from '@/components/tools/HttpStatusWizardTool';
 export const metadata: Metadata = {
   title: 'HTTP Status Codes Wizard: Interactive Reference & Guide | DevToolsLabs',
   description: 'Search, filter, and understand every HTTP status code (1xx to 5xx). An interactive reference hub with detailed explanations for developers and API designers.',
+  openGraph: {
+    title: 'HTTP Status Codes Wizard: Interactive Reference & Guide | DevToolsLabs',
+    description: 'Search, filter, and understand every HTTP status code (1xx to 5xx). An interactive reference hub with detailed explanations for developers and API designers.',
+    url: 'https://devtoolslabs.com/http-status-codes',
+  },
+  alternates: {
+    canonical: '/http-status-codes',
+  },
 };
 
 export default function HttpStatusWizardPage() {

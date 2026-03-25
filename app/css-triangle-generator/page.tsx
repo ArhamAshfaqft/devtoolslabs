@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/css-triangle-generator',
   },
+  openGraph: {
+    title: 'CSS Triangle Generator | Tooltip & Speech Bubble Arrows',
+    description: 'Visually generate CSS triangles instantly. Tool for frontend developers to create pure CSS arrows for tooltips, menus, and speech bubbles by hacking border widths.',
+    url: 'https://devtoolslabs.com/css-triangle-generator',
+  },
+  alternates: {
+    canonical: '/css-triangle-generator',
+  },
 };
 
 export default function CssTriangleGeneratorPage() {

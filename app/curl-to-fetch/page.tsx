@@ -5,6 +5,14 @@ import CurlToFetchTool from '@/components/tools/CurlToFetchTool';
 export const metadata: Metadata = {
   title: 'cURL to JavaScript Fetch Converter (Free Online Tool) | Convert Instantly',
   description: 'Instantly convert bash cURL commands into modern JavaScript fetch() code. Accurately translates headers, JSON data, and HTTP methods directly in your browser.',
+  openGraph: {
+    title: 'cURL to JavaScript Fetch Converter (Free Online Tool) | Convert Instantly',
+    description: 'Instantly convert bash cURL commands into modern JavaScript fetch() code. Accurately translates headers, JSON data, and HTTP methods directly in your browser.',
+    url: 'https://devtoolslabs.com/curl-to-fetch',
+  },
+  alternates: {
+    canonical: '/curl-to-fetch',
+  },
 };
 
 export default function CurlToFetchPage() {

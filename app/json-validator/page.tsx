@@ -5,6 +5,14 @@ import JsonValidatorTool from '@/components/tools/JsonValidatorTool';
 export const metadata: Metadata = {
   title: 'JSON Validator & Syntax Checker (Free Online Tool) | Verify Valid JSON',
   description: 'Instantly validate your JSON payloads. Catch missing commas, unquoted keys, and syntax errors. 100% free, secure, and client-side processing.',
+  openGraph: {
+    title: 'JSON Validator & Syntax Checker (Free Online Tool) | Verify Valid JSON',
+    description: 'Instantly validate your JSON payloads. Catch missing commas, unquoted keys, and syntax errors. 100% free, secure, and client-side processing.',
+    url: 'https://devtoolslabs.com/json-validator',
+  },
+  alternates: {
+    canonical: '/json-validator',
+  },
 };
 
 export default function JsonValidatorPage() {

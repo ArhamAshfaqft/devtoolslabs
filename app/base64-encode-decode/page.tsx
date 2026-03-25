@@ -5,6 +5,14 @@ import Base64EncodeDecodeTool from '@/components/tools/Base64EncodeDecodeTool';
 export const metadata: Metadata = {
   title: 'Base64 Encoder & Decoder (Free Online Tool) | Convert Instantly',
   description: 'Instantly encode text into Base64 format or decode Base64 strings back into readable text. 100% free, secure, and client-side processing.',
+  openGraph: {
+    title: 'Base64 Encoder & Decoder (Free Online Tool) | Convert Instantly',
+    description: 'Instantly encode text into Base64 format or decode Base64 strings back into readable text. 100% free, secure, and client-side processing.',
+    url: 'https://devtoolslabs.com/base64-encode-decode',
+  },
+  alternates: {
+    canonical: '/base64-encode-decode',
+  },
 };
 
 export default function Base64EncodeDecodePage() {

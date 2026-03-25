@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'WCAG Accessibility Tools | Color Contrast & ADA Compliance',
   description: 'Ensure your web designs meet WCAG 2.1 AA/AAA standards. Free client-side tools for color contrast checking, luminance calculation, and accessibility audits.',
+  openGraph: {
+    title: 'WCAG Accessibility Tools | Color Contrast & ADA Compliance',
+    description: 'Ensure your web designs meet WCAG 2.1 AA/AAA standards. Free client-side tools for color contrast checking, luminance calculation, and accessibility audits.',
+    url: 'https://devtoolslabs.com/accessibility-tools',
+  },
+  alternates: {
+    canonical: '/accessibility-tools',
+  },
 };
 
 export default function AccessibilityToolsHub() {

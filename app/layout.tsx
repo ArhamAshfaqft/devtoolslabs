@@ -38,17 +38,12 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'DevToolsLabs',
-    title: 'DevToolsLabs - 100% Free Client-Side Developer Utilities',
-    description: 'A free, offline, privacy-first collection of web developer tools. Format JSON, convert UNIX timestamps, decode Base64, and minify CSS entirely inside your browser.',
-    url: 'https://devtoolslabs.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DevToolsLabs - 100% Free Client-Side Developer Utilities',
-    description: 'A free, offline, privacy-first collection of web developer tools. No data leaves your browser.',
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://devtoolslabs.com',
   },
 };
 

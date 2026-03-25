@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Free JSON Utility Tools | JSON Escape, Format, & Convert',
   description: 'A collection of free, lightning-fast client-side JSON utilities. Escape JSON strings, decode payloads, or convert massive JSON arrays to CSV spreadsheets instantly in your browser.',
+  openGraph: {
+    title: 'Free JSON Utility Tools | JSON Escape, Format, & Convert',
+    description: 'A collection of free, lightning-fast client-side JSON utilities. Escape JSON strings, decode payloads, or convert massive JSON arrays to CSV spreadsheets instantly in your browser.',
+    url: 'https://devtoolslabs.com/json-tools',
+  },
+  alternates: {
+    canonical: '/json-tools',
+  },
 };
 
 export default function JsonToolsHub() {

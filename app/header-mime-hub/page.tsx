@@ -6,6 +6,14 @@ import HeaderMimeHubTool from '@/components/tools/HeaderMimeHubTool';
 export const metadata: Metadata = {
   title: 'MIME Types & Security Headers Hub: Developer Quick Reference | DevToolsLabs',
   description: 'A comprehensive, filterable reference for HTTP Security Headers (CSP, HSTS) and MIME Types. Perfect for web server configuration and security auditing.',
+  openGraph: {
+    title: 'MIME Types & Security Headers Hub: Developer Quick Reference | DevToolsLabs',
+    description: 'A comprehensive, filterable reference for HTTP Security Headers (CSP, HSTS) and MIME Types. Perfect for web server configuration and security auditing.',
+    url: 'https://devtoolslabs.com/header-mime-hub',
+  },
+  alternates: {
+    canonical: '/header-mime-hub',
+  },
 };
 
 export default function HeaderMimeHubPage() {

@@ -5,6 +5,14 @@ import CssClampGeneratorTool from '@/components/tools/CssClampGeneratorTool';
 export const metadata: Metadata = {
   title: 'CSS Clamp() Calculator (Free Online Tool) | Generate Fluid Typography',
   description: 'Calculate the exact CSS clamp() mathematical formula for perfectly fluid, responsive typography across all screen breakpoints dynamically.',
+  openGraph: {
+    title: 'CSS Clamp() Calculator (Free Online Tool) | Generate Fluid Typography',
+    description: 'Calculate the exact CSS clamp() mathematical formula for perfectly fluid, responsive typography across all screen breakpoints dynamically.',
+    url: 'https://devtoolslabs.com/css-clamp-generator',
+  },
+  alternates: {
+    canonical: '/css-clamp-generator',
+  },
 };
 
 export default function CssClampGeneratorPage() {

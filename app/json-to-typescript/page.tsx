@@ -5,6 +5,14 @@ import JsonToTypescriptTool from '@/components/tools/JsonToTypescriptTool';
 export const metadata: Metadata = {
   title: 'JSON to TypeScript Interface Generator (Free Online Tool) | Pro Typings',
   description: 'Instantly convert JSON objects into clean, nested TypeScript interfaces or types. Perfect for building frontend data models from API responses securely and offline.',
+  openGraph: {
+    title: 'JSON to TypeScript Interface Generator (Free Online Tool) | Pro Typings',
+    description: 'Instantly convert JSON objects into clean, nested TypeScript interfaces or types. Perfect for building frontend data models from API responses securely and offline.',
+    url: 'https://devtoolslabs.com/json-to-typescript',
+  },
+  alternates: {
+    canonical: '/json-to-typescript',
+  },
 };
 
 export default function JsonToTypescriptPage() {

@@ -5,6 +5,14 @@ import HashGeneratorTool from '@/components/tools/HashGeneratorTool';
 export const metadata: Metadata = {
   title: 'Secure Hash Generator (Free Online Tool) | SHA256 & MD5',
   description: 'Instantly calculate MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes. 100% offline and strictly secure client-side generation using Web Crypto API.',
+  openGraph: {
+    title: 'Secure Hash Generator (Free Online Tool) | SHA256 & MD5',
+    description: 'Instantly calculate MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes. 100% offline and strictly secure client-side generation using Web Crypto API.',
+    url: 'https://devtoolslabs.com/hash-generator',
+  },
+  alternates: {
+    canonical: '/hash-generator',
+  },
 };
 
 export default function HashGeneratorPage() {

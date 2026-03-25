@@ -5,6 +5,14 @@ import CssKeyframesTool from '@/components/tools/CssKeyframesTool';
 export const metadata: Metadata = {
   title: 'CSS Keyframe Animation Builder (Free Online Editor) | Preview Instantly',
   description: 'Visually build, preview, and generate complex CSS3 @keyframes animations. Adjust timing functions, scaling, and rotations in real-time.',
+  openGraph: {
+    title: 'CSS Keyframe Animation Builder (Free Online Editor) | Preview Instantly',
+    description: 'Visually build, preview, and generate complex CSS3 @keyframes animations. Adjust timing functions, scaling, and rotations in real-time.',
+    url: 'https://devtoolslabs.com/css-keyframes',
+  },
+  alternates: {
+    canonical: '/css-keyframes',
+  },
 };
 
 export default function CssKeyframesPage() {

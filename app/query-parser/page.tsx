@@ -5,6 +5,14 @@ import QueryParserTool from '@/components/tools/QueryParserTool';
 export const metadata: Metadata = {
   title: 'URL Query String Parser (Free Online Tool) | Decode Instantly',
   description: 'Instantly parse and decode complex URL query strings into a readable table. 100% free, client-side, and secure. Best developer tool.',
+  openGraph: {
+    title: 'URL Query String Parser (Free Online Tool) | Decode Instantly',
+    description: 'Instantly parse and decode complex URL query strings into a readable table. 100% free, client-side, and secure. Best developer tool.',
+    url: 'https://devtoolslabs.com/query-parser',
+  },
+  alternates: {
+    canonical: '/query-parser',
+  },
 };
 
 export default function QueryParserPage() {

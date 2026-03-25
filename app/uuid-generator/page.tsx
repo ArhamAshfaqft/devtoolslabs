@@ -6,6 +6,14 @@ import UuidGeneratorTool from '@/components/tools/UuidGeneratorTool';
 export const metadata: Metadata = {
   title: 'Random UUID Generator (Generate V4 UUIDs Online)',
   description: 'Instantly generate secure, random Version 4 UUIDs (Universally Unique Identifiers) in bulk. Run 100% inside your browser using the Web Crypto API.',
+  openGraph: {
+    title: 'Random UUID Generator (Generate V4 UUIDs Online)',
+    description: 'Instantly generate secure, random Version 4 UUIDs (Universally Unique Identifiers) in bulk. Run 100% inside your browser using the Web Crypto API.',
+    url: 'https://devtoolslabs.com/uuid-generator',
+  },
+  alternates: {
+    canonical: '/uuid-generator',
+  },
 };
 
 export default function UuidGeneratorPage() {

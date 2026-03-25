@@ -5,6 +5,14 @@ import JsonEscapeTool from '@/components/tools/JsonEscapeTool';
 export const metadata: Metadata = {
   title: 'JSON Escape & Unescape (Free Online Tool) | Format Instantly',
   description: 'Fast, secure, and client-side tool to easily escape or unescape JSON strings online. No server tracking or limits.',
+  openGraph: {
+    title: 'JSON Escape & Unescape (Free Online Tool) | Format Instantly',
+    description: 'Fast, secure, and client-side tool to easily escape or unescape JSON strings online. No server tracking or limits.',
+    url: 'https://devtoolslabs.com/json-escape-unescape',
+  },
+  alternates: {
+    canonical: '/json-escape-unescape',
+  },
 };
 
 export default function JsonEscapePage() {

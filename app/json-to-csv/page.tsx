@@ -5,6 +5,14 @@ import JsonToCsvTool from '@/components/tools/JsonToCsvTool';
 export const metadata: Metadata = {
   title: 'JSON to CSV Converter (Free Online Tool) | Export Arrays to Excel',
   description: 'Convert arrays of JSON objects into standard comma-separated CSV format. Features RFC-compliant internal comma escaping and direct file downloads.',
+  openGraph: {
+    title: 'JSON to CSV Converter (Free Online Tool) | Export Arrays to Excel',
+    description: 'Convert arrays of JSON objects into standard comma-separated CSV format. Features RFC-compliant internal comma escaping and direct file downloads.',
+    url: 'https://devtoolslabs.com/json-to-csv',
+  },
+  alternates: {
+    canonical: '/json-to-csv',
+  },
 };
 
 export default function JsonToCsvPage() {

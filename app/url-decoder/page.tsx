@@ -5,6 +5,14 @@ import UrlEncodeDecodeTool from '@/components/tools/UrlEncodeDecodeTool';
 export const metadata: Metadata = {
   title: 'URL Decoder (Free Online Percent-Decoding Tool) | RFC 3986',
   description: 'Instantly decode percent-encoded URLs and percentage strings. Convert %20 back to spaces and parse complex tracking URIs safely in your browser.',
+  openGraph: {
+    title: 'URL Decoder (Free Online Percent-Decoding Tool) | RFC 3986',
+    description: 'Instantly decode percent-encoded URLs and percentage strings. Convert %20 back to spaces and parse complex tracking URIs safely in your browser.',
+    url: 'https://devtoolslabs.com/url-decoder',
+  },
+  alternates: {
+    canonical: '/url-decoder',
+  },
 };
 
 export default function UrlDecoderPage() {

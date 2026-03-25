@@ -5,6 +5,14 @@ import DnsLookupTool from '@/components/tools/DnsLookupTool';
 export const metadata: Metadata = {
   title: 'DNS Lookup Tool (A, MX, TXT, CNAME) | Check DNS Records Online',
   description: 'Instantly lookup and verify domain DNS records including A, AAAA, MX, TXT, and CNAME. Execute secure, highly-accurate DNS over HTTPS queries directly in your browser.',
+  openGraph: {
+    title: 'DNS Lookup Tool (A, MX, TXT, CNAME) | Check DNS Records Online',
+    description: 'Instantly lookup and verify domain DNS records including A, AAAA, MX, TXT, and CNAME. Execute secure, highly-accurate DNS over HTTPS queries directly in your browser.',
+    url: 'https://devtoolslabs.com/dns-lookup',
+  },
+  alternates: {
+    canonical: '/dns-lookup',
+  },
 };
 
 export default function DnsLookupPage() {

@@ -6,6 +6,14 @@ import XmlToJsonTool from '@/components/tools/XmlToJsonTool';
 export const metadata: Metadata = {
   title: 'XML to JSON Converter (Free Online Tool) | DevToolsLabs',
   description: 'Convert XML to JSON online instantly. High-performance, client-side XML parsing that supports attributes, nested tags, and complex schemas.',
+  openGraph: {
+    title: 'XML to JSON Converter (Free Online Tool) | DevToolsLabs',
+    description: 'Convert XML to JSON online instantly. High-performance, client-side XML parsing that supports attributes, nested tags, and complex schemas.',
+    url: 'https://devtoolslabs.com/xml-to-json',
+  },
+  alternates: {
+    canonical: '/xml-to-json',
+  },
 };
 
 export default function XmlToJsonPage() {

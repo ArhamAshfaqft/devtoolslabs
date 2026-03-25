@@ -5,6 +5,14 @@ import MarkdownTableGeneratorTool from '@/components/tools/MarkdownTableGenerato
 export const metadata: Metadata = {
   title: 'Markdown Table Generator (Free Online Tool) | Convert CSV Instantly',
   description: 'Instantly generate perfectly formatted Markdown tables from CSV, Excel, or tab-separated text. Free online developer utility.',
+  openGraph: {
+    title: 'Markdown Table Generator (Free Online Tool) | Convert CSV Instantly',
+    description: 'Instantly generate perfectly formatted Markdown tables from CSV, Excel, or tab-separated text. Free online developer utility.',
+    url: 'https://devtoolslabs.com/markdown-table',
+  },
+  alternates: {
+    canonical: '/markdown-table',
+  },
 };
 
 export default function MarkdownTableGeneratorPage() {

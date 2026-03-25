@@ -6,6 +6,14 @@ import ColorPaletteGeneratorTool from '@/components/tools/ColorPaletteGeneratorT
 export const metadata: Metadata = {
   title: 'Color Palette Generator (Create Beautiful Color Schemes Online)',
   description: 'Instantly generate professional color palettes for your next web or mobile project. Lock colors you like and generate beautiful matching schemes with one click.',
+  openGraph: {
+    title: 'Color Palette Generator (Create Beautiful Color Schemes Online)',
+    description: 'Instantly generate professional color palettes for your next web or mobile project. Lock colors you like and generate beautiful matching schemes with one click.',
+    url: 'https://devtoolslabs.com/color-palette-generator',
+  },
+  alternates: {
+    canonical: '/color-palette-generator',
+  },
 };
 
 export default function ColorPaletteGeneratorPage() {

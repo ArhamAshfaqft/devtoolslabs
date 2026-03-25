@@ -12,6 +12,14 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Developer Guides & Tutorials | DevToolsLabs',
   description: 'In-depth technical guides, tutorials, and explanations for modern developers. Learn about JWT, Base64, Regex, and more.',
+  openGraph: {
+    title: 'Developer Guides & Tutorials | DevToolsLabs',
+    description: 'In-depth technical guides, tutorials, and explanations for modern developers. Learn about JWT, Base64, Regex, and more.',
+    url: 'https://devtoolslabs.com/guides',
+  },
+  alternates: {
+    canonical: '/guides',
+  },
 };
 
 const GUIDES = [

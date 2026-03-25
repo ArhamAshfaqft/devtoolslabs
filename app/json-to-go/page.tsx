@@ -5,6 +5,14 @@ import JsonToGoStructTool from '@/components/tools/JsonToGoStructTool';
 export const metadata: Metadata = {
   title: 'JSON to Go Struct Converter | Generate Golang Types from JSON Online',
   description: 'Instantly convert JSON payloads into strongly-typed Go structs. Perfect for backend developers building Go microservices, APIs, and Kubernetes controllers. Supports recursive structs and automatic JSON tagging.',
+  openGraph: {
+    title: 'JSON to Go Struct Converter | Generate Golang Types from JSON Online',
+    description: 'Instantly convert JSON payloads into strongly-typed Go structs. Perfect for backend developers building Go microservices, APIs, and Kubernetes controllers. Supports recursive structs and automatic JSON tagging.',
+    url: 'https://devtoolslabs.com/json-to-go',
+  },
+  alternates: {
+    canonical: '/json-to-go',
+  },
 };
 
 export default function JsonToGoStructPage() {

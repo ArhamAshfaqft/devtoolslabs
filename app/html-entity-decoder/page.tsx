@@ -5,6 +5,14 @@ import HtmlEntityDecoderTool from '@/components/tools/HtmlEntityDecoderTool';
 export const metadata: Metadata = {
   title: 'HTML Entity Encoder & Decoder (Free Online Tool) | Convert Instantly',
   description: 'Convert safe HTML entities back to characters, or encode characters into HTML entities safely and instantly in your browser.',
+  openGraph: {
+    title: 'HTML Entity Encoder & Decoder (Free Online Tool) | Convert Instantly',
+    description: 'Convert safe HTML entities back to characters, or encode characters into HTML entities safely and instantly in your browser.',
+    url: 'https://devtoolslabs.com/html-entity-decoder',
+  },
+  alternates: {
+    canonical: '/html-entity-decoder',
+  },
 };
 
 export default function HtmlEntityDecoderPage() {

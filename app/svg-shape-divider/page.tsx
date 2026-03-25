@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/svg-shape-divider',
   },
+  openGraph: {
+    title: 'SVG Shape Divider Generator | Wavy CSS Section Transitions',
+    description: 'Visually generate beautiful, responsive SVG shape dividers for landing pages. Create waves, curves, or slanted angles to separate sections smoothly with HTML and CSS.',
+    url: 'https://devtoolslabs.com/svg-shape-divider',
+  },
+  alternates: {
+    canonical: '/svg-shape-divider',
+  },
 };
 
 export default function SvgShapeDividerPage() {

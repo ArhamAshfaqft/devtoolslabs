@@ -5,6 +5,14 @@ import BcryptGeneratorTool from '@/components/tools/BcryptGeneratorTool';
 export const metadata: Metadata = {
   title: 'Bcrypt Password Hash Generator & Checker (Online Tool)',
   description: 'Generate secure Bcrypt hashes online or verify cleartext passwords against existing Bcrypt hashes. 100% private client-side execution using bcryptjs.',
+  openGraph: {
+    title: 'Bcrypt Password Hash Generator & Checker (Online Tool)',
+    description: 'Generate secure Bcrypt hashes online or verify cleartext passwords against existing Bcrypt hashes. 100% private client-side execution using bcryptjs.',
+    url: 'https://devtoolslabs.com/bcrypt-generator',
+  },
+  alternates: {
+    canonical: '/bcrypt-generator',
+  },
 };
 
 export default function BcryptGeneratorPage() {

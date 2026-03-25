@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.devtoolslabs.com/json-schema-validator',
   },
+  openGraph: {
+    title: 'JSON Schema Validator | Draft-07 & Draft-2020-12 Offline Checker',
+    description: 'Validate JSON payloads against JSON Schema specifications instantly. Secure, offline checking with detailed error paths and format validation (email, uuid, date-time).',
+    url: 'https://devtoolslabs.com/json-schema-validator',
+  },
+  alternates: {
+    canonical: '/json-schema-validator',
+  },
 };
 
 export default function JsonSchemaValidatorPage() {
