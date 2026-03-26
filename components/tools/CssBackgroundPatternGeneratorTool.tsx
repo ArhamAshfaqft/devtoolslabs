@@ -54,7 +54,7 @@ function generateParticleCode(c: EffectConfig): string {
   const SPEED = ${c.speed};
   const CONNECT = ${c.connectDistance};
 
-  function resize(){ w=canvas.width=canvas.offsetWidth; h=canvas.height=canvas.offsetHeight; }
+  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
   window.addEventListener('resize', resize); resize();
   canvas.addEventListener('mousemove', e=>{ const r=canvas.getBoundingClientRect(); mouse={x:e.clientX-r.left,y:e.clientY-r.top}; });
   canvas.addEventListener('mouseleave', ()=>{ mouse={x:-1000,y:-1000}; });
@@ -159,7 +159,7 @@ function generateMatrixCode(c: EffectConfig): string {
   let mouse = {x:-1000, y:-1000};
 
   function resize(){
-    w=canvas.width=canvas.offsetWidth; h=canvas.height=canvas.offsetHeight;
+    w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;
     columns=Math.ceil(w/FONT);
     drops=Array.from({length:columns},()=>Math.random()*-50);
   }
@@ -216,7 +216,7 @@ function generateWavesCode(c: EffectConfig): string {
   const SPEED = ${c.speed * 0.01};
   let mouse = {x:0.5, y:0.5};
 
-  function resize(){ w=canvas.width=canvas.offsetWidth; h=canvas.height=canvas.offsetHeight; }
+  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
   window.addEventListener('resize',resize); resize();
   canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};});
 
@@ -269,7 +269,7 @@ function generateStarfieldCode(c: EffectConfig): string {
   const SPEED = ${c.speed};
   let mouse = {x:0.5, y:0.5};
 
-  function resize(){ w=canvas.width=canvas.offsetWidth; h=canvas.height=canvas.offsetHeight; }
+  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
   window.addEventListener('resize',resize); resize();
   canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};});
 
