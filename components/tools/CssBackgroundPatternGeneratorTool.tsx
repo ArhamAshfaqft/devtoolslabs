@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 // --- Types ---
-type EffectType = 'particles' | 'gradient-mesh' | 'waves' | 'geometric' | 'aurora';
+type EffectType = 'particles' | 'gradient-mesh' | 'waves' | 'geometric' | 'aurora' | 'flow-field' | 'matrix' | 'constellation';
 
 interface EffectConfig {
   // Shared
@@ -53,6 +53,9 @@ const PALETTES = [
 // --- Effect Descriptions ---
 const EFFECT_INFO: Record<EffectType, { label: string; desc: string }> = {
   'particles': { label: 'Particles', desc: 'Interactive connected nodes' },
+  'flow-field': { label: 'Flow Field', desc: 'Mouse-reactive particle streams' },
+  'constellation': { label: 'Constellation', desc: 'Stars connect near cursor' },
+  'matrix': { label: 'Matrix Rain', desc: 'Falling code with mouse glow' },
   'gradient-mesh': { label: 'Gradient Mesh', desc: 'Animated blob gradients' },
   'waves': { label: 'Waves', desc: 'Layered SVG wave shapes' },
   'geometric': { label: 'Geometric', desc: 'Triangulated polygon mesh' },
@@ -247,6 +250,320 @@ function useGeometricCanvas(
   }, [isActive, config, canvasRef]);
 }
 
+// ========== FLOW FIELD ENGINE ==========
+function useFlowFieldCanvas(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  config: EffectConfig,
+  isActive: boolean
+) {
+  const animRef = useRef<number>(0);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    if (!isActive || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = 2;
+    canvas.width = canvas.offsetWidth * dpr;
+    canvas.height = canvas.offsetHeight * dpr;
+    ctx.scale(dpr, dpr);
+
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+
+    // Simple noise function
+    const noise = (x: number, y: number, t: number) => {
+      return Math.sin(x * 0.01 + t) * Math.cos(y * 0.01 + t) + Math.sin((x + y) * 0.005 + t * 0.5);
+    };
+
+    const count = Math.floor(config.density * 3);
+    const particles = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      life: Math.random() * 100,
+    }));
+
+    let time = 0;
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    canvas.addEventListener('mousemove', onMouseMove);
+
+    const bgRgb = hexToRgb(config.bgColor);
+
+    const draw = () => {
+      // Semi-transparent overlay for trail effect
+      ctx.fillStyle = `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},0.05)`;
+      ctx.fillRect(0, 0, w, h);
+
+      time += 0.01 * config.speed;
+      const mouse = mouseRef.current;
+
+      for (const p of particles) {
+        // Mouse influence
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const mouseInfluence = dist < 150 ? (1 - dist / 150) * 3 : 0;
+
+        const angle = noise(p.x, p.y, time) * Math.PI * 2 + (mouseInfluence > 0 ? Math.atan2(dy, dx) * mouseInfluence : 0);
+        const speed = config.speed * 0.8;
+
+        p.x += Math.cos(angle) * speed;
+        p.y += Math.sin(angle) * speed;
+        p.life -= 0.3;
+
+        if (p.x < 0 || p.x > w || p.y < 0 || p.y > h || p.life <= 0) {
+          p.x = Math.random() * w;
+          p.y = Math.random() * h;
+          p.life = 80 + Math.random() * 40;
+        }
+
+        const t = (p.x / w + p.y / h) / 2;
+        const color = lerpColor(config.colorA, config.colorB, t);
+        const rgb = hexToRgb(color.replace('rgb(', '#').replace(')', ''));
+        const alpha = Math.min(p.life / 40, 1) * 0.7;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb?.r || 100},${rgb?.g || 100},${rgb?.b || 255},${alpha})`;
+        ctx.fill();
+      }
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    // Initial fill
+    ctx.fillStyle = `rgb(${bgRgb.r},${bgRgb.g},${bgRgb.b})`;
+    ctx.fillRect(0, 0, w, h);
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      canvas.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [isActive, config, canvasRef]);
+}
+
+// ========== MATRIX RAIN ENGINE ==========
+function useMatrixCanvas(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  config: EffectConfig,
+  isActive: boolean
+) {
+  const animRef = useRef<number>(0);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    if (!isActive || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth * 2;
+    canvas.height = canvas.offsetHeight * 2;
+    ctx.scale(2, 2);
+
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    const fontSize = 14;
+    const cols = Math.ceil(w / fontSize);
+    const drops: number[] = Array.from({ length: cols }, () => Math.random() * -100);
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*(){}[]|/<>~`';
+
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    canvas.addEventListener('mousemove', onMouseMove);
+
+    const colorRgb = hexToRgb(config.colorA);
+    const glowRgb = hexToRgb(config.colorB);
+    const bgRgb = hexToRgb(config.bgColor);
+
+    const draw = () => {
+      ctx.fillStyle = `rgba(${bgRgb.r},${bgRgb.g},${bgRgb.b},0.06)`;
+      ctx.fillRect(0, 0, w, h);
+
+      const mouse = mouseRef.current;
+
+      for (let i = 0; i < cols; i++) {
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        const char = chars[Math.floor(Math.random() * chars.length)];
+
+        // Mouse glow effect
+        const dx = x - mouse.x;
+        const dy = y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const glowFactor = dist < 120 ? (1 - dist / 120) : 0;
+
+        if (glowFactor > 0.1) {
+          ctx.font = `bold ${fontSize + 2}px monospace`;
+          ctx.fillStyle = `rgba(${glowRgb.r},${glowRgb.g},${glowRgb.b},${0.8 + glowFactor * 0.2})`;
+          ctx.shadowBlur = 15 * glowFactor;
+          ctx.shadowColor = config.colorB;
+        } else {
+          ctx.font = `${fontSize}px monospace`;
+          ctx.fillStyle = `rgba(${colorRgb.r},${colorRgb.g},${colorRgb.b},${0.6 + Math.random() * 0.3})`;
+          ctx.shadowBlur = 0;
+        }
+
+        ctx.fillText(char, x, y);
+        ctx.shadowBlur = 0;
+
+        if (y > h && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i] += config.speed * 0.5;
+      }
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    ctx.fillStyle = `rgb(${bgRgb.r},${bgRgb.g},${bgRgb.b})`;
+    ctx.fillRect(0, 0, w, h);
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      canvas.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [isActive, config, canvasRef]);
+}
+
+// ========== CONSTELLATION ENGINE ==========
+function useConstellationCanvas(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  config: EffectConfig,
+  isActive: boolean
+) {
+  const animRef = useRef<number>(0);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    if (!isActive || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = 2;
+    canvas.width = canvas.offsetWidth * dpr;
+    canvas.height = canvas.offsetHeight * dpr;
+    ctx.scale(dpr, dpr);
+
+    const w = canvas.offsetWidth;
+    const h = canvas.offsetHeight;
+    const count = Math.floor(config.density * 2);
+
+    const stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * config.speed * 0.15,
+      vy: (Math.random() - 0.5) * config.speed * 0.15,
+      brightness: Math.random(),
+      pulseSpeed: 0.005 + Math.random() * 0.02,
+      pulsePhase: Math.random() * Math.PI * 2,
+      size: 0.5 + Math.random() * 2,
+    }));
+
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    };
+    canvas.addEventListener('mousemove', onMouseMove);
+
+    let frame = 0;
+    const draw = () => {
+      frame++;
+      const bgRgb = hexToRgb(config.bgColor);
+      ctx.fillStyle = `rgb(${bgRgb.r},${bgRgb.g},${bgRgb.b})`;
+      ctx.fillRect(0, 0, w, h);
+
+      const mouse = mouseRef.current;
+      const connRadius = 180; // Connection radius near mouse
+      const starColor = hexToRgb(config.colorA);
+      const lineColor = hexToRgb(config.colorB);
+      const glowColor = hexToRgb(config.colorC);
+
+      for (const s of stars) {
+        s.x += s.vx;
+        s.y += s.vy;
+        if (s.x < 0 || s.x > w) s.vx *= -1;
+        if (s.y < 0 || s.y > h) s.vy *= -1;
+        s.brightness = 0.4 + Math.sin(frame * s.pulseSpeed + s.pulsePhase) * 0.3;
+      }
+
+      // Draw connections near mouse
+      for (let i = 0; i < stars.length; i++) {
+        const a = stars[i];
+        const dxa = a.x - mouse.x;
+        const dya = a.y - mouse.y;
+        const distA = Math.sqrt(dxa * dxa + dya * dya);
+
+        if (distA < connRadius) {
+          for (let j = i + 1; j < stars.length; j++) {
+            const b = stars[j];
+            const dxb = b.x - mouse.x;
+            const dyb = b.y - mouse.y;
+            const distB = Math.sqrt(dxb * dxb + dyb * dyb);
+
+            if (distB < connRadius) {
+              const d = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+              if (d < connRadius * 0.8) {
+                const alpha = (1 - d / (connRadius * 0.8)) * (1 - Math.max(distA, distB) / connRadius) * 0.6;
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = `rgba(${lineColor.r},${lineColor.g},${lineColor.b},${alpha})`;
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      // Draw stars
+      for (const s of stars) {
+        const dx = s.x - mouse.x;
+        const dy = s.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const isNearMouse = dist < connRadius;
+        const nearFactor = isNearMouse ? (1 - dist / connRadius) : 0;
+
+        // Glow when near mouse
+        if (nearFactor > 0.1) {
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.size * 3 + nearFactor * 8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${glowColor.r},${glowColor.g},${glowColor.b},${nearFactor * 0.15})`;
+          ctx.fill();
+        }
+
+        // Star dot
+        const alpha = s.brightness + nearFactor * 0.4;
+        const size = s.size + nearFactor * 1.5;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${starColor.r},${starColor.g},${starColor.b},${Math.min(alpha, 1)})`;
+        ctx.fill();
+      }
+
+      animRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      canvas.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [isActive, config, canvasRef]);
+}
+
 // ========== MAIN COMPONENT ==========
 export default function CssBackgroundPatternGeneratorTool() {
   const [effect, setEffect] = useState<EffectType>('particles');
@@ -269,6 +586,9 @@ export default function CssBackgroundPatternGeneratorTool() {
   // Canvas effects
   useParticleCanvas(canvasRef, config, effect === 'particles');
   useGeometricCanvas(canvasRef, config, effect === 'geometric');
+  useFlowFieldCanvas(canvasRef, config, effect === 'flow-field');
+  useMatrixCanvas(canvasRef, config, effect === 'matrix');
+  useConstellationCanvas(canvasRef, config, effect === 'constellation');
 
   // Regenerate geometric on button click
   const [geoKey, setGeoKey] = useState(0);
@@ -290,7 +610,7 @@ export default function CssBackgroundPatternGeneratorTool() {
   const handleDownload = useCallback(async () => {
     setDownloading(true);
     try {
-      if (effect === 'particles' || effect === 'geometric') {
+      if (['particles', 'geometric', 'flow-field', 'matrix', 'constellation'].includes(effect)) {
         if (canvasRef.current) {
           const link = document.createElement('a');
           link.download = `background-${effect}.png`;
@@ -397,7 +717,8 @@ filter: blur(40px);`;
     ].join(','),
   } : {};
 
-  const isCanvasEffect = effect === 'particles' || effect === 'geometric';
+  const isCanvasEffect = ['particles', 'geometric', 'flow-field', 'matrix', 'constellation'].includes(effect);
+  const isInteractiveEffect = ['particles', 'flow-field', 'matrix', 'constellation'].includes(effect);
 
   return (
     <div className="flex flex-col gap-6">
@@ -476,7 +797,7 @@ filter: blur(40px);`;
         )}
 
         {/* Interactive hint overlay */}
-        {effect === 'particles' && (
+        {isInteractiveEffect && (
           <div className="absolute bottom-4 left-4 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <span className="text-white/70 text-xs font-medium">Move your mouse to interact</span>
           </div>
@@ -499,7 +820,7 @@ filter: blur(40px);`;
           {/* Effect Type Buttons */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
             <h2 className="text-sm font-semibold text-gray-900 mb-3">Background Effect</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {(Object.keys(EFFECT_INFO) as EffectType[]).map((key) => (
                 <button
                   key={key}
@@ -591,6 +912,21 @@ filter: blur(40px);`;
                   >
                     Regenerate Pattern
                   </button>
+                </>
+              )}
+              {effect === 'flow-field' && (
+                <>
+                  <SliderControl label="Particle Density" value={config.density} min={20} max={150} step={5} suffix="" onChange={(v) => setConfig(c => ({ ...c, density: v }))} />
+                  <SliderControl label="Flow Speed" value={config.speed} min={0.2} max={3} step={0.1} suffix="x" onChange={(v) => setConfig(c => ({ ...c, speed: v }))} />
+                </>
+              )}
+              {effect === 'matrix' && (
+                <SliderControl label="Fall Speed" value={config.speed} min={0.2} max={3} step={0.1} suffix="x" onChange={(v) => setConfig(c => ({ ...c, speed: v }))} />
+              )}
+              {effect === 'constellation' && (
+                <>
+                  <SliderControl label="Star Count" value={config.density} min={20} max={150} step={5} suffix="" onChange={(v) => setConfig(c => ({ ...c, density: v }))} />
+                  <SliderControl label="Drift Speed" value={config.speed} min={0.1} max={3} step={0.1} suffix="x" onChange={(v) => setConfig(c => ({ ...c, speed: v }))} />
                 </>
               )}
             </div>
