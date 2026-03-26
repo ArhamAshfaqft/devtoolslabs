@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Instantly convert CSV spreadsheets into standard vCard 3.0 (.vcf) formats for iCloud, Outlook, and Android. 100% client-side. We never upload your sensitive contact data.',
   keywords: ['csv to vcard', 'csv to vcf converter', 'convert contacts to vcard', 'address book converter', 'secure vcard converter', 'icloud vcf builder', 'offline csv to vcf'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/csv-to-vcard',
+    canonical: '/csv-to-vcard',
   },
   openGraph: {
     title: 'CSV to vCard (VCF) Converter | 100% Secure & Offline',
@@ -73,3 +73,5 @@ END:VCARD`
     />
   );
 }
+
+

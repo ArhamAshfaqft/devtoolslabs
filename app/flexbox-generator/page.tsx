@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually build and learn CSS Flexbox layouts. Tweak flex-direction, justify-content, align-items, and gap in real-time, then copy the auto-generated CSS code.',
   keywords: ['flexbox generator', 'css flex layout builder', 'flexbox visualizer', 'css justify-content generator', 'flexbox interactive tool'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/flexbox-generator',
+    canonical: '/flexbox-generator',
   },
   openGraph: {
     title: 'CSS Flexbox Generator | Interactive Sandbox & Layout Builder',
@@ -72,3 +72,5 @@ export default function CssFlexboxGeneratorPage() {
     />
   );
 }
+
+

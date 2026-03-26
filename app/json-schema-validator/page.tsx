@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Validate JSON payloads against JSON Schema specifications instantly. Secure, offline checking with detailed error paths and format validation (email, uuid, date-time).',
   keywords: ['json schema validator', 'ajv json syntax online', 'draft-07 schema checker', 'json schema format validation', 'offline json validation'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/json-schema-validator',
+    canonical: '/json-schema-validator',
   },
   openGraph: {
     title: 'JSON Schema Validator | Draft-07 & Draft-2020-12 Offline Checker',
@@ -72,3 +72,5 @@ export default function JsonSchemaValidatorPage() {
     />
   );
 }
+
+

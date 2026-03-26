@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Instantly generate Python Pydantic V2 models from JSON payloads. Automatic type inference, nested classes, and Field aliases for invalid identifiers.',
   keywords: ['json to pydantic', 'pydantic generator', 'json to python', 'pydantic v2', 'json schema to pydantic', 'python typing module generator'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/json-to-pydantic',
+    canonical: '/json-to-pydantic',
   },
   openGraph: {
     title: 'JSON to Python Pydantic Models | Free Online Code Generator',
@@ -80,3 +80,5 @@ export default function JsonToPydanticPage() {
     />
   );
 }
+
+

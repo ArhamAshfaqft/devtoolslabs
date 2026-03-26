@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually generate beautiful, responsive SVG shape dividers for landing pages. Create waves, curves, or slanted angles to separate sections smoothly with HTML and CSS.',
   keywords: ['svg shape divider', 'wavy bottom css', 'svg section divider', 'css slanted div', 'curve section transition bottom'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/svg-shape-divider',
+    canonical: '/svg-shape-divider',
   },
   openGraph: {
     title: 'SVG Shape Divider Generator | Wavy CSS Section Transitions',
@@ -72,3 +72,5 @@ export default function SvgShapeDividerPage() {
     />
   );
 }
+
+

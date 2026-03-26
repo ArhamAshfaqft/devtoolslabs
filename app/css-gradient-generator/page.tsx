@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually build beautiful CSS gradients instantly. Toggle between linear and radial layouts, tweak angles, and add up to 5 custom color stops to generate cross-browser compatible gradient CSS.',
   keywords: ['css gradient generator', 'linear gradient builder', 'radial gradient generator', 'css background generator', 'color stop tool'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/css-gradient-generator',
+    canonical: '/css-gradient-generator',
   },
   openGraph: {
     title: 'CSS Gradient Generator | Linear & Radial Background Builder',
@@ -72,3 +72,5 @@ export default function CssGradientGeneratorPage() {
     />
   );
 }
+
+

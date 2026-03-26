@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Generate, parse, and understand complex Linux cron schedule expressions instantly. Built for DevOps and backend engineers using plain English translations.',
   keywords: ['crontab gui builder', 'cron expression generator', 'cron scheduler online', 'linux cron format parser', 'cron syntax explainer'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/crontab-builder',
+    canonical: '/crontab-builder',
   },
   openGraph: {
     title: 'Crontab GUI Builder | Interactive Cron Expression Generator',
@@ -80,3 +80,5 @@ export default function CrontabGuiBuilderPage() {
     />
   );
 }
+
+

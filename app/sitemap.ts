@@ -1,111 +1,28 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://devtoolslabs.com';
+
+function getTopLevelStaticRoutes(): string[] {
+  const appDir = path.join(process.cwd(), 'app');
+  const entries = fs.readdirSync(appDir, { withFileTypes: true });
+
+  const routes = entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .filter((name) => !name.startsWith('(') && !name.startsWith('_') && name !== 'api')
+    .filter((name) => fs.existsSync(path.join(appDir, name, 'page.tsx')))
+    .map((name) => `/${name}`);
+
+  return ['/', ...routes.sort()];
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://devtoolslabs.com';
-
-  const routes = [
-    '',
-    '/guides',
-    '/guides/how-to-decode-jwt',
-    '/guides/understanding-base64',
-    '/guides/regex-explained',
-    '/guides/unix-timestamps',
-    '/guides/understanding-cors',
-    '/guides/ultimate-curl-guide',
-    '/guides/wcag-contrast-guide',
-    '/guides/sql-best-practices',
-    '/guides/react-jsx-patterns',
-    '/guides/go-service-architecture',
-    '/guides/password-security-standards',
-    '/guides/devops-kubernetes-yaml',
-    '/accessibility-tools',
-    '/url-decode',
-    '/base64-url-safe',
-    '/base64-decode',
-    '/json-to-typescript',
-    '/json-to-pydantic',
-    '/json-to-graphql',
-    '/json-to-go',
-    '/csp-generator',
-    '/regexp-tester',
-    '/dns-lookup',
-    '/bcrypt-generator',
-    '/sql-to-object',
-    '/yaml-to-json',
-    '/json-schema-validator',
-    '/json-to-csv',
-    '/csv-to-vcard',
-    '/csv-to-json',
-    '/yaml-validator',
-    '/ssl-certificate-decoder',
-    '/json-to-yaml',
-    '/http-status-codes',
-    '/header-mime-hub',
-    '/diagram-playground',
-    '/http-header-parser',
-    '/color-palette-generator',
-    '/regex-generator',
-    '/regex-reference',
-    '/password-entropy',
-    '/password-security-meter',
-    '/html-entity-encoder',
-    '/jwt-expiry-checker',
-    '/csv-to-json',
-    '/json-diff',
-    '/uuid-generator',
-    '/json-escape-unescape',
-    '/json-formatter',
-    '/curl-to-fetch',
-    '/json-schema-validator',
-    '/git-command-generator',
-    '/query-parser',
-    '/timestamp-converter',
-    '/cron-parser',
-    '/crontab-builder',
-    '/regex-replace',
-    '/markdown-table',
-    '/sql-formatter',
-    '/html-minifier',
-    '/html-to-jsx',
-    '/json-minifier',
-    '/url-slug-generator',
-    '/mock-json-generator',
-    '/base64-encoder-decoder',
-    '/css-keyframes',
-    '/glassmorphism-generator',
-    '/box-shadow-generator',
-    '/svg-shape-divider',
-    '/css-triangle-generator',
-    '/flexbox-generator',
-    '/grid-generator',
-    '/css-gradient-generator',
-    '/color-contrast-checker',
-    '/svg-path-visualizer',
-    '/dev-utilities',
-    '/json-tools',
-    '/encoding-tools',
-    '/frontend-tools',
-    '/security-tools',
-    '/regex-tester',
-    '/json-validator',
-    '/jwt-validator',
-    '/jwt-generator',
-    '/jwt-decoder',
-    '/chmod-calculator',
-    '/htpasswd-generator',
-    '/base64-encode-decode',
-    '/base64-image-decoder',
-    '/html-entity-decoder',
-    '/hash-generator',
-    '/css-minifier',
-    '/privacy',
-    '/terms',
-  ];
-
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+  return getTopLevelStaticRoutes().map((route) => ({
+    url: `${BASE_URL}${route === '/' ? '' : route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
-    priority: route === '' ? 1 : 0.8,
+    priority: route === '/' ? 1 : 0.8,
   }));
 }

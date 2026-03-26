@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually generate beautiful, smooth CSS box-shadows. Adjust X, Y, Blur, Spread, Opacity, and Inset properties to easily create neumorphic designs or modern card elevations.',
   keywords: ['box shadow generator', 'css drop shadow', 'neumorphism shadow generator', 'layered box shadow', 'css elevation shadow', 'inset shadow builder'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/box-shadow-generator',
+    canonical: '/box-shadow-generator',
   },
   openGraph: {
     title: 'Advanced CSS Box-Shadow Generator & Layer Builder',
@@ -77,3 +77,5 @@ export default function BoxShadowGeneratorPage() {
     />
   );
 }
+
+

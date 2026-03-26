@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Generate highly secure .htpasswd credentials for Apache and Nginx basic HTTP authentication. Uses Bcrypt and SHA-1 algorithms to generate hashed passwords 100% in your browser.',
   keywords: ['htpasswd generator', 'basic auth generator', 'nginx htpasswd', 'apache basic authentication', 'bcrypt htpasswd maker', 'create htpasswd local'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/htpasswd-generator',
+    canonical: '/htpasswd-generator',
   },
   openGraph: {
     title: 'Htpasswd Generator | Bcrypt & SHA1 Authentication Hasher',
@@ -71,3 +71,5 @@ export default function HtpasswdGeneratorPage() {
     />
   );
 }
+
+

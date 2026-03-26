@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Instantly decode JSON Web Tokens (JWT) directly in your browser. Safely parse and view the decoded JWT Header, Payload (Claims), and Signature string without sending data to a server.',
   keywords: ['jwt decoder', 'decode jwt online', 'jwt parser', 'json web token decoder', 'read jwt token', 'jwt payload decoder'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/jwt-decoder',
+    canonical: '/jwt-decoder',
   },
   openGraph: {
     title: 'JWT Decoder | Decode JSON Web Tokens (Header, Payload, Signature)',
@@ -67,3 +67,5 @@ export default function JwtDecoderPage() {
     />
   );
 }
+
+

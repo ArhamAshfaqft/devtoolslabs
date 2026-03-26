@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Instantly convert deep JSON objects into strict GraphQL Schema Types (SDL). Safely generates perfectly nested Object Types, Ints, Floats, Strings, and Arrays completely offline.',
   keywords: ['json to graphql', 'graphql schema generator', 'json to sdl', 'graphql type builder', 'json schema to graphql', 'auto generate graphql types'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/json-to-graphql',
+    canonical: '/json-to-graphql',
   },
   openGraph: {
     title: 'JSON to GraphQL Schema Generator | Convert JSON to Types',
@@ -71,3 +71,5 @@ export default function JsonToGraphqlPage() {
     />
   );
 }
+
+

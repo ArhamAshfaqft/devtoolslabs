@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually generate CSS triangles instantly. Tool for frontend developers to create pure CSS arrows for tooltips, menus, and speech bubbles by hacking border widths.',
   keywords: ['css triangle generator', 'css arrow generator', 'speech bubble arrow css', 'pure css triangle', 'tooltip arrow css'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/css-triangle-generator',
+    canonical: '/css-triangle-generator',
   },
   openGraph: {
     title: 'CSS Triangle Generator | Tooltip & Speech Bubble Arrows',
@@ -72,3 +72,5 @@ export default function CssTriangleGeneratorPage() {
     />
   );
 }
+
+

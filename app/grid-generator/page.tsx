@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually build complex CSS Grid layouts instantly. Adjust columns, rows, and gaps using fractional units (1fr) and grab the compiled CSS code.',
   keywords: ['css grid generator', 'css grid layout builder', 'grid template columns generator', 'visual css grid', 'css grid tool'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/grid-generator',
+    canonical: '/grid-generator',
   },
   openGraph: {
     title: 'CSS Grid Generator | Interactive Layout Builder & Visualizer',
@@ -72,3 +72,5 @@ export default function CssGridGeneratorPage() {
     />
   );
 }
+
+

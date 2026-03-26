@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Visually generate copy-paste CSS for the popular Glassmorphism (frosted glass) UI trend. Adjust blur, transparency, borders, and colors instantly in the browser.',
   keywords: ['glassmorphism generator', 'frosted glass css', 'css blur background', 'backdrop-filter generator', 'neumorphism generator ui'],
   alternates: {
-    canonical: 'https://www.devtoolslabs.com/glassmorphism-generator',
+    canonical: '/glassmorphism-generator',
   },
   openGraph: {
     title: 'Glassmorphism CSS Generator | Create Frosted Glass UI',
@@ -72,3 +72,5 @@ export default function GlassmorphismGeneratorPage() {
     />
   );
 }
+
+
