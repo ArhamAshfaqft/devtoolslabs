@@ -38,6 +38,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'css-background-patterns',
+    name: 'CSS Background Pattern Generator',
+    description: 'Instantly generate cool background patterns using pure CSS. Create customized polka dots, grid paper, diagonal stripes, and zigzags.',
+    href: '/css-background-patterns',
+    categories: ['Design', 'Frontend'],
+    isHot: true,
+  },
+  {
     id: 'regex-replace',
     name: 'Regex Replace',
     description: 'Test complex Regular Expression find and replace operations instantly.',
