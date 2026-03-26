@@ -54,7 +54,12 @@ function generateParticleCode(c: EffectConfig): string {
   const SPEED = ${c.speed};
   const CONNECT = ${c.connectDistance};
 
-  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+  function resize(){ 
+    w = window.innerWidth; h = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+  }
   window.addEventListener('resize', resize); resize();
   canvas.addEventListener('mousemove', e=>{ const r=canvas.getBoundingClientRect(); mouse={x:e.clientX-r.left,y:e.clientY-r.top}; });
   canvas.addEventListener('mouseleave', ()=>{ mouse={x:-1000,y:-1000}; });
@@ -159,7 +164,10 @@ function generateMatrixCode(c: EffectConfig): string {
   let mouse = {x:-1000, y:-1000};
 
   function resize(){
-    w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;
+    w = window.innerWidth; h = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
     columns=Math.ceil(w/FONT);
     drops=Array.from({length:columns},()=>Math.random()*-50);
   }
@@ -216,7 +224,12 @@ function generateWavesCode(c: EffectConfig): string {
   const SPEED = ${c.speed * 0.01};
   let mouse = {x:0.5, y:0.5};
 
-  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+  function resize(){ 
+    w = window.innerWidth; h = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+  }
   window.addEventListener('resize',resize); resize();
   canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};});
 
@@ -269,7 +282,12 @@ function generateStarfieldCode(c: EffectConfig): string {
   const SPEED = ${c.speed};
   let mouse = {x:0.5, y:0.5};
 
-  function resize(){ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+  function resize(){ 
+    w = window.innerWidth; h = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+  }
   window.addEventListener('resize',resize); resize();
   canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse={x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/h};});
 
@@ -344,9 +362,10 @@ function usePreviewCanvas(
 
     const w = canvas.offsetWidth;
     const h = canvas.offsetHeight;
-    canvas.width = w * 2;
-    canvas.height = h * 2;
-    ctx.scale(2, 2);
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
