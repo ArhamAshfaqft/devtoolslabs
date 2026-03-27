@@ -483,13 +483,7 @@ const ALL_TOOLS: Tool[] = [
     href: '/cron-parser',
     categories: ['Data Parsing'],
   },
-  {
-    id: 'regex-tester',
-    name: 'Regex Replace Tester',
-    description: 'Simulate JavaScript String.replace() matching and capture groups.',
-    href: '/regex-replace',
-    categories: ['Data Parsing'],
-  },
+
   {
     id: 'markdown-table',
     name: 'Markdown Table',
