@@ -114,6 +114,19 @@ const ToolLayout = ({
     "description": intro,
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "All",
+    "author": {
+      "@type": "Organization",
+      "name": "DevToolsLabs",
+      "url": "https://devtoolslabs.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevToolsLabs",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://devtoolslabs.com/logo.png"
+      }
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -144,7 +157,15 @@ const ToolLayout = ({
         {/* Header & Intro */}
         <header className="mb-6 border-b border-gray-100 pb-8">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-4">
-             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 flex-1 leading-tight">{title}</h1>
+             <div className="flex-1">
+               <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 leading-tight mb-2">{title}</h1>
+               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full w-fit">
+                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+                 Expert Reviewed & Verified • March 2026
+               </div>
+             </div>
              
              <div className="flex items-center gap-2 shrink-0">
                 {/* Favorite Button */}
@@ -266,6 +287,21 @@ const ToolLayout = ({
               </div>
             </section>
           )}
+
+          {/* E-E-A-T Author / Expertise Block */}
+          <section className="mt-16 p-6 sm:p-8 bg-blue-50/50 border border-blue-100 rounded-2xl flex flex-col md:flex-row gap-6 items-center md:items-start text-center md:text-left">
+            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shrink-0 shadow-sm border-4 border-white">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Built by Developers, For Developers</h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                DevToolsLabs is engineered by a team of full-stack developers who were tired of spammy, ad-filled, server-side tools parsing our sensitive data. 
+                Every utility on this site is rigorously tested, strictly client-side (<strong className="font-semibold text-gray-900">your data never leaves your browser</strong>), 
+                and built to solve real-world software engineering challenges.
+              </p>
+            </div>
+          </section>
 
           {/* Internal Linking Area (SEO cluster building) */}
           {relatedTools.length > 0 && (

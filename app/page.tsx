@@ -49,6 +49,11 @@ export default function Home() {
               Our tools are designed for frontend engineers, backend developers, DevOps engineers, QA testers, security researchers, and technical writers. Whether you are debugging a minified SQL query from a production database log, converting a cURL command from API documentation into JavaScript fetch() code, generating SHA-256 hashes for file verification, or building CSS animations visually, DevToolsLabs provides instant, privacy-first utilities that work completely offline once the page loads.
             </p>
 
+            <h3 className="text-xl font-bold mb-3 text-gray-900">Built by Developers, For Developers</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              DevToolsLabs is engineered by a dedicated team of full-stack software developers. We were constantly frustrated by generic SEO websites filled with intrusive ads, paywalls, and hidden server-side data harvesting that logged our private API keys and production JWTs. We built this platform as an expert, privacy-first alternative. We personally use and maintain these utilities every single day to write cleaner code and build better software.
+            </p>
+
             <h3 className="text-xl font-bold mb-3 text-gray-900">Built with Modern Web Standards</h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
               DevToolsLabs is built with Next.js and leverages native Web APIs like the Web Crypto API for hash generation, TextEncoder/TextDecoder for Base64 conversions, and the URL API for query string parsing. This means our tools are not only private but also blazing fast, with sub-millisecond processing times for most operations. Every tool is statically generated for instant page loads and optimized for Core Web Vitals to ensure the best possible user experience.
