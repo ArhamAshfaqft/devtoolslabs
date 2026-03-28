@@ -267,6 +267,14 @@ const ALL_TOOLS: Tool[] = [
     isHot: true,
   },
   {
+    id: 'json-to-mysql',
+    name: 'JSON to MySQL Schema',
+    description: 'Instantly generate robust MySQL CREATE TABLE schemas by inferring data types from JSON.',
+    href: '/json-to-mysql',
+    categories: ['Data', 'Data Parsing'],
+    isHot: true,
+  },
+  {
     id: 'svg-shape-divider',
     name: 'SVG Shape Divider Generator',
     description: 'Design beautiful, responsive SVG waves and slanted section transitions.',

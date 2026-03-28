@@ -14,6 +14,7 @@ export default function Header() {
         </Link>
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
           <button 
+            suppressHydrationWarning
             onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
             className="flex items-center gap-3 px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-white text-gray-400 hover:text-gray-900 transition-all group w-48 shadow-xs"
           >

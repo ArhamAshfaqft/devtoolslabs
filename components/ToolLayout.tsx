@@ -146,16 +146,16 @@ const ToolLayout = ({
       />
       
       {/* Back navigation */}
-      <div className="max-w-4xl mx-auto px-6 pt-8 pb-4">
+      <div className="max-w-5xl mx-auto px-6 pt-8 pb-4">
         <a href="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
           <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
           Back to all tools
         </a>
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 py-6">
+      <main className="max-w-5xl mx-auto px-6 py-6">
         {/* Header & Intro */}
-        <header className="mb-6 border-b border-gray-100 pb-8">
+        <header className="mb-10 border-b border-gray-100 pb-8">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-4">
              <div className="flex-1">
                <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 leading-tight mb-2">{title}</h1>
@@ -223,8 +223,8 @@ const ToolLayout = ({
           )}
         </header>
 
-        {/* The Interactive Tool Component */}
-        <section className="mb-16 p-6 sm:p-8 border border-gray-200 rounded-xl bg-white shadow-sm">
+        {/* The Interactive Tool Component (Flush Dashboard Style) */}
+        <section className="mb-20 border border-gray-200 rounded-xl bg-white shadow-sm w-full overflow-hidden">
           {toolNode}
         </section>
 
