@@ -1,69 +1,55 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+import JsonToYamlTool from '@/components/tools/JsonToYamlTool';
 import ToolLayout from '@/components/ToolLayout';
-import YamlConverterTool from '@/components/tools/YamlConverterTool';
 
 export const metadata: Metadata = {
-  title: 'JSON to YAML Converter (Free Online Tool) | Docker & Cloud-Init YAML',
-  description: 'Instantly convert JSON arrays and objects into clean, human-readable YAML format. Ideal for creating Docker Compose, Kubernetes manifests, and cloud-init files.',
-  openGraph: {
-    title: 'JSON to YAML Converter (Free Online Tool) | Docker & Cloud-Init YAML',
-    description: 'Instantly convert JSON arrays and objects into clean, human-readable YAML format. Ideal for creating Docker Compose, Kubernetes manifests, and cloud-init files.',
-    url: 'https://devtoolslabs.com/json-to-yaml',
-  },
-  alternates: {
-    canonical: '/json-to-yaml',
-  },
+  title: 'JSON to YAML Converter | Convert JSON to YAML Online Free',
+  description: 'How to convert JSON to YAML? Use our free online JSON to YAML converter to transform payloads into clean, readable configuration files with custom indentation.',
+  keywords: 'json to yaml, convert json to yaml, json to yml online, convert json to yaml free, devtools, yaml formatter',
 };
 
 export default function JsonToYamlPage() {
   return (
     <ToolLayout
-      title="JSON to YAML Converter (Cloud Config Generator)"
-      intro="Manually writing whitespace-sensitive YAML from JSON data is error-prone. Paste your raw JSON object below to instantly generate perfectly formatted, indented YAML blocks ready for use in Kubernetes, Docker Compose, or Ansible Playbooks."
-      toolNode={<YamlConverterTool defaultMode="json-to-yaml" />}
+      title="JSON to YAML Converter"
+      intro="Convert JSON payloads into professional, human-readable YAML configuration files instantly. Optimized for building Kubernetes manifests, Docker Compose files, and cloud-native application configs with precision."
+      toolNode={<JsonToYamlTool />}
       howTo={[
-        "Paste your valid JSON payload into the 'Input JSON' box.",
-        "The tool validates your JSON structure and executes the conversion.",
-        "Human-readable YAML (with standard 2-space indentation) is generated on the right.",
-        "Click 'Copy' to use the YAML output in your configuration files or documents."
+        "Paste your JSON payload into the left editor pane.",
+        "Select your preferred indentation (2 or 4 spaces).",
+        "Click 'Convert to YAML' to trigger the professional serialization engine.",
+        "Instantly copy the resulting YAML for your project's configuration files."
       ]}
       examples={[
         {
-          input: '{\n  "version": "3.8",\n  "services": {\n    "web": {\n      "image": "nginx"\n    }\n  }\n}',
-          output: "version: '3.8'\nservices:\n  web:\n    image: nginx"
+          input: '{\n  "app": "web",\n  "tier": "frontend"\n}',
+          output: 'app: web\ntier: frontend'
         }
       ]}
       useCases={[
-        "Building Docker Compose files from sample JSON service definitions.",
-        "Generating Kubernetes Resource YAMLs from API response data.",
-        "Converting JSON-based configuration files into YAML for better human readability in Git repositories."
+        "Infrastructure as Code: Converting JSON responses from APIs into YAML for Terraform or AWS CloudFormation.",
+        "App Configuration: Transforming JSON settings into human-readable .yaml files for local development.",
+        "CI/CD Mastery: Preparing GitHub Actions workflow configurations from JSON data sources.",
+        "JSON vs YAML Analysis: Comparing data structures and ensuring naming consistency across platform migrations."
       ]}
       faqs={[
         {
-          question: "What indentation does it use?",
-          answer: "We use the industry-standard 2-space indentation for all YAML generation to ensure maximum compatibility with modern cloud providers like AWS, GCP, Azure, and DigitalOcean."
+          question: "How to convert JSON to YAML online securely?",
+          answer: "Our tool runs 100% in your browser. No data is ever sent to our servers, making it safe for handling sensitive API keys or private configuration data."
         },
         {
-          question: "How does it handle complex arrays?",
-          answer: "JSON arrays are converted into standard YAML list notation (sequences), making it easy to define multi-container pods or complex cloud-init user lists."
+          question: "Does it support nested JSON objects?",
+          answer: "Yes. Our converter uses a recursive mapping engine that correctly handles deeply nested objects, arrays, and complex data structures while maintaining valid YAML indentation."
         },
         {
-          question: "Is this tool secure for private data?",
-          answer: "Yes. All conversion logic runs locally in your browser. No data is transmitted over the network, ensuring your proprietary JSON configs remain confidential."
-        },
-        {
-          question: "Can I use this for Docker Compose?",
-          answer: "Yes! Many developers prefer drafting their service structures in JSON and then using this tool to generate the final indentation-sensitive docker-compose.yml file."
-        },
-        {
-          question: "Does it support JSON strings with special characters?",
-          answer: "Yes, the generator correctly escapes special characters and handles multi-line strings according to the YAML 1.2 specification, ensuring your data integrity is preserved."
+          question: "Can I choose the indent size?",
+          answer: "Absolutely. You can toggle between 2-space (the industry standard) and 4-space indentation to match your team's coding style."
         }
       ]}
       relatedTools={[
         { name: "YAML to JSON", url: "/yaml-to-json" },
-        { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "SQL Formatter", url: "/sql-formatter" }
+        { name: "YAML Formatter", url: "/yaml-formatter" },
+        { name: "JSON Formatter", url: "/json-formatter" }
       ]}
     />
   );

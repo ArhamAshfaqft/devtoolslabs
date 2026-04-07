@@ -13,6 +13,11 @@ export interface Example {
   output: string;
 }
 
+export interface CodeSnippet {
+  language: string;
+  code: string;
+}
+
 interface ToolLayoutProps {
   title: string;
   intro: string;
@@ -22,6 +27,7 @@ interface ToolLayoutProps {
   useCases: string[];
   faqs: FAQ[];
   relatedTools: { name: string; url: string }[];
+  codeSnippets?: CodeSnippet[];
   children?: ReactNode;
 }
 
@@ -34,10 +40,13 @@ const ToolLayout = ({
   useCases,
   faqs,
   relatedTools,
+  codeSnippets,
   children,
 }: ToolLayoutProps) => {
   const [currentUrl, setCurrentUrl] = useState('');
   const [copiedBadge, setCopiedBadge] = useState(false);
+  const [copiedSnippet, setCopiedSnippet] = useState(false);
+  const [activeSnippetIdx, setActiveSnippetIdx] = useState(0);
   const [isFav, setIsFav] = useState(false);
   
   // Use a local state for fav to avoid hydration mismatch if needed, 
@@ -134,6 +143,26 @@ const ToolLayout = ({
     }
   };
 
+  // Generate Breadcrumb Schema for Site Structure
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Tools",
+        "item": "https://devtoolslabs.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": title,
+        "item": currentUrl || "https://devtoolslabs.com"
+      }
+    ]
+  };
+
   return (
     <div className="bg-white text-gray-900 pb-20">
       <script
@@ -143,6 +172,10 @@ const ToolLayout = ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       
       {/* Back navigation */}
@@ -264,6 +297,54 @@ const ToolLayout = ({
             </section>
           )}
 
+          {/* Code Snippets Engine */}
+          {codeSnippets && codeSnippets.length > 0 && (
+            <section className="mt-16">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-2xl font-semibold text-gray-900 mb-1">How to do this in Code</h2>
+                  <p className="text-sm text-gray-500">Native implementations for your backend or scripts</p>
+                </div>
+              </div>
+              <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-xl">
+                <div className="flex items-center justify-between bg-black/50 px-2 sm:px-4 py-2 border-b border-gray-800 overflow-x-auto custom-scrollbar">
+                  <div className="flex gap-1 min-w-max">
+                    {codeSnippets.map((snippet, idx) => (
+                      <button
+                        suppressHydrationWarning
+                        key={idx}
+                        onClick={() => setActiveSnippetIdx(idx)}
+                        className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                          activeSnippetIdx === idx 
+                            ? 'bg-gray-800 text-white shadow-sm ring-1 ring-white/10' 
+                            : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                        }`}
+                      >
+                        {snippet.language}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    suppressHydrationWarning
+                    onClick={() => {
+                      navigator.clipboard.writeText(codeSnippets[activeSnippetIdx].code);
+                      setCopiedSnippet(true);
+                      setTimeout(() => setCopiedSnippet(false), 2000);
+                    }}
+                    className="ml-4 shrink-0 px-3 py-1.5 rounded-md text-xs font-semibold text-gray-300 bg-gray-800 hover:bg-gray-700 hover:text-white transition-all border border-gray-700 flex items-center gap-1.5"
+                  >
+                    {copiedSnippet ? '✓ Copied' : '⎘ Copy'}
+                  </button>
+                </div>
+                <div className="p-4 sm:p-5 overflow-x-auto">
+                  <pre className="text-[13px] text-gray-300 font-mono leading-relaxed">
+                    <code>{codeSnippets[activeSnippetIdx] ? codeSnippets[activeSnippetIdx].code : ''}</code>
+                  </pre>
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* When to use */}
           {useCases.length > 0 && (
             <section>
@@ -305,12 +386,13 @@ const ToolLayout = ({
 
           {/* Internal Linking Area (SEO cluster building) */}
           {relatedTools.length > 0 && (
-            <section className="bg-gray-50 p-6 md:p-8 rounded-xl border border-gray-200 mt-12">
-              <h2 className="text-xl font-semibold mb-4 text-gray-900">More Developer Tools</h2>
-              <div className="flex flex-wrap gap-3">
+            <section className="mt-16 pt-10 border-t border-gray-200">
+              <h2 className="text-2xl font-semibold mb-6 text-gray-900">More Developer Tools</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {relatedTools.map((tool, idx) => (
-                  <a key={idx} href={tool.url} className="px-4 py-2 bg-white border border-gray-200 hover:border-gray-400 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors shadow-sm">
-                    {tool.name}
+                  <a key={idx} href={tool.url} className="group p-5 bg-white border border-gray-200 hover:border-blue-500 hover:shadow-md rounded-xl transition-all block">
+                    <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-1">{tool.name}</h3>
+                    <p className="text-xs text-gray-500">Free client-side utility</p>
                   </a>
                 ))}
               </div>

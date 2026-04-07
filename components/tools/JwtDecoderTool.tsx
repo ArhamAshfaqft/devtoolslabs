@@ -1,152 +1,284 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Editor from '@monaco-editor/react';
+
+// --- Utility Functions for Base64Url ---
+const base64UrlDecode = (str: string) => {
+  let output = str.replace(/-/g, '+').replace(/_/g, '/');
+  switch (output.length % 4) {
+    case 0: break;
+    case 2: output += '=='; break;
+    case 3: output += '='; break;
+    default: throw new Error('Illegal base64url string!');
+  }
+  return decodeURIComponent(
+    atob(output)
+      .split('')
+      .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+      .join('')
+  );
+};
+
+const base64UrlDecodeToBuffer = (str: string) => {
+  let output = str.replace(/-/g, '+').replace(/_/g, '/');
+  switch (output.length % 4) {
+    case 0: break;
+    case 2: output += '=='; break;
+    case 3: output += '='; break;
+    default: throw new Error('Illegal base64url string!');
+  }
+  const binary = atob(output);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes;
+};
+
+const base64UrlEncode = (str: string) => {
+  const utf8 = encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+    return String.fromCharCode(parseInt('0x' + p1));
+  });
+  return btoa(utf8)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+};
+
+const bufferToBase64Url = (buffer: ArrayBuffer) => {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+};
+
+const DEFAULT_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
 export default function JwtDecoderTool() {
-  const [jwt, setJwt] = useState('');
-  const [headerStr, setHeaderStr] = useState('');
-  const [payloadStr, setPayloadStr] = useState('');
-  const [signature, setSignature] = useState('');
-  const [error, setError] = useState('');
+  const [token, setToken] = useState<string>(DEFAULT_JWT);
+  
+  const [header, setHeader] = useState<string>('');
+  const [payload, setPayload] = useState<string>('');
+  const [secret, setSecret] = useState<string>('your-256-bit-secret');
+  
+  const [signatureStatus, setSignatureStatus] = useState<'valid' | 'invalid' | 'none'>('none');
+  const [errorHeader, setErrorHeader] = useState<string | null>(null);
+  const [errorPayload, setErrorPayload] = useState<string | null>(null);
 
-  // Example base64 decode for URL safe
-  const decodeBase64Url = (str: string) => {
-    try {
-      // Replace non-url compatible chars with base64 standard chars
-      str = str.replace(/-/g, '+').replace(/_/g, '/');
-      // Pad with exactly enough equals signs
-      const pad = str.length % 4;
-      if (pad) {
-        if (pad === 1) throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
-        str += new Array(5 - pad).join('=');
-      }
-      return decodeURIComponent(atob(str).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''));
-    } catch (e: any) {
-      return `Error decoding: ${e.message}`;
-    }
-  };
-
-  useEffect(() => {
-    if (!jwt.trim()) {
-       setHeaderStr('');
-       setPayloadStr('');
-       setSignature('');
-       setError('');
-       return;
-    }
-
+  // Decode logic
+  const decodeToken = useCallback((jwt: string) => {
+    if (!jwt) return;
     const parts = jwt.split('.');
     
-    if (parts.length !== 3) {
-      setError('Invalid JWT structure. A valid JWT must contain exactly 3 parts separated by dots (.)');
-      setHeaderStr('');
-      setPayloadStr('');
-      setSignature('');
-      return;
-    }
-
-    setError('');
-    
-    // Decode Header
+    // Header
     try {
-        const decodedHeader = decodeBase64Url(parts[0]);
-        setHeaderStr(JSON.stringify(JSON.parse(decodedHeader), null, 2));
-    } catch (e) {
-        setHeaderStr(decodeBase64Url(parts[0])); // Show raw if not valid JSON
+      if (parts[0]) {
+        const decodedHeader = JSON.parse(base64UrlDecode(parts[0]));
+        setHeader(JSON.stringify(decodedHeader, null, 2));
+        setErrorHeader(null);
+      }
+    } catch {
+      setErrorHeader("Invalid JSON in Header");
     }
 
-    // Decode Payload
+    // Payload
     try {
-        const decodedPayload = decodeBase64Url(parts[1]);
-        setPayloadStr(JSON.stringify(JSON.parse(decodedPayload), null, 2));
-    } catch (e) {
-        setPayloadStr(decodeBase64Url(parts[1]));
+      if (parts[1]) {
+        const decodedPayload = JSON.parse(base64UrlDecode(parts[1]));
+        setPayload(JSON.stringify(decodedPayload, null, 2));
+        setErrorPayload(null);
+      }
+    } catch {
+      setErrorPayload("Invalid JSON in Payload");
     }
+  }, []);
 
-    // Signature is purely visual in a decoder
-    setSignature(parts[2]);
-
-  }, [jwt]);
-
-  const loadExample = () => {
-     // A safe, dummy JWT for example purposes.
-     setJwt("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c");
+  // Whenever token changes from top box, decode it
+  const handleTokenChange = (v: string) => {
+    setToken(v);
+    decodeToken(v);
+    verifySignature(v, secret);
   };
 
+  // Sign logic using Web Crypto API (HS256 only for now)
+  const signToken = async (h: string, p: string, s: string) => {
+    try {
+      setErrorHeader(null);
+      setErrorPayload(null);
+      const headerObj = JSON.parse(h);
+      const payloadObj = JSON.parse(p);
+      
+      const b64Header = base64UrlEncode(JSON.stringify(headerObj));
+      const b64Payload = base64UrlEncode(JSON.stringify(payloadObj));
+      const unsignedToken = `${b64Header}.${b64Payload}`;
+      
+      if (!s) {
+        setToken(unsignedToken + ".");
+        return;
+      }
+      
+      // Sign HS256
+      const encoder = new TextEncoder();
+      const key = await window.crypto.subtle.importKey(
+        'raw',
+        encoder.encode(s),
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+      );
+      
+      const signature = await window.crypto.subtle.sign(
+        'HMAC',
+        key,
+        encoder.encode(unsignedToken)
+      );
+      
+      const b64Signature = bufferToBase64Url(signature);
+      const signedToken = `${unsignedToken}.${b64Signature}`;
+      setToken(signedToken);
+      verifySignature(signedToken, s);
+      
+    } catch (err) {
+      // JSON parsing error in one of the editors
+      if (!h.includes('{')) setErrorHeader("Invalid JSON structure");
+      if (!p.includes('{')) setErrorPayload("Invalid JSON structure");
+    }
+  };
+
+  const handleHeaderChange = (newHeader: string) => {
+    setHeader(newHeader);
+    signToken(newHeader, payload, secret);
+  };
+
+  const handlePayloadChange = (newPayload: string) => {
+    setPayload(newPayload);
+    signToken(header, newPayload, secret);
+  };
+
+  const handleSecretChange = (newSecret: string) => {
+    setSecret(newSecret);
+    signToken(header, payload, newSecret);
+  };
+
+  const verifySignature = async (jwt: string, s: string) => {
+    const parts = jwt.split('.');
+    if (parts.length !== 3 || !s) {
+      setSignatureStatus('none');
+      return;
+    }
+    try {
+      const unsignedToken = `${parts[0]}.${parts[1]}`;
+      const encoder = new TextEncoder();
+      const key = await window.crypto.subtle.importKey(
+        'raw', encoder.encode(s), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify']
+      );
+      
+      // Base64Url -> Uint8Array (binary safe)
+      const sigBytes = base64UrlDecodeToBuffer(parts[2]);
+      
+      const isValid = await window.crypto.subtle.verify('HMAC', key, sigBytes, encoder.encode(unsignedToken));
+      setSignatureStatus(isValid ? 'valid' : 'invalid');
+    } catch (e) {
+      setSignatureStatus('invalid');
+    }
+  };
+
+  // Initial mount load
+  useEffect(() => {
+    decodeToken(DEFAULT_JWT);
+    verifySignature(DEFAULT_JWT, 'your-256-bit-secret');
+  }, [decodeToken]);
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {/* Input Side */}
-      <div className="bg-white border text-gray-800 border-gray-200 rounded-2xl p-6 lg:p-8 shadow-sm flex flex-col h-full">
-        <div className="flex justify-between items-center mb-4">
-           <h3 className="text-lg font-bold text-gray-900">Encoded JWT</h3>
-           <button 
-             onClick={loadExample}
-             className="text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
-           >
-             Load Example
-           </button>
-        </div>
-        <p className="text-sm text-gray-500 mb-4 leading-relaxed">
-          Paste your JSON Web Token below. The tool will automatically decode and parse the Header and Payload in real-time. Everything happens in your browser.
-        </p>
-
-        <textarea
-          value={jwt}
-          onChange={(e) => setJwt(e.target.value)}
-          className="w-full flex-grow p-5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-mono text-sm leading-relaxed resize-none shadow-inner min-h-[300px]"
-          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-          spellCheck="false"
-        />
-
-        {error && (
-            <div className="mt-4 p-4 bg-red-50 relative border-l-4 border-red-500 rounded-r-lg flex items-start gap-3">
-              <svg className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <p className="text-sm text-red-700 font-medium">{error}</p>
-            </div>
-        )}
+    <div className="flex flex-col gap-6 w-full max-w-full">
+      <div className="bg-white border text-center p-4 border-gray-200 rounded-xl">
+         <h3 className="font-bold text-gray-800 text-lg">JWT Encoder & Decoder</h3>
+         <p className="text-gray-500 text-sm mt-1">100% Client-Side. Your tokens never leave your browser.</p>
       </div>
 
-      {/* Decoded Side */}
-      <div className="bg-white border flex flex-col gap-6 text-gray-800 border-gray-200 rounded-2xl p-6 lg:p-8 shadow-sm h-full">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         
-        {/* Header Block */}
-        <div>
-           <h3 className="text-sm font-bold text-red-600 uppercase tracking-wide mb-2 flex items-center gap-2">
-             HEADER <span className="text-xs font-normal text-gray-400 normal-case">(Algorithm & Token Type)</span>
-           </h3>
-           <div className="relative group">
-              <pre className="bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm font-mono text-red-700 overflow-x-auto min-h-[100px] leading-relaxed">
-                 {headerStr || "/* Waiting for token... */"}
-              </pre>
-           </div>
+        {/* Left Column: Encoded Token */}
+        <div className="flex flex-col gap-3">
+          <label className="text-xs font-black text-gray-400 uppercase tracking-widest">Encoded Token (Paste to Decode)</label>
+          <textarea
+            value={token}
+            onChange={(e) => handleTokenChange(e.target.value)}
+            style={{fontFamily: 'monospace'}}
+            className="w-full h-[600px] p-6 bg-slate-50 border border-slate-200 rounded-xl text-sm break-all focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 resize-none transition-all"
+            spellCheck={false}
+          />
         </div>
 
-        {/* Payload Block */}
-        <div className="flex-grow">
-           <h3 className="text-sm font-bold text-purple-600 uppercase tracking-wide mb-2 flex items-center gap-2">
-             PAYLOAD <span className="text-xs font-normal text-gray-400 normal-case">(Data / Claims)</span>
-           </h3>
-           <div className="relative group h-full">
-              <pre className="bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm font-mono text-purple-700 overflow-x-auto min-h-[200px] h-full leading-relaxed">
-                 {payloadStr || "/* Waiting for token... */"}
-              </pre>
-           </div>
-        </div>
+        {/* Right Column: Decoded Edit areas */}
+        <div className="flex flex-col gap-4 h-[600px] overflow-y-auto">
+          
+          {/* HEADER */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+               <label className="text-xs font-black text-red-500 uppercase tracking-widest">Header (Algorithm & Token Type)</label>
+               {errorHeader && <span className="text-xs font-bold text-red-500">{errorHeader}</span>}
+            </div>
+            <div className={`h-40 border rounded-lg overflow-hidden ${errorHeader ? 'border-red-400' : 'border-gray-200'}`}>
+              <Editor
+                height="100%"
+                defaultLanguage="json"
+                theme="vs-light"
+                value={header}
+                onChange={(v) => handleHeaderChange(v || '')}
+                options={{ minimap: { enabled: false }, scrollBeyondLastLine: false, fontSize: 13, lineNumbers: 'off' }}
+              />
+            </div>
+          </div>
 
-        {/* Signature Block */}
-        <div>
-           <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wide mb-2 flex items-center gap-2">
-             SIGNATURE <span className="text-xs font-normal text-gray-400 normal-case">(Verification)</span>
-           </h3>
-           <div className="relative group">
-              <div className="bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm font-mono text-blue-700 break-all leading-relaxed">
-                 {signature || "/* Waiting for token... */"}
-              </div>
-           </div>
-        </div>
+          {/* PAYLOAD */}
+          <div className="flex flex-col gap-2 flex-grow">
+            <div className="flex items-center justify-between">
+               <label className="text-xs font-black text-purple-600 uppercase tracking-widest">Payload (Data)</label>
+               {errorPayload && <span className="text-xs font-bold text-purple-600">{errorPayload}</span>}
+            </div>
+            <div className={`h-64 border rounded-lg overflow-hidden ${errorPayload ? 'border-red-400' : 'border-gray-200'}`}>
+              <Editor
+                height="100%"
+                defaultLanguage="json"
+                theme="vs-light"
+                value={payload}
+                onChange={(v) => handlePayloadChange(v || '')}
+                options={{ minimap: { enabled: false }, scrollBeyondLastLine: false, fontSize: 13, lineNumbers: 'off' }}
+              />
+            </div>
+          </div>
 
+          {/* SIGNATURE */}
+          <div className="flex flex-col gap-2 mt-2">
+            <label className="text-xs font-black text-blue-500 uppercase tracking-widest">Verify Signature (HS256 only)</label>
+            <div className="flex items-center relative">
+               <input 
+                 type="text" 
+                 value={secret}
+                 onChange={(e) => handleSecretChange(e.target.value)}
+                 placeholder="your-256-bit-secret"
+                 className="w-full pl-4 pr-32 py-3 bg-white border border-gray-200 rounded-lg text-sm font-monospace font-medium focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
+               />
+               <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                 {signatureStatus === 'valid' && (
+                    <span className="bg-green-100 text-green-700 font-bold px-3 py-1 rounded text-xs">Signature Verified</span>
+                 )}
+                 {signatureStatus === 'invalid' && (
+                    <span className="bg-red-100 text-red-700 font-bold px-3 py-1 rounded text-xs">Invalid Signature</span>
+                 )}
+               </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );

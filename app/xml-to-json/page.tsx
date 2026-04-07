@@ -17,59 +17,77 @@ export const metadata: Metadata = {
 };
 
 export default function XmlToJsonPage() {
+  const codeSnippets = [
+    {
+      language: "Node.js (fast-xml-parser)",
+      code: `const { XMLParser } = require('fast-xml-parser');
+const parser = new XMLParser({
+    ignoreAttributes: false,
+    attributeNamePrefix: "@_"
+});
+const jsonObj = parser.parse(xmlData);
+console.log(JSON.stringify(jsonObj, null, 2));`
+    },
+    {
+      language: "Python (xmltodict)",
+      code: `import xmltodict
+import json
+
+with open('data.xml') as fd:
+    doc = xmltodict.parse(fd.read())
+
+print(json.dumps(doc, indent=2))`
+    }
+  ];
+
   return (
     <ToolLayout
       title="XML to JSON Converter"
-      intro="Transform outdated XML data into clean, modern JSON objects. Perfect for developers migrating legacy APIs or handling enterprise data feeds."
+      intro="Legacy XML data structures can be difficult to consume in modern frontend frameworks like React, Vue, or Next.js. Our high-performance XML to JSON converter solves this by transforming rigid XML into clean, flexible JSON objects. We support advanced parsing features including attribute preservation, CDATA extraction, and array consistency toggles—all running 100% locally in your browser for absolute privacy."
       toolNode={<XmlToJsonTool />}
+      codeSnippets={codeSnippets}
       howTo={[
-        "Paste your XML string into the left input area.",
-        "The tool automatically parses the XML and generates a JSON object.",
-        "Toggle the 'Try Example' button to see how attributes and nested tags are handled.",
-        "Copy the resulting JSON to your clipboard for use in your application."
+        "Paste your raw XML string into the input editor.",
+        "Adjust settings like 'Ignore Attributes' if you only want the inner tag values.",
+        "Enable 'Force Every Tag as Array' if you need a predictable structure for your code.",
+        "Wait for the real-time conversion to complete in the JSON output editor.",
+        "Copy the JSON or download for use in your API or frontend project."
       ]}
       examples={[
         {
-          input: "<user id='1'>\n  <name>John</name>\n</user>",
-          output: '{\n  "user": {\n    "@_id": 1,\n    "name": "John"\n  }\n}'
+          input: '<user active="true"><name>Dev</name></user>',
+          output: '{\n  "user": {\n    "@_active": true,\n    "name": "Dev"\n  }\n}'
         }
       ]}
       useCases={[
-        "Modernizing legacy SOAP API responses for React/Next.js frontends.",
-        "Parsing configuration files from older enterprise software.",
-        "Simplifying data visualization for XML-based data feeds.",
-        "Debugging complex XML structures by viewing them in a readable JSON format."
+        "Modernizing legacy SOAP or XML-based API responses for AJAX consumption.",
+        "Converting enterprise XSD/XML configuration files into readable JSON formats.",
+        "Pre-processing data for NoSQL databases like MongoDB or AWS DynamoDB.",
+        "Simplifying data visualization for complex XML-based financial or legal data feeds."
       ]}
       faqs={[
         {
-          question: "How are XML attributes handled?",
-          answer: "By default, attributes are prefixed with `@_` (e.g., id='1' becomes '@_id': 1) to distinguish them from standard tags, ensuring no data loss during conversion."
+          question: "How are XML namespaces handled?",
+          answer: "Our parser is namespace-aware. It preserves namespace prefixes (e.g., <ns:tag>) in the JSON keys, ensuring that you can still distinguish between different schemas when processing the resulting object."
         },
         {
-          question: "Is my XML data secure?",
-          answer: "Yes. All conversion happens locally in your browser using JavaScript. No data is ever uploaded to our servers, making it safe for sensitive enterprise configuration parsing."
+          question: "What is the difference between 'Attribute' and 'Text' nodes?",
+          answer: "In XML, an attribute is part of the tag (id='1'), while a text node is the content inside (<tag>Text</tag>). Our tool prefixes attributes with '@_' so you can easily identify them in your JSON without them colliding with child element names."
         },
         {
-          question: "Does it support nested tags and arrays?",
-          answer: "Yes. The converter intelligently identifies repeating elements and groups them into JSON arrays, while maintain the hierarchy of nested tags."
+          question: "Is there a performance limit for large XML files?",
+          answer: "Because we use a high-speed V8-optimized parser running in your browser, we can handle multi-megabyte XML files with sub-second latency. For files larger than 50MB, the browser's memory limit is the primary constraint."
         },
         {
-          question: "What is the maximum file size supported?",
-          answer: "Since the tool runs in your browser, it can handle several megabytes of XML data depending on your available RAM. For extremely large datasets (100MB+), specialized streaming parsers are recommended."
-        },
-        {
-          question: "Can I convert SOAP responses to JSON?",
-          answer: "Absolutely. This tool is designed to help developers modernize legacy SOAP-based services by transforming the XML-encoded body into a format easily consumable by React or Vue applications."
-        },
-        {
-          question: "Are CDATA sections supported?",
-          answer: "Yes, the parser correctly identifies and extracts content from `<![CDATA[...]]>` blocks, preserving the literal text inside without escaping."
+          question: "Can I use the output in a production application?",
+          answer: "Yes. The generated JSON is strictly valid RFC 8259 format. By using the 'Force Array' option, you can guarantee a predictable structure that won't break your frontend logic when a single item is returned instead of many."
         }
       ]}
       relatedTools={[
         { name: "JSON to XML", url: "/json-to-xml" },
         { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "JSON to CSV", url: "/json-to-csv" }
+        { name: "JSON to CSV", url: "/json-to-csv" },
+        { name: "JSON to TypeScript", url: "/json-to-typescript" }
       ]}
     />
   );

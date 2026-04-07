@@ -1,118 +1,142 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import { XMLParser } from 'fast-xml-parser';
 
+const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
+
 export default function XmlToJsonTool() {
-  const [xmlInput, setXmlInput] = useState('');
+  const [xmlInput, setXmlInput] = useState(`<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <user id="101" active="true">
+    <name>John Doe</name>
+    <preferences>
+      <theme>dark</theme>
+      <notifications>enabled</notifications>
+    </preferences>
+  </user>
+</root>`);
   const [jsonOutput, setJsonOutput] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [ignoreAttr, setIgnoreAttr] = useState(false);
+  const [alwaysArray, setAlwaysArray] = useState(false);
 
-  const convertXmlToJson = (xml: string) => {
+  const convertXmlToJson = useCallback(() => {
     try {
       setError(null);
-      if (!xml.trim()) {
+      if (!xmlInput.trim()) {
         setJsonOutput('');
         return;
       }
 
       const parser = new XMLParser({
-        ignoreAttributes: false,
+        ignoreAttributes: ignoreAttr,
         attributeNamePrefix: "@_",
+        alwaysCreateTextNode: false,
         allowBooleanAttributes: true,
         parseAttributeValue: true,
         parseTagValue: true,
         trimValues: true,
+        // If alwaysArray is true, we force tags to be arrays even if only one item exists
+        isArray: (name, jpath, isLeafNode, isAttribute) => {
+          return alwaysArray && !isAttribute;
+        }
       });
 
-      const jsonObj = parser.parse(xml);
+      const jsonObj = parser.parse(xmlInput);
       setJsonOutput(JSON.stringify(jsonObj, null, 2));
     } catch (err: any) {
-      setError(err.message || 'Invalid XML format. Please check for unclosed tags or syntax errors.');
+      setError(err.message || 'Invalid XML format. Please check for unclosed tags.');
       setJsonOutput('');
     }
-  };
+  }, [xmlInput, ignoreAttr, alwaysArray]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const val = e.target.value;
-    setXmlInput(val);
-    convertXmlToJson(val);
-  };
-
-  const handleExample = () => {
-    const exampleXml = `<?xml version="1.0" encoding="UTF-8"?>
-<bookstore>
-  <book category="cooking">
-    <title lang="en">Everyday Italian</title>
-    <author>Giada De Laurentiis</author>
-    <year>2005</year>
-    <price>30.00</price>
-  </book>
-  <book category="children">
-    <title lang="en">Harry Potter</title>
-    <author>J K. Rowling</author>
-    <year>2005</year>
-    <price>29.99</price>
-  </book>
-</bookstore>`;
-    setXmlInput(exampleXml);
-    convertXmlToJson(exampleXml);
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(jsonOutput);
-  };
+  useEffect(() => {
+    convertXmlToJson();
+  }, [convertXmlToJson]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">
-            Input XML
+    <div className="flex flex-col gap-6">
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-6 bg-gray-50 p-4 rounded-xl border border-gray-200">
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <input 
+               type="checkbox" 
+               checked={ignoreAttr} 
+               onChange={(e) => setIgnoreAttr(e.target.checked)}
+               className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <span className="text-xs font-bold text-gray-700 group-hover:text-black transition-colors">Ignore Attributes</span>
           </label>
-          <button 
-            onClick={handleExample}
-            className="text-xs font-semibold text-blue-600 hover:text-blue-800"
-          >
-            Try Example
-          </button>
-        </div>
-        <textarea
-          value={xmlInput}
-          onChange={handleInputChange}
-          placeholder="<note>\n  <to>Tove</to>\n  <from>Jani</from>\n</note>"
-          className="w-full h-80 p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm shadow-sm"
-        />
+          <label className="flex items-center gap-2 cursor-pointer group">
+            <input 
+               type="checkbox" 
+               checked={alwaysArray} 
+               onChange={(e) => setAlwaysArray(e.target.checked)}
+               className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <span className="text-xs font-bold text-gray-700 group-hover:text-black transition-colors">Force Every Tag as Array</span>
+          </label>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <label className="block text-sm font-bold text-gray-700 uppercase tracking-wider">
-            Output JSON
-          </label>
-          {jsonOutput && (
-            <button 
-              onClick={copyToClipboard}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1"
-            >
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-7 10h7M8 11h7" />
-              </svg>
-              Copy
-            </button>
-          )}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[500px]">
+        {/* Editor Left */}
+        <div className="flex flex-col border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
+          <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Input XML</span>
+          </div>
+          <div className="flex-1 min-h-0">
+            <MonacoEditor
+              height="100%"
+              language="xml"
+              theme="vs-light"
+              value={xmlInput}
+              onChange={(v) => setXmlInput(v || '')}
+              options={{ minimap: { enabled: false }, fontSize: 13, wordWrap: 'on' }}
+            />
+          </div>
         </div>
-        <div className="relative">
-          <textarea
-            value={jsonOutput}
-            readOnly
-            className="w-full h-80 p-4 border border-gray-200 rounded-xl bg-gray-50 font-mono text-sm shadow-sm"
-          />
+
+        {/* Editor Right */}
+        <div className="flex flex-col border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white relative">
+          <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 flex justify-between items-center">
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">JSON Output</span>
+          </div>
+          <div className="flex-1 min-h-0">
+            <MonacoEditor
+              height="100%"
+              language="json"
+              theme="vs-dark"
+              value={jsonOutput}
+              options={{ readOnly: true, minimap: { enabled: false }, fontSize: 13, wordWrap: 'on' }}
+            />
+          </div>
           {error && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl">
-              <span className="p-4 text-red-600 text-sm font-medium text-center">{error}</span>
+            <div className="absolute inset-x-0 bottom-0 p-4 bg-red-600 text-white text-xs font-bold animate-in slide-in-from-bottom-2">
+              {error}
             </div>
           )}
+        </div>
+      </div>
+
+      {/* Expert Context */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="p-5 bg-blue-50 border border-blue-100 rounded-xl">
+           <h3 className="text-sm font-bold text-blue-900 mb-2">Attribute Handling</h3>
+           <p className="text-[11px] text-blue-800 leading-relaxed italic">
+             Our converter preserves XML attributes by prefixing them with "@_". This ensures 
+             metadata like <code className="bg-blue-100 px-1 rounded">id="1"</code> is not lost during transformation, 
+             a common failure in basic XML parsers.
+           </p>
+        </div>
+        <div className="p-5 bg-emerald-50 border border-emerald-100 rounded-xl">
+           <h3 className="text-sm font-bold text-emerald-900 mb-2">Array Consistency</h3>
+           <p className="text-[11px] text-emerald-800 leading-relaxed italic">
+             By default, parsers convert single tags to objects and multiple tags to arrays. 
+             Enable <strong>"Force Every Tag as Array"</strong> to ensure your downstream code 
+             always receives a consistent structure, preventing "is it an array?" checks.
+           </p>
         </div>
       </div>
     </div>

@@ -1,69 +1,55 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+import YamlToJsonTool from '@/components/tools/YamlToJsonTool';
 import ToolLayout from '@/components/ToolLayout';
-import YamlConverterTool from '@/components/tools/YamlConverterTool';
 
 export const metadata: Metadata = {
-  title: 'YAML to JSON Converter (Online Tool) | Kubernetes & Docker YAML Parse',
-  description: 'Instantly convert YAML manifests to JSON objects. Perfect for debugging Kubernetes configurations, Docker Compose files, and cloud-init scripts securely offline.',
-  openGraph: {
-    title: 'YAML to JSON Converter (Online Tool) | Kubernetes & Docker YAML Parse',
-    description: 'Instantly convert YAML manifests to JSON objects. Perfect for debugging Kubernetes configurations, Docker Compose files, and cloud-init scripts securely offline.',
-    url: 'https://devtoolslabs.com/yaml-to-json',
-  },
-  alternates: {
-    canonical: '/yaml-to-json',
-  },
+  title: 'YAML to JSON Converter | Online YAML Parser & Safe Loader',
+  description: 'How to convert YAML to JSON? Use our free online YAML to JSON converter to transform K8s manifests, Docker Compose, and Ansible files into clean JSON.',
+  keywords: 'yaml to json, convert yaml to json, yaml parser online, yaml safe load, kubernetes to json, devtools',
 };
 
 export default function YamlToJsonPage() {
   return (
     <ToolLayout
-      title="YAML to JSON Converter (DevOps & Cloud Utility)"
-      intro="YAML is the industry standard for cloud-native configurations, but many APIs and tools require JSON payloads. Use our professional YAML to JSON converter to translate Kubernetes manifests, Docker configurations, and CI/CD pipelines into clean, structured JSON instantly in your browser."
-      toolNode={<YamlConverterTool defaultMode="yaml-to-json" />}
+      title="YAML to JSON Converter"
+      intro="Transform complex YAML data into clean, valid JSON instantly. Optimized for DevOps engineers and developers who need to parse Kubernetes manifests, cloud configs, and Ansible playbooks for programmatic review."
+      toolNode={<YamlToJsonTool />}
       howTo={[
-        "Paste your raw YAML configuration into the 'Input YAML' text area.",
-        "Our engine uses js-yaml to parse the input and identify nested keys and values.",
-        "The RFC-compliant JSON output is generated instantly on the right.",
-        "Click 'Copy' to transfer the JSON payload to your clipboard for use in API requests."
+        "Paste your YAML content into the left editor pane.",
+        "Click 'Convert to JSON' to trigger the industrial-grade safe-loading engine.",
+        "The resulting JSON is instantly rendered in the right pane with professional 2-space indentation.",
+        "One-click copy the JSON for use in your API requests or codebases."
       ]}
       examples={[
         {
-          input: "apiVersion: v1\nkind: Pod\nmetadata:\n  name: mypod",
-          output: '{\n  "apiVersion": "v1",\n  "kind": "Pod",\n  "metadata": {\n    "name": "mypod"\n  }\n}'
+          input: 'api: v1 \nmetadata: \n  name: app',
+          output: '{\n  "api": "v1",\n  "metadata": {\n    "name": "app"\n  }\n}'
         }
       ]}
       useCases={[
-        "Converting complex Kubernetes YAML resources into JSON for use with the kubectl API directly.",
-        "Parsing Docker Compose files into JSON to analyze service dependencies or environment variables.",
-        "Decoding cloud-init or Terraform YAML configurations to verify structural integrity before deployment."
+        "DevOps: Converting Kubernetes Helm charts into JSON for validation scripts.",
+        "Cloud Engineering: Parsing AWS CloudFormation or Terraform YAML into JSON payloads.",
+        "API Test: Transforming human-readable YAML documentation into raw JSON for Postman or cURL.",
+        "System Audit: Flattening complex nested YAML configurations into a simpler JSON structure."
       ]}
       faqs={[
         {
-          question: "Does it support multiple YAML documents?",
-          answer: "Currently, this tool parses the first document in a YAML stream. For multiple documents (separated by --- in K8s), we recommend parsing them individually for the most accurate JSON results."
+          question: "How to convert YAML to JSON safely?",
+          answer: "Our tool follows the 'Safe Load' schema, meaning we disable hazardous YAML features like custom tags or code execution. Your conversion is secure and stable."
         },
         {
-          question: "Does it support YAML anchors and aliases?",
-          answer: "Yes! Our parser uses the standard js-yaml engine which fully supports YAML anchors (&) and aliases (*). This makes it perfect for expanding complex Docker Compose files."
+          question: "Support for YAML Anchors and Aliases?",
+          answer: "Yes. Our engine correctly resolves recursive anchors (&) and aliases (*) during the conversion, ensuring your JSON output matches the final state of your YAML config."
         },
         {
-          question: "Is it safe for production secrets?",
-          answer: "Yes. Processing is 100% client-side via your browser's V8 engine. Your sensitive Kubernetes secrets, environment variables, or API keys never leave your machine."
-        },
-        {
-          question: "Can I convert JSON back to YAML?",
-          answer: "Absolutely. Simply use the 'JSON to YAML' toggle at the top of the tool or visit our dedicated JSON to YAML page for a more specialized experience."
-        },
-        {
-          question: "Why convert YAML to JSON for Kubernetes?",
-          answer: "While human engineers prefer YAML for readability, many automated CI/CD tools, monitoring dashboards, and the underlying Kubernetes API controllers process configurations as JSON objects."
+          question: "Is there a limit to the file size?",
+          answer: "Conversion is handled entirely in your browser. Large files up to 20MB are processed smoothly without any data leaving your device."
         }
       ]}
       relatedTools={[
         { name: "JSON to YAML", url: "/json-to-yaml" },
-        { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "SQL Formatter", url: "/sql-formatter" }
+        { name: "YAML Formatter", url: "/yaml-formatter" },
+        { name: "JSON Formatter", url: "/json-formatter" }
       ]}
     />
   );

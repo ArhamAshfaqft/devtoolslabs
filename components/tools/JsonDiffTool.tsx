@@ -1,129 +1,156 @@
 "use client";
 
-import React, { useState } from "react";
-import * as diff from "diff";
+import React, { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
+
+const DiffEditor = dynamic(
+  () => import("@monaco-editor/react").then((mod) => mod.DiffEditor),
+  { ssr: false }
+);
 
 export default function JsonDiffTool() {
-  const [leftJson, setLeftJson] = useState<string>("");
-  const [rightJson, setRightJson] = useState<string>("");
-  const [diffResult, setDiffResult] = useState<diff.Change[]>([]);
+  const [leftJson, setLeftJson] = useState<string>(`{
+  "name": "DevToolsLabs",
+  "version": 1,
+  "features": ["Privacy", "Speed"]
+}`);
+  const [rightJson, setRightJson] = useState<string>(`{
+  "version": 1.1,
+  "name": "DevToolsLabs",
+  "features": ["Privacy", "Speed", "SEO"],
+  "status": "active"
+}`);
+  const [semanticMode, setSemanticMode] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const formatJson = (jsonStr: string): string => {
+  // Deep sort keys to allow semantic comparison (ignore key order)
+  const sortJsonObject = (obj: any): any => {
+    if (obj === null || typeof obj !== "object") return obj;
+    if (Array.isArray(obj)) return obj.map(sortJsonObject);
+    
+    return Object.keys(obj)
+      .sort()
+      .reduce((acc: any, key) => {
+        acc[key] = sortJsonObject(obj[key]);
+        return acc;
+      }, {});
+  };
+
+  const processJson = (jsonStr: string, semantic: boolean): string => {
     try {
       if (!jsonStr.trim()) return "";
-      const parsed = JSON.parse(jsonStr);
+      let parsed = JSON.parse(jsonStr);
+      if (semantic) {
+        parsed = sortJsonObject(parsed);
+      }
       return JSON.stringify(parsed, null, 2);
     } catch (e) {
-      throw new Error("Invalid JSON format");
+      throw new Error("Invalid JSON input detected");
     }
   };
 
-  const handleCompare = () => {
+  const [leftProcessed, setLeftProcessed] = useState("");
+  const [rightProcessed, setRightProcessed] = useState("");
+
+  const handleCompare = useCallback(() => {
     setError(null);
     try {
-      const formattedLeft = formatJson(leftJson);
-      const formattedRight = formatJson(rightJson);
-      
-      const changes = diff.diffLines(formattedLeft, formattedRight);
-      setDiffResult(changes);
+      setLeftProcessed(processJson(leftJson, semanticMode));
+      setRightProcessed(processJson(rightJson, semanticMode));
     } catch (err: any) {
-      setError("Error parsing JSON. Please ensure both fields contain valid JSON objects or arrays.");
-      setDiffResult([]);
+      setError(err.message || "Error parsing JSON. Check your syntax.");
     }
-  };
+  }, [leftJson, rightJson, semanticMode]);
 
-  const clearInputs = () => {
-    setLeftJson("");
-    setRightJson("");
-    setDiffResult([]);
-    setError(null);
-  };
+  useEffect(() => {
+    handleCompare();
+  }, [handleCompare]);
 
   return (
     <div className="space-y-6">
-      
-      {/* Input Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-700">Original JSON</label>
-          <textarea
-            value={leftJson}
-            onChange={(e) => setLeftJson(e.target.value)}
-            placeholder='{"key": "value"}'
-            className="w-full h-64 p-4 font-mono text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-y shadow-sm"
-          />
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+        <div className="flex items-center gap-6">
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              checked={semanticMode}
+              onChange={(e) => setSemanticMode(e.target.checked)}
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none ring-0 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+            <span className="ml-3 text-sm font-bold text-gray-700">Semantic Diff (Ignore Key Order)</span>
+          </label>
         </div>
-        <div className="space-y-2">
-          <label className="block text-sm font-semibold text-gray-700">Modified JSON</label>
-          <textarea
-            value={rightJson}
-            onChange={(e) => setRightJson(e.target.value)}
-            placeholder='{"key": "new_value"}'
-            className="w-full h-64 p-4 font-mono text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-y shadow-sm"
-          />
+        <div className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+          Hero Mode: Side-by-Side Comparison
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-200 shadow-sm">
-        <button
-          onClick={clearInputs}
-          className="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded hover:bg-gray-100 font-medium transition-colors"
-        >
-          Clear
-        </button>
-        <button
-          onClick={handleCompare}
-          className="px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-200 shadow-sm flex items-center gap-2"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-          </svg>
-          Compare JSON
-        </button>
+      {/* Editor Main Section */}
+      <div className="h-[600px] border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-[#1e1e1e]">
+        <DiffEditor
+          height="100%"
+          original={leftProcessed}
+          modified={rightProcessed}
+          language="json"
+          theme="vs-dark"
+          options={{
+            renderSideBySide: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            fontSize: 13,
+            automaticLayout: true,
+          }}
+        />
       </div>
 
       {error && (
         <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm flex items-center gap-2">
-          <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
           {error}
         </div>
       )}
 
-      {/* Diff Output */}
-      {diffResult.length > 0 && !error && (
-        <div className="border border-gray-300 rounded-lg overflow-hidden shadow-sm">
-          <div className="bg-gray-100 px-4 py-2 border-b border-gray-300 border-opacity-60 text-sm font-semibold text-gray-700 flex gap-4">
-               <span className="flex items-center gap-1"><span className="w-3 h-3 bg-red-200 border border-red-300 inline-block rounded-sm"></span> Removed</span>
-               <span className="flex items-center gap-1"><span className="w-3 h-3 bg-green-200 border border-green-300 inline-block rounded-sm"></span> Added</span>
-          </div>
-          <div className="bg-[#f8f9fa] p-4 overflow-x-auto text-sm font-mono text-gray-800 leading-relaxed whitespace-pre font-medium">
-            {diffResult.map((part, index) => {
-              const bgClass = part.added 
-                ? "bg-green-100 text-green-900" 
-                : part.removed 
-                  ? "bg-red-100 text-red-900" 
-                  : "text-gray-600";
-              
-              const prefixChar = part.added ? "+ " : part.removed ? "- " : "  ";
-              
-              // We split by newline to render lines nicely, adding prefixes
-              const lines = part.value.split('\n');
-              // Remove the last empty string caused by split('\n') on a string ending with \n
-              if (lines[lines.length - 1] === "") {
-                  lines.pop();
-              }
-
-              return lines.map((line, lineIdx) => (
-                <div key={`${index}-${lineIdx}`} className={`${bgClass} px-2 py-0.5 min-w-max border-b border-transparent hover:border-black/5`}>
-                  <span className="opacity-50 select-none w-4 inline-block">{prefixChar}</span>{line}
-                </div>
-              ));
-            })}
-          </div>
+      {/* Manual Input Controls (Hidden or Secondary) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-gray-400 uppercase">Raw Input 1</label>
+          <textarea
+            value={leftJson}
+            onChange={(e) => setLeftJson(e.target.value)}
+            className="w-full h-32 p-3 font-mono text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none"
+          />
         </div>
-      )}
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-gray-400 uppercase">Raw Input 2</label>
+          <textarea
+            value={rightJson}
+            onChange={(e) => setRightJson(e.target.value)}
+            className="w-full h-32 p-3 font-mono text-xs border border-gray-200 rounded-lg focus:ring-1 focus:ring-blue-500 outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Expert Context */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        <div className="p-5 bg-blue-50 border border-blue-100 rounded-xl">
+           <h3 className="text-sm font-bold text-blue-900 mb-2">What is Semantic Diffing?</h3>
+           <p className="text-xs text-blue-800 leading-relaxed">
+             Regular diff tools fail if JSON keys are shuffled (e.g., from a database vs. an API). 
+             <strong>Semantic Diff</strong> recursively sorts all keys alphabetically before comparison, 
+             so you only see the <em>real</em> data changes.
+           </p>
+        </div>
+        <div className="p-5 bg-purple-50 border border-purple-100 rounded-xl">
+           <h3 className="text-sm font-bold text-purple-900 mb-2">Monaco Power</h3>
+           <p className="text-xs text-purple-800 leading-relaxed">
+             We use the same engine that powers VS Code. You get pixel-perfect line highlighting, 
+             inline diff indicators, and syntax-aware comparison for the most accurate debugging possible.
+           </p>
+        </div>
+      </div>
     </div>
   );
 }
