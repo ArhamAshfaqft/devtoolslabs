@@ -23,7 +23,7 @@ interface ToolLayoutProps {
   intro: string;
   toolNode: ReactNode;
   howTo: string[];
-  examples: Example[];
+  examples?: Example[];
   useCases: string[];
   faqs: FAQ[];
   relatedTools: { name: string; url: string }[];
