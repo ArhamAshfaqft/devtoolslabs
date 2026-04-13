@@ -277,7 +277,7 @@ const ToolLayout = ({
           )}
 
           {/* Example Usage */}
-          {examples.length > 0 && (
+          {examples?.length > 0 && (
             <section>
               <h2 className="text-2xl font-semibold mb-6 text-gray-900">Example Usage</h2>
               <div className="grid gap-6">
