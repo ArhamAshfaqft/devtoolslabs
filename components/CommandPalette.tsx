@@ -102,6 +102,28 @@ const ITEMS: SearchItem[] = [
   { id: 'guide-k8s', name: 'DevOps Kubernetes YAML Blueprint', description: 'Master manifest design and production patterns.', href: '/guides/devops-kubernetes-yaml', type: 'guide', category: 'DevOps' },
 ];
 
+// Keep the palette aligned with the routes that are intentionally published.
+// Retired tool definitions remain above as historical catalog data, but are not
+// offered to users or search crawlers unless a maintained page exists.
+const ACTIVE_PATHS = new Set([
+  '/accessibility-tools', '/base64-encode-decode', '/css-background-patterns',
+  '/curl-to-fetch', '/dev-utilities', '/diagram-playground', '/dns-lookup',
+  '/encoding-tools', '/frontend-tools', '/git-command-generator', '/hash-generator',
+  '/header-mime-hub', '/html-to-elementor', '/html-to-jsx', '/html-to-markdown',
+  '/http-header-parser', '/http-status-codes', '/jpeg-to-svg', '/json-diff',
+  '/json-extractor', '/json-formatter', '/json-from-array', '/json-to-excel',
+  '/json-to-mysql', '/json-to-yaml', '/json-tools', '/json-unescape',
+  '/jwt-decoder', '/mock-json-generator', '/security-tools', '/svg-optimizer',
+  '/svg-to-png', '/url-encode-decode', '/xml-to-json', '/yaml-formatter',
+  '/yaml-to-json',
+  '/guides/devops-kubernetes-yaml', '/guides/go-service-architecture',
+  '/guides/how-to-decode-jwt', '/guides/password-security-standards',
+  '/guides/react-jsx-patterns', '/guides/regex-explained',
+  '/guides/sql-best-practices', '/guides/ultimate-curl-guide',
+  '/guides/understanding-base64', '/guides/understanding-cors',
+  '/guides/unix-timestamps', '/guides/wcag-contrast-guide',
+]);
+
 export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -109,10 +131,12 @@ export default function CommandPalette() {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const filteredItems = ITEMS.filter(item => 
-    item.name.toLowerCase().includes(query.toLowerCase()) ||
-    item.description.toLowerCase().includes(query.toLowerCase())
-  ).slice(0, 8);
+  const filteredItems = ITEMS.filter(item => ACTIVE_PATHS.has(item.href))
+    .filter(item =>
+      item.name.toLowerCase().includes(query.toLowerCase()) ||
+      item.description.toLowerCase().includes(query.toLowerCase())
+    )
+    .slice(0, 8);
 
   const handleOpen = useCallback(() => {
     setIsOpen(true);

@@ -6,6 +6,7 @@ export const metadata = {
   title: 'HTML to Markdown Converter | Free Online Developer Tool',
   description: 'Instantly convert raw HTML code to standard Markdown. 100% free, runs locally in your browser with zero latency. Built by developers.',
   keywords: 'html to markdown, convert html to md, html to markdown converter, markdown generator, html parser',
+  alternates: { canonical: '/html-to-markdown' },
   openGraph: {
     title: 'HTML to Markdown Converter | Free Online Developer Tool',
     description: 'Instantly convert raw HTML code to standard Markdown. 100% free, runs locally in your browser with zero latency.',
@@ -51,9 +52,9 @@ export default function HtmlToMarkdownPage() {
         }
       ]}
       relatedTools={[
-        { name: 'Markdown to HTML', url: '/markdown-to-html' },
-        { name: 'HTML Minifier', url: '/html-minifier' },
-        { name: 'HTML Decoder', url: '/html-entity-decoder' },
+        { name: 'HTML to JSX', url: '/html-to-jsx' },
+        { name: 'HTML to Elementor', url: '/html-to-elementor' },
+        { name: 'Frontend Developer Tools', url: '/frontend-tools' },
         { name: 'JSON Formatter', url: '/json-formatter' }
       ]}
       codeSnippets={[

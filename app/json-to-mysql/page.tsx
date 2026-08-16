@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'JSON to MySQL Schema | Create Table Generator Online',
     description: 'Instantly convert JSON objects or arrays into valid MySQL CREATE TABLE schemas. Automatically infer INT, VARCHAR, DATETIME, and JSON column types from payloads.',
-    url: 'https://devtoolslabs.com/json-to-mysql',
+    url: 'https://www.devtoolslabs.com/json-to-mysql',
   },
   alternates: {
     canonical: '/json-to-mysql',
@@ -54,8 +54,8 @@ export default function JsonToMysqlPage() {
         }
       ]}
       relatedTools={[
-        { name: "JSON to Go Structs", url: "/json-to-go" },
-        { name: "JSON to TypeScript", url: "/json-to-typescript" },
+        { name: "JSON Data Extractor", url: "/json-extractor" },
+        { name: "JSON Formatter", url: "/json-formatter" },
         { name: "Mock JSON Generator", url: "/mock-json-generator" }
       ]}
     />

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'SVG to PNG Converter | High-DPI & Scale Export',
   description: 'Convert SVG to PNG, WebP, or JPEG online with high-DPI scaling (up to 4x). Maintain transparency and sharp paths for professional design workflows.',
   keywords: 'save svg as png, convert svg to png, svg to png high resolution, svg to png 300 dpi, svg to webp converter online',
+  alternates: { canonical: '/svg-to-png' },
 };
 
 export default function SvgToPngPage() {
@@ -44,7 +45,7 @@ export default function SvgToPngPage() {
       relatedTools={[
         { name: "SVG Optimizer", url: "/svg-optimizer" },
         { name: "JPEG to SVG", url: "/jpeg-to-svg" },
-        { name: "Base64 to Image", url: "/base64-to-image" }
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

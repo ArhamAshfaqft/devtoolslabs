@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CommandPalette from "@/components/CommandPalette";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -12,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://devtoolslabs.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: "%s | DevToolsLabs",
     default: "DevToolsLabs - 100% Free Client-Side Developer Utilities"
@@ -41,9 +42,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-  },
-  alternates: {
-    canonical: 'https://devtoolslabs.com',
   },
 };
 

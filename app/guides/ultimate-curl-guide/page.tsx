@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'The Ultimate Guide to cURL Commands: Examples & Best Practices | DevToolsLabs',
+  title: 'The Ultimate Guide to cURL Commands: Examples & Best Practices',
   description: 'Master cURL for API testing, file downloads, and server debugging. A comprehensive guide with real-world examples for developers and DevOps engineers.',
+  alternates: { canonical: '/guides/ultimate-curl-guide' },
 };
 
 export default function CurlGuidePage() {

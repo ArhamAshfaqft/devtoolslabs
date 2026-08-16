@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JSON to YAML Converter | Convert JSON to YAML Online Free',
   description: 'How to convert JSON to YAML? Use our free online JSON to YAML converter to transform payloads into clean, readable configuration files with custom indentation.',
   keywords: 'json to yaml, convert json to yaml, json to yml online, convert json to yaml free, devtools, yaml formatter',
+  alternates: { canonical: '/json-to-yaml' },
 };
 
 export default function JsonToYamlPage() {

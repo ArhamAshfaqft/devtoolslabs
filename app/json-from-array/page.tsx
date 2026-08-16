@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'JSON From Array Generator (Visual Table to JSON Tool)',
     description: 'Build JSON arrays visually using an interactive table interface. No syntax errors, just pure data.',
-    url: 'https://devtoolslabs.com/json-from-array',
+    url: 'https://www.devtoolslabs.com/json-from-array',
   },
   alternates: {
     canonical: '/json-from-array',
@@ -76,9 +76,9 @@ export default function JsonFromArrayPage() {
       ]}
       relatedTools={[
         { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "CSV to JSON", url: "/csv-to-json" },
+        { name: "JSON to Excel", url: "/json-to-excel" },
         { name: "Mock JSON Generator", url: "/mock-json-generator" },
-        { name: "JSON to TypeScript", url: "/json-to-typescript" }
+        { name: "JSON Data Extractor", url: "/json-extractor" }
       ]}
     />
   );

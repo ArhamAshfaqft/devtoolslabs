@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JWT Token Generator & Decoder | Parse JWT Online Securely',
   description: 'Free, 100% client-side JWT decoder and encoder. Parse JWT headers, payloads, and verify signatures locally without risking your secret keys.',
   keywords: 'jwt decoder, jwt token generator, parse jwt, jwt encoder, decode jwt online, jwt signature verifier',
+  alternates: { canonical: '/jwt-decoder' },
 };
 
 export default function JwtDecoderPage() {
@@ -53,7 +54,7 @@ export default function JwtDecoderPage() {
       relatedTools={[
         { name: "Base64 Encode/Decode", url: "/base64-encode-decode" },
         { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "URL Decoder", url: "/url-decode" }
+        { name: "URL Encoder & Decoder", url: "/url-encode-decode" }
       ]}
     />
   );

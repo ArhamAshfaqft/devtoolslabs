@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JSON Unescape Tool | Unescape JSON Online Free',
   description: 'How to unescape JSON? Use our free online unescape JSON tool to clean messy backslashes and fix doubly-escaped strings for AWS, GCP, and API logs.',
   keywords: 'unescape json, json unescape online, unescape json string, how to unescape json, remove backslashes from json',
+  alternates: { canonical: '/json-unescape' },
 };
 
 export default function JsonUnescapePage() {

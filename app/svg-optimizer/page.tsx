@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'SVG Optimizer | Online SVG Minifier & Cleaner',
   description: 'Clean and minify SVG code online. Remove metadata, junk attributes, and optimize path precision to reduce file size for faster web performance.',
   keywords: 'svg minifier, optimize svg for web, svg cleaner online, reduce svg file size, svg path optimizer',
+  alternates: { canonical: '/svg-optimizer' },
 };
 
 export default function SvgOptimizerPage() {
@@ -44,7 +45,7 @@ export default function SvgOptimizerPage() {
       relatedTools={[
         { name: "SVG to PNG", url: "/svg-to-png" },
         { name: "JPEG to SVG", url: "/jpeg-to-svg" },
-        { name: "SVG to Base64", url: "/svg-to-base64" }
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HTTP Header Parser (Convert Raw Request Headers to JSON)',
     description: 'Instantly parse raw HTTP request or response headers into a clean, formatted JSON object. Great for debugging CURL requests or API responses.',
-    url: 'https://devtoolslabs.com/http-header-parser',
+    url: 'https://www.devtoolslabs.com/http-header-parser',
   },
   alternates: {
     canonical: '/http-header-parser',
@@ -61,8 +61,8 @@ export default function HttpHeaderParserPage() {
           url: "/json-formatter"
         },
         {
-          name: "JWT Validator",
-          url: "/jwt-validator"
+          name: "JWT Decoder & Generator",
+          url: "/jwt-decoder"
         },
         {
           name: "cURL to Fetch",

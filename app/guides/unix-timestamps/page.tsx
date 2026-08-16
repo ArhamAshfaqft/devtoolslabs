@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'How Unix Timestamps Work: The Developer Guide to Epoch Time | DevToolsLabs',
+  title: 'How Unix Timestamps Work: The Developer Guide to Epoch Time',
   description: 'Understand the Unix epoch, how to convert timestamps to human-readable dates, and how to handle timezones in your web applications.',
+  alternates: { canonical: '/guides/unix-timestamps' },
 };
 
 export default function UnixTimestampGuidePage() {
@@ -15,9 +16,9 @@ export default function UnixTimestampGuidePage() {
       publishDate="March 10, 2026"
       readTime="6 min"
       relatedTools={[
-        { name: "Unix Timestamp Converter", url: "/timestamp-converter" },
+        { name: "Developer Utilities", url: "/dev-utilities" },
         { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "JWT Expiry Checker", url: "/jwt-expiry-checker" }
+        { name: "JWT Decoder & Generator", url: "/jwt-decoder" }
       ]}
     >
       <section>

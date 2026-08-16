@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Understanding Base64 Encoding: How It Works & Why We Use It | DevToolsLabs',
+  title: 'Understanding Base64 Encoding: How It Works & Why We Use It',
   description: 'A deep dive into Base64 encoding. Learn the binary-to-text algorithm, the character set, and common use cases like data URIs and basic auth.',
+  alternates: { canonical: '/guides/understanding-base64' },
 };
 
 export default function Base64GuidePage() {
@@ -16,8 +17,8 @@ export default function Base64GuidePage() {
       readTime="5 min"
       relatedTools={[
         { name: "Base64 Encode & Decode", url: "/base64-encode-decode" },
-        { name: "Base64 Image Decoder", url: "/base64-image-decoder" },
-        { name: "JWT Validator", url: "/jwt-validator" }
+        { name: "URL Encoder & Decoder", url: "/url-encode-decode" },
+        { name: "JWT Decoder", url: "/jwt-decoder" }
       ]}
     >
       <section>

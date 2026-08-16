@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'CSS Background Pattern Generator (Free Cool Backgrounds)',
     description: 'Instantly generate cool background patterns using pure CSS. Create customized polka dots, grid paper, diagonal stripes, and zigzags for your website or design projects.',
-    url: 'https://devtoolslabs.com/css-background-patterns',
+    url: 'https://www.devtoolslabs.com/css-background-patterns',
   },
   alternates: {
     canonical: '/css-background-patterns',
@@ -64,9 +64,9 @@ export default function CssBackgroundPatternGeneratorPage() {
         }
       ]}
       relatedTools={[
-        { name: "Glassmorphism Generator", url: "/glassmorphism-generator" },
-        { name: "CSS Gradient Generator", url: "/css-gradient-generator" },
-        { name: "Box-Shadow Generator", url: "/box-shadow-generator" }
+        { name: "SVG Optimizer", url: "/svg-optimizer" },
+        { name: "SVG to PNG", url: "/svg-to-png" },
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HTML to JSX Converter | Transform HTML to React Components Online',
     description: 'Instantly convert raw HTML code into clean, production-ready JSX for React and Next.js. Handles class to className, for to htmlFor, inline styles to objects, and more natively in your browser.',
-    url: 'https://devtoolslabs.com/html-to-jsx',
+    url: 'https://www.devtoolslabs.com/html-to-jsx',
   },
   alternates: {
     canonical: '/html-to-jsx',
@@ -63,9 +63,9 @@ export default function HtmlToJsxPage() {
         }
       ]}
       relatedTools={[
-        { name: "JSON to TypeScript", url: "/json-to-typescript" },
-        { name: "SVG Path Visualizer", url: "/svg-path-visualizer" },
-        { name: "CSS Keyframer", url: "/css-keyframes" }
+        { name: "HTML to Markdown", url: "/html-to-markdown" },
+        { name: "SVG Optimizer", url: "/svg-optimizer" },
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

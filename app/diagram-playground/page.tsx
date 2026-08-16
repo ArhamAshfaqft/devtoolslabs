@@ -4,12 +4,12 @@ import ToolLayout from '@/components/ToolLayout';
 import MermaidPlaygroundTool from '@/components/tools/MermaidPlaygroundTool';
 
 export const metadata: Metadata = {
-  title: 'Mermaid.js Diagram Playground: Text-to-Diagram Live Editor | DevToolsLabs',
+  title: 'Mermaid.js Diagram Playground: Text-to-Diagram Live Editor',
   description: 'Create beautiful architectural diagrams, flowcharts, and sequence diagrams from simple text using Mermaid.js. 100% free, offline, and secure.',
   openGraph: {
     title: 'Mermaid.js Diagram Playground: Text-to-Diagram Live Editor | DevToolsLabs',
     description: 'Create beautiful architectural diagrams, flowcharts, and sequence diagrams from simple text using Mermaid.js. 100% free, offline, and secure.',
-    url: 'https://devtoolslabs.com/diagram-playground',
+    url: 'https://www.devtoolslabs.com/diagram-playground',
   },
   alternates: {
     canonical: '/diagram-playground',
@@ -50,8 +50,8 @@ export default function MermaidPlaygroundPage() {
         }
       ]}
       relatedTools={[
-        { name: "SVG Path Visualizer", url: "/svg-path-visualizer" },
-        { name: "Markdown Table", url: "/markdown-table" }
+        { name: "SVG Optimizer", url: "/svg-optimizer" },
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'DevToolsLabs privacy policy. All tools run 100% client-side in your browser. No data is ever sent to our servers.',
+  description: 'DevToolsLabs privacy policy, including local browser processing and disclosures for the limited tools that require network requests.',
   openGraph: {
     title: 'Privacy Policy',
-    description: 'DevToolsLabs privacy policy. All tools run 100% client-side in your browser. No data is ever sent to our servers.',
-    url: 'https://devtoolslabs.com/privacy',
+    description: 'DevToolsLabs privacy policy, including local browser processing and disclosures for the limited tools that require network requests.',
+    url: 'https://www.devtoolslabs.com/privacy',
   },
   alternates: {
     canonical: '/privacy',
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
     <div className="min-h-screen bg-white text-gray-900">
       <main className="max-w-3xl mx-auto py-20 px-6">
         <h1 className="text-4xl font-bold mb-8 tracking-tight">Privacy Policy</h1>
-        <p className="text-sm text-gray-400 mb-10">Last updated: March 9, 2026</p>
+        <p className="text-sm text-gray-400 mb-10">Last updated: August 16, 2026</p>
 
         <div className="prose prose-gray max-w-none space-y-6 text-gray-600 leading-relaxed">
           <section>
@@ -28,12 +28,13 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">2. Client-Side Processing</h2>
-            <p>All developer tools on DevToolsLabs are engineered to run <strong>100% client-side</strong> within your web browser. This means:</p>
+            <p>Most developer tools on DevToolsLabs process input locally within your web browser. For those local tools:</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
-              <li>No data you input into any tool is ever transmitted to our servers.</li>
+              <li>Input is not transmitted to DevToolsLabs servers.</li>
               <li>All processing occurs locally inside the JavaScript engine of your browser.</li>
-              <li>We cannot see, store, or access any code, text, JSON, or tokens you paste into our tools.</li>
+              <li>DevToolsLabs cannot see or store the values processed locally.</li>
             </ul>
+            <p className="mt-3">Network-dependent tools display a notice beside the tool. DNS Lookup sends the entered domain directly to Cloudflare&apos;s public DNS-over-HTTPS resolver. cURL to Fetch sends the pasted command to the DevToolsLabs conversion endpoint, so users must remove credentials and personal data before submitting it.</p>
           </section>
 
           <section>

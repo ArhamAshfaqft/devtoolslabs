@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'WCAG Color Contrast & ADA Compliance Guide for Developers | DevToolsLabs',
+  title: 'WCAG Color Contrast & ADA Compliance Guide for Developers',
   description: 'Everything you need to know about web accessibility contrast standards. Master WCAG 2.1 Level AA/AAA and ensure your site is ADA compliant.',
+  alternates: { canonical: '/guides/wcag-contrast-guide' },
 };
 
 export default function WcagContrastGuidePage() {
@@ -15,8 +16,8 @@ export default function WcagContrastGuidePage() {
       publishDate="March 12, 2026"
       readTime="12 min"
       relatedTools={[
-        { name: "Color Contrast Checker", url: "/color-contrast-checker" },
-        { name: "Color Palette Generator", url: "/color-palette-generator" }
+        { name: "Accessibility Tools", url: "/accessibility-tools" },
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     >
       <section>

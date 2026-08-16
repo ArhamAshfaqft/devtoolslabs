@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Advanced React Design Patterns & JSX Best Practices | DevToolsLabs',
+  title: 'Advanced React Design Patterns & JSX Best Practices',
   description: 'Master the transition from HTML to React. Learn JSX best practices, attribute mapping, inline style handling, and advanced architecture patterns for modern web apps.',
+  alternates: { canonical: '/guides/react-jsx-patterns' },
 };
 
 export default function ReactJsxGuidePage() {
@@ -16,8 +17,8 @@ export default function ReactJsxGuidePage() {
       readTime="8 min"
       relatedTools={[
         { name: "HTML to JSX Converter", url: "/html-to-jsx" },
-        { name: "JSON to TypeScript", url: "/json-to-typescript" },
-        { name: "CSS Minifier", url: "/css-minifier" }
+        { name: "JSON Data Extractor", url: "/json-extractor" },
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     >
       <section>

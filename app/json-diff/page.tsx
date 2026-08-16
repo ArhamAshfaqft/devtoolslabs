@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'JSON Diff Tool (Compare JSON Files Online)',
     description: 'Instantly compare two JSON objects side-by-side to find differences, added keys, and removed values. 100% offline, privacy-first JSON comparison.',
-    url: 'https://devtoolslabs.com/json-diff',
+    url: 'https://www.devtoolslabs.com/json-diff',
   },
   alternates: {
     canonical: '/json-diff',
@@ -64,8 +64,8 @@ export default function JsonDiffPage() {
           url: "/json-validator"
         },
         {
-          name: "JSON to CSV",
-          url: "/json-to-csv"
+          name: "JSON to Excel",
+          url: "/json-to-excel"
         }
       ]}
     />

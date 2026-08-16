@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'JSON Formatter & Beautifier (Free Online Tool) | Format Instantly',
     description: 'Instantly format, beautify, and strictly indent raw, unformatted, or minified JSON arrays and objects. 100% client side and secure.',
-    url: 'https://devtoolslabs.com/json-formatter',
+    url: 'https://www.devtoolslabs.com/json-formatter',
   },
   alternates: {
     canonical: '/json-formatter',
@@ -61,8 +61,8 @@ export default function JsonFormatterPage() {
         }
       ]}
       relatedTools={[
-        { name: "JSON Escape", url: "/json-escape-unescape" },
-        { name: "JSON to CSV Converter", url: "/json-to-csv" }
+        { name: "JSON Unescape", url: "/json-unescape" },
+        { name: "JSON to Excel Converter", url: "/json-to-excel" }
       ]}
     />
   );

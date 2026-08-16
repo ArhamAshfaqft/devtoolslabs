@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'YAML to JSON Converter | Online YAML Parser & Safe Loader',
   description: 'How to convert YAML to JSON? Use our free online YAML to JSON converter to transform K8s manifests, Docker Compose, and Ansible files into clean JSON.',
   keywords: 'yaml to json, convert yaml to json, yaml parser online, yaml safe load, kubernetes to json, devtools',
+  alternates: { canonical: '/yaml-to-json' },
 };
 
 export default function YamlToJsonPage() {

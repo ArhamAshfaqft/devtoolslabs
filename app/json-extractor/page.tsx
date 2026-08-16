@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JSON Data Extractor | Online JSONPath Tester & Parser',
   description: 'Free, 100% client-side JSON extraction tool. Use JSONPath or Dot Notation to filter, extract, and parse specific values from large JSON blobs instantly.',
   keywords: 'json extractor, jsonpath tester, extract json data, json data parser, teams to json, json transcription online, json path extractor',
+  alternates: { canonical: '/json-extractor' },
 };
 
 export default function JsonExtractorPage() {

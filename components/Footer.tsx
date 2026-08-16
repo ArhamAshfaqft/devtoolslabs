@@ -11,7 +11,7 @@ export default function Footer() {
               DevTools<span className="text-blue-600">Labs</span>
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-sm">
-              A curated collection of lightning-fast, 100% client-side developer utilities. Built to run instantly in your browser without compromising your data to external servers.
+              A curated collection of privacy-first developer utilities. Most transformations run locally, and network-dependent tools disclose where input is sent.
             </p>
           </div>
           
@@ -19,9 +19,9 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Top Tools</h3>
             <ul className="space-y-3 text-sm text-gray-600">
               <li><Link href="/curl-to-fetch" className="hover:text-gray-900 transition-colors">cURL to Fetch</Link></li>
-              <li><Link href="/json-escape-unescape" className="hover:text-gray-900 transition-colors">JSON Escape</Link></li>
-              <li><Link href="/jwt-validator" className="hover:text-gray-900 transition-colors">JWT Validator</Link></li>
-              <li><Link href="/sql-formatter" className="hover:text-gray-900 transition-colors">SQL Formatter</Link></li>
+              <li><Link href="/json-unescape" className="hover:text-gray-900 transition-colors">JSON Unescape</Link></li>
+              <li><Link href="/jwt-decoder" className="hover:text-gray-900 transition-colors">JWT Decoder</Link></li>
+              <li><Link href="/yaml-formatter" className="hover:text-gray-900 transition-colors">YAML Formatter</Link></li>
             </ul>
           </div>
 

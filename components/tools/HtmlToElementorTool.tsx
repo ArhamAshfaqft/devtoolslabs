@@ -21,7 +21,7 @@ export default function HtmlToElementorTool() {
   <h1>Welcome to DevToolsLabs</h1>
   <p>This is a sample HTML structure that will be converted to Elementor JSON.</p>
   <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Laptop" />
-  <a href="https://devtoolslabs.com" class="btn">Explore Tools</a>
+  <a href="https://www.devtoolslabs.com" class="btn">Explore Tools</a>
 </div>`);
   const [jsonOutput, setJsonOutput] = useState<string>('');
   const [copied, setCopied] = useState(false);

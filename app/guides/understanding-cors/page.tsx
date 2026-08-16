@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Understanding CORS: The Definitive Guide for Developers | DevToolsLabs',
+  title: 'Understanding CORS: The Definitive Guide for Developers',
   description: 'Master Cross-Origin Resource Sharing (CORS). Learn how preflight requests, Access-Control headers, and security policies work to protect your web applications.',
+  alternates: { canonical: '/guides/understanding-cors' },
 };
 
 export default function CorsGuidePage() {

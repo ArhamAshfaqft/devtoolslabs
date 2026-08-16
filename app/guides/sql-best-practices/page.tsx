@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'SQL Best Practices: Query Optimization & Formatting Guide | DevToolsLabs',
+  title: 'SQL Best Practices: Query Optimization & Formatting Guide',
   description: 'Master SQL maintainability. Learn how to format complex queries, use indexes effectively, and optimize MySQL/Postgres performance.',
+  alternates: { canonical: '/guides/sql-best-practices' },
 };
 
 export default function SqlBestPracticesGuidePage() {
@@ -15,8 +16,8 @@ export default function SqlBestPracticesGuidePage() {
       publishDate="March 12, 2026"
       readTime="10 min"
       relatedTools={[
-        { name: "SQL Formatter", url: "/sql-formatter" },
-        { name: "JSON to CSV", url: "/json-to-csv" }
+        { name: "JSON to MySQL Schema", url: "/json-to-mysql" },
+        { name: "JSON to Excel Converter", url: "/json-to-excel" }
       ]}
     >
       <section>

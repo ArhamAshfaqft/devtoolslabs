@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Terms of Service',
     description: 'DevToolsLabs terms of service for using our free, client-side developer utilities.',
-    url: 'https://devtoolslabs.com/terms',
+    url: 'https://www.devtoolslabs.com/terms',
   },
   alternates: {
     canonical: '/terms',

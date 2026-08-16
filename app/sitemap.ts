@@ -1,28 +1,34 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site';
 
-const BASE_URL = 'https://devtoolslabs.com';
-
-function getTopLevelStaticRoutes(): string[] {
+function getStaticRoutes(): string[] {
   const appDir = path.join(process.cwd(), 'app');
-  const entries = fs.readdirSync(appDir, { withFileTypes: true });
+  const routes = new Set<string>(['/']);
 
-  const routes = entries
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .filter((name) => !name.startsWith('(') && !name.startsWith('_') && name !== 'api')
-    .filter((name) => fs.existsSync(path.join(appDir, name, 'page.tsx')))
-    .map((name) => `/${name}`);
+  const visit = (directory: string, segments: string[]) => {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name === 'api' || entry.name.startsWith('_') || entry.name.startsWith('(') || entry.name.startsWith('[')) continue;
 
-  return ['/', ...routes.sort()];
+      const childDirectory = path.join(directory, entry.name);
+      const childSegments = [...segments, entry.name];
+
+      if (fs.existsSync(path.join(childDirectory, 'page.tsx'))) {
+        routes.add(`/${childSegments.join('/')}`);
+      }
+
+      visit(childDirectory, childSegments);
+    }
+  };
+
+  visit(appDir, []);
+  return [...routes].sort();
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return getTopLevelStaticRoutes().map((route) => ({
-    url: `${BASE_URL}${route === '/' ? '' : route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: route === '/' ? 1 : 0.8,
+  return getStaticRoutes().map((route) => ({
+    url: `${SITE_URL}${route === '/' ? '' : route}`,
   }));
 }

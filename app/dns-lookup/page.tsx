@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'DNS Lookup Tool (A, MX, TXT, CNAME) | Check DNS Records Online',
     description: 'Instantly lookup and verify domain DNS records including A, AAAA, MX, TXT, and CNAME. Execute secure, highly-accurate DNS over HTTPS queries directly in your browser.',
-    url: 'https://devtoolslabs.com/dns-lookup',
+    url: 'https://www.devtoolslabs.com/dns-lookup',
   },
   alternates: {
     canonical: '/dns-lookup',
@@ -20,6 +20,8 @@ export default function DnsLookupPage() {
     <ToolLayout
       title="Global DNS Record Lookup (Domain Checker)"
       intro="Webmasters and DevOps engineers frequently need to verify domain propagation and server configurations. Our advanced DNS Lookup Tool utilizes secure DNS-over-HTTPS (DoH) to simultaneously query global A, AAAA, MX, TXT, and CNAME records for any domain, all from within your browser."
+      privacyTitle="Direct Cloudflare DNS query"
+      privacyDescription="The domain name you enter is sent directly from your browser to Cloudflare's public DNS-over-HTTPS resolver. It is not sent to the DevToolsLabs application server."
       toolNode={<DnsLookupTool />}
       howTo={[
         "Enter the naked domain name (e.g., devtoolslabs.com) in the search field.",
@@ -64,8 +66,8 @@ export default function DnsLookupPage() {
       ]}
       relatedTools={[
         { name: "HTTP Header Parser", url: "/http-header-parser" },
-        { name: "URL Encoder", url: "/url-encoder" },
-        { name: "Regex Match/Extract", url: "/regex-tester" }
+        { name: "URL Encoder & Decoder", url: "/url-encode-decode" },
+        { name: "Developer Utilities", url: "/dev-utilities" }
       ]}
     />
   );

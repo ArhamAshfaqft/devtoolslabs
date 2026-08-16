@@ -1,10 +1,12 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import ToolGrid from '@/components/ToolGrid';
 
 export const metadata: Metadata = {
-  title: 'DevToolsLabs - Free Client-Side Developer Utilities',
-  description: '100% offline, privacy-first web utilities for developers. Format JSON, decode Base64, validate JWTs, and compress CSS natively in your browser.',
+  title: { absolute: 'DevToolsLabs - Free Client-Side Developer Utilities' },
+  description: 'Privacy-first web utilities for developers. Most transformations run locally in your browser, with clear disclosure for tools that require network access.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function Home() {
@@ -21,7 +23,7 @@ export default function Home() {
           <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
-          <span className="text-sm font-semibold text-green-800">All tools run 100% in your browser. No data is sent to our servers.</span>
+          <span className="text-sm font-semibold text-green-800">Most transformations run locally in your browser. Network-dependent tools clearly disclose their destination.</span>
         </div>
         
         <div className="w-full mt-10">
@@ -36,7 +38,7 @@ export default function Home() {
               As developers, we constantly rely on micro-utilities to format JSON, decode JWTs, test regular expressions, and optimize code. However, pasting sensitive production API payloads or private database connection strings into random internet utilities poses a massive security risk. We built DevToolsLabs to solve this.
             </p>
             <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-              Every single application on this platform is engineered using a <strong>100% client-side architecture</strong>. That means when you use our SQL Formatter, cURL to Fetch converter, or JSON Escape tools, the processing mathematically executes entirely within the V8 engine of your local web browser. Absolutely zero data is transmitted over the network to external backend servers, ensuring your proprietary code remains strictly on your machine.
+              Most transformations on this platform use a <strong>client-side architecture</strong>. Formatting, encoding, hashing, and conversion tasks run in your browser whenever the underlying technology allows it. A small number of network-dependent utilities, such as DNS lookup and cURL conversion, display a clear notice explaining where the submitted value is sent before you use them.
             </p>
 
             <h3 className="text-xl font-bold mb-3 text-gray-900">Why Client-Side Processing Matters</h3>
@@ -46,7 +48,7 @@ export default function Home() {
 
             <h3 className="text-xl font-bold mb-3 text-gray-900">Who Uses DevToolsLabs?</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Our tools are designed for frontend engineers, backend developers, DevOps engineers, QA testers, security researchers, and technical writers. Whether you are debugging a minified SQL query from a production database log, converting a cURL command from API documentation into JavaScript fetch() code, generating SHA-256 hashes for file verification, or building CSS animations visually, DevToolsLabs provides instant, privacy-first utilities that work completely offline once the page loads.
+              Our tools are designed for frontend engineers, backend developers, DevOps engineers, QA testers, security researchers, and technical writers. Whether you are formatting a production payload, converting a sanitized cURL command into JavaScript fetch() code, generating SHA-256 hashes for file verification, or building CSS patterns visually, DevToolsLabs provides focused utilities with transparent processing behavior.
             </p>
 
             <h3 className="text-xl font-bold mb-3 text-gray-900">Built by Developers, For Developers</h3>

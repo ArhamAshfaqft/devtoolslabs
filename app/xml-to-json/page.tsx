@@ -4,12 +4,12 @@ import ToolLayout from '@/components/ToolLayout';
 import XmlToJsonTool from '@/components/tools/XmlToJsonTool';
 
 export const metadata: Metadata = {
-  title: 'XML to JSON Converter (Free Online Tool) | DevToolsLabs',
+  title: 'XML to JSON Converter (Free Online Tool)',
   description: 'Convert XML to JSON online instantly. High-performance, client-side XML parsing that supports attributes, nested tags, and complex schemas.',
   openGraph: {
     title: 'XML to JSON Converter (Free Online Tool) | DevToolsLabs',
     description: 'Convert XML to JSON online instantly. High-performance, client-side XML parsing that supports attributes, nested tags, and complex schemas.',
-    url: 'https://devtoolslabs.com/xml-to-json',
+    url: 'https://www.devtoolslabs.com/xml-to-json',
   },
   alternates: {
     canonical: '/xml-to-json',
@@ -84,10 +84,10 @@ print(json.dumps(doc, indent=2))`
         }
       ]}
       relatedTools={[
-        { name: "JSON to XML", url: "/json-to-xml" },
+        { name: "JSON to YAML", url: "/json-to-yaml" },
         { name: "JSON Formatter", url: "/json-formatter" },
-        { name: "JSON to CSV", url: "/json-to-csv" },
-        { name: "JSON to TypeScript", url: "/json-to-typescript" }
+        { name: "JSON to Excel", url: "/json-to-excel" },
+        { name: "JSON Data Extractor", url: "/json-extractor" }
       ]}
     />
   );

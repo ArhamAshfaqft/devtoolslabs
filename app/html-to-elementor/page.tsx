@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HTML to Elementor JSON Converter - Free Online Tool',
     description: 'Instantly convert raw HTML snippets into Elementor JSON templates. Move your static code into Elementor in seconds.',
-    url: 'https://devtoolslabs.com/html-to-elementor',
+    url: 'https://www.devtoolslabs.com/html-to-elementor',
   },
   alternates: {
     canonical: '/html-to-elementor',
@@ -110,7 +110,7 @@ export default function HtmlToElementorPage() {
         { name: "HTML to JSX Converter", url: "/html-to-jsx" },
         { name: "CSS Background Patterns", url: "/css-background-patterns" },
         { name: "JSON to MySQL Schema", url: "/json-to-mysql" },
-        { name: "HTML Minifier", url: "/html-minifier" }
+        { name: "HTML to Markdown", url: "/html-to-markdown" }
       ]}
     />
   );

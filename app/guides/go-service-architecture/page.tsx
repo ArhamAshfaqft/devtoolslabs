@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Go Service Architecture: Mapping JSON to Structs | DevToolsLabs',
+  title: 'Go Service Architecture: Mapping JSON to Structs',
   description: 'Master Golang backend development. Learn how to architect Go services, handle JSON unmarshalling, and design strongly-typed data structures for production APIs.',
+  alternates: { canonical: '/guides/go-service-architecture' },
 };
 
 export default function GoServiceGuidePage() {
@@ -15,9 +16,9 @@ export default function GoServiceGuidePage() {
       publishDate="March 15, 2026"
       readTime="7 min"
       relatedTools={[
-        { name: "JSON to Go Struct", url: "/json-to-go" },
+        { name: "JSON Data Extractor", url: "/json-extractor" },
         { name: "YAML to JSON Converter", url: "/yaml-to-json" },
-        { name: "JWT Generator", url: "/jwt-generator" }
+        { name: "JWT Decoder & Generator", url: "/jwt-decoder" }
       ]}
     >
       <section>

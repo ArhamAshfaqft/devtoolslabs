@@ -1,7 +1,9 @@
 'use client';
 import React, { ReactNode, useState, useEffect } from 'react';
+import Link from 'next/link';
 import FAQAccordion from './FAQAccordion';
 import PrivacyBadge from './PrivacyBadge';
+import { SITE_URL } from '@/lib/site';
 
 export interface FAQ {
   question: string;
@@ -28,6 +30,8 @@ interface ToolLayoutProps {
   faqs: FAQ[];
   relatedTools: { name: string; url: string }[];
   codeSnippets?: CodeSnippet[];
+  privacyTitle?: string;
+  privacyDescription?: string;
   children?: ReactNode;
 }
 
@@ -41,6 +45,8 @@ const ToolLayout = ({
   faqs,
   relatedTools,
   codeSnippets,
+  privacyTitle,
+  privacyDescription,
   children,
 }: ToolLayoutProps) => {
   const [currentUrl, setCurrentUrl] = useState('');
@@ -89,8 +95,6 @@ const ToolLayout = ({
 
   const handleCopyBadge = () => {
     try {
-      const url = new URL(window.location.href);
-      const urlHost = url.origin;
       const cleanTitle = title.replace(/\s+/g, '%20');
       // Fallback simple shield badge
       const badgeImage = `https://img.shields.io/badge/Tool-${cleanTitle}-blue?style=flat-square`;
@@ -99,7 +103,7 @@ const ToolLayout = ({
       navigator.clipboard.writeText(badgeMarkdown);
       setCopiedBadge(true);
       setTimeout(() => setCopiedBadge(false), 2000);
-    } catch(e) {}
+    } catch {}
   };
   // Generate FAQ Schema for Google Rich Snippets
   const faqSchema = {
@@ -126,14 +130,14 @@ const ToolLayout = ({
     "author": {
       "@type": "Organization",
       "name": "DevToolsLabs",
-      "url": "https://devtoolslabs.com"
+      "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
       "name": "DevToolsLabs",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://devtoolslabs.com/logo.png"
+        "url": `${SITE_URL}/icon.png`
       }
     },
     "offers": {
@@ -152,13 +156,12 @@ const ToolLayout = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Tools",
-        "item": "https://devtoolslabs.com/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": title,
-        "item": currentUrl || "https://devtoolslabs.com"
+        "name": title
       }
     ]
   };
@@ -180,10 +183,10 @@ const ToolLayout = ({
       
       {/* Back navigation */}
       <div className="max-w-5xl mx-auto px-6 pt-8 pb-4">
-        <a href="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+        <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
           <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
           Back to all tools
-        </a>
+        </Link>
       </div>
 
       <main className="max-w-5xl mx-auto px-6 py-6">
@@ -196,7 +199,7 @@ const ToolLayout = ({
                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                  </svg>
-                 Expert Reviewed & Verified • March 2026
+                 Open-source utility • Maintained August 2026
                </div>
              </div>
              
@@ -239,7 +242,7 @@ const ToolLayout = ({
           </div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">{intro}</p>
           <div className="mt-4">
-            <PrivacyBadge />
+            <PrivacyBadge title={privacyTitle} description={privacyDescription} />
           </div>
           
           {/* GitHub Markdown Embed Badge */}
@@ -377,9 +380,7 @@ const ToolLayout = ({
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Built by Developers, For Developers</h3>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                DevToolsLabs is engineered by a team of full-stack developers who were tired of spammy, ad-filled, server-side tools parsing our sensitive data. 
-                Every utility on this site is rigorously tested, strictly client-side (<strong className="font-semibold text-gray-900">your data never leaves your browser</strong>), 
-                and built to solve real-world software engineering challenges.
+                DevToolsLabs is maintained as an open-source collection of focused developer utilities. Most transformations run locally in your browser; tools that require a network service disclose the destination beside the tool. Each utility is built around a concrete development workflow and can be reviewed in the public source repository.
               </p>
             </div>
           </section>
@@ -390,10 +391,10 @@ const ToolLayout = ({
               <h2 className="text-2xl font-semibold mb-6 text-gray-900">More Developer Tools</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {relatedTools.map((tool, idx) => (
-                  <a key={idx} href={tool.url} className="group p-5 bg-white border border-gray-200 hover:border-blue-500 hover:shadow-md rounded-xl transition-all block">
+                  <Link key={idx} href={tool.url} className="group p-5 bg-white border border-gray-200 hover:border-blue-500 hover:shadow-md rounded-xl transition-all block">
                     <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-1">{tool.name}</h3>
                     <p className="text-xs text-gray-500">Free client-side utility</p>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </section>

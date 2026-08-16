@@ -5,7 +5,7 @@ import TurndownService from 'turndown';
 import LZString from 'lz-string';
 
 const DEFAULT_HTML = `<h1>Hello World</h1>
-<p>This is a <strong>bold</strong> statement with a <a href="https://devtoolslabs.com">link</a>.</p>
+<p>This is a <strong>bold</strong> statement with a <a href="https://www.devtoolslabs.com">link</a>.</p>
 <ul>
   <li>Item 1</li>
   <li>Item 2</li>

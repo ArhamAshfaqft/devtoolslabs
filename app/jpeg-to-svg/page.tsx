@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JPEG to SVG Converter | High-Fidelity Color Vectorizer',
   description: 'Convert JPG, PNG, and WEBP images to SVG vector graphics online. Professional multi-color tracing with customizable fidelity, paths, and smoothing.',
   keywords: 'jpeg to svg converter, image to vector online, png to svg, convert image to svg, high fidelity vectorizer, vector tracing tool',
+  alternates: { canonical: '/jpeg-to-svg' },
 };
 
 export default function JpegToSvgPage() {
@@ -48,7 +49,7 @@ export default function JpegToSvgPage() {
       relatedTools={[
         { name: "SVG Optimizer", url: "/svg-optimizer" },
         { name: "SVG to PNG", url: "/svg-to-png" },
-        { name: "Base64 to Image", url: "/base64-to-image" }
+        { name: "Frontend Developer Tools", url: "/frontend-tools" }
       ]}
     />
   );

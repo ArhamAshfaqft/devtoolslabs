@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Password Security Standards (NIST & OWASP) | DevToolsLabs',
+  title: 'Enterprise Password Security Standards (NIST & OWASP)',
   description: 'Master modern cybersecurity. Learn about NIST 800-63B standards, password entropy, hashing algorithms, and how to protect enterprise systems from credential stuffing.',
+  alternates: { canonical: '/guides/password-security-standards' },
 };
 
 export default function PasswordSecurityGuidePage() {
@@ -15,9 +16,9 @@ export default function PasswordSecurityGuidePage() {
       publishDate="March 15, 2026"
       readTime="9 min"
       relatedTools={[
-        { name: "Advanced Password Meter", url: "/password-security-meter" },
-        { name: "Bcrypt Hash Generator", url: "/bcrypt-generator" },
-        { name: "Password Entropy Calculator", url: "/password-entropy" }
+        { name: "Security & Cryptography Tools", url: "/security-tools" },
+        { name: "Hash Generator", url: "/hash-generator" },
+        { name: "JWT Decoder & Generator", url: "/jwt-decoder" }
       ]}
     >
       <section>

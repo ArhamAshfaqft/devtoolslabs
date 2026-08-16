@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'How to Decode JWT Tokens (Step-by-Step Tutorial) | DevToolsLabs',
+  title: 'How to Decode JWT Tokens (Step-by-Step Tutorial)',
   description: 'A comprehensive guide on decoding JSON Web Tokens. Learn the anatomy of a JWT, how Base64Url encoding works, and how to safely inspect payloads.',
+  alternates: { canonical: '/guides/how-to-decode-jwt' },
 };
 
 export default function JwtGuidePage() {
@@ -15,8 +16,8 @@ export default function JwtGuidePage() {
       publishDate="March 10, 2026"
       readTime="6 min"
       relatedTools={[
-        { name: "JWT Validator & Decoder", url: "/jwt-validator" },
-        { name: "JWT Expiry Checker", url: "/jwt-expiry-checker" },
+        { name: "JWT Decoder & Generator", url: "/jwt-decoder" },
+        { name: "Security Tools", url: "/security-tools" },
         { name: "Base64 Decode", url: "/base64-encode-decode" }
       ]}
     >

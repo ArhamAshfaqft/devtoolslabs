@@ -55,7 +55,7 @@ for (const dir of dirs) {
   const ogAndCanonical = `  openGraph: {
     title: '${escapedTitle}',
     description: '${escapedDesc}',
-    url: 'https://devtoolslabs.com${canonicalUrl}',
+    url: 'https://www.devtoolslabs.com${canonicalUrl}',
   },
   alternates: {
     canonical: '${canonicalUrl}',

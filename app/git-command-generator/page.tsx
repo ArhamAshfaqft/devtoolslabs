@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Git Command Generator | Interactive Cheatsheet & Builder',
     description: 'Visually generate complex Git commands for rebasing, squashing, undoing commits, and safe pushing. Stop memorizing Git syntax and use our interactive builder.',
-    url: 'https://devtoolslabs.com/git-command-generator',
+    url: 'https://www.devtoolslabs.com/git-command-generator',
   },
 };
 
@@ -65,8 +65,8 @@ export default function GitCommandGeneratorPage() {
         }
       ]}
       relatedTools={[
-        { name: "Crontab GUI Builder", url: "/crontab-builder" },
-        { name: "Cron Explainer", url: "/cron-parser" },
+        { name: "Developer Utilities", url: "/dev-utilities" },
+        { name: "HTTP Header Parser", url: "/http-header-parser" },
         { name: "cURL to Fetch", url: "/curl-to-fetch" }
       ]}
     />

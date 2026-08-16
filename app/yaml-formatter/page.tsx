@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'YAML Formatter | Online YAML Validator & Indentation Fixer',
   description: 'How to format YAML? Use our free online YAML formatter and validator to fix indentation errors, multiline strings, and structural issues. 100% Client-side.',
   keywords: 'yaml formatter, online yaml validator, yaml vs yml, format yaml online, yaml indentation fixer, devtools',
+  alternates: { canonical: '/yaml-formatter' },
 };
 
 export default function YamlFormatterPage() {

@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'Regex Explained for Beginners: A Friendly Guide to Regular Expressions | DevToolsLabs',
+  title: 'Regex Explained for Beginners: A Friendly Guide to Regular Expressions',
   description: 'Master the basics of Regular Expressions (Regex). Learn about anchors, character classes, quantifiers, and flags with real-world examples.',
+  alternates: { canonical: '/guides/regex-explained' },
 };
 
 export default function RegexGuidePage() {
@@ -15,9 +16,9 @@ export default function RegexGuidePage() {
       publishDate="March 10, 2026"
       readTime="8 min"
       relatedTools={[
-        { name: "Regex Generator", url: "/regex-generator" },
-        { name: "Regex Replace Tester", url: "/regex-replace" },
-        { name: "Regex Tester", url: "/regex-tester" }
+        { name: "Developer Utilities", url: "/dev-utilities" },
+        { name: "JSON Data Extractor", url: "/json-extractor" },
+        { name: "HTTP Header Parser", url: "/http-header-parser" }
       ]}
     >
       <section>

@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import GuideLayout from '@/components/GuideLayout';
 
 export const metadata: Metadata = {
-  title: 'The DevOps Kubernetes YAML Blueprint | DevToolsLabs',
+  title: 'The DevOps Kubernetes YAML Blueprint',
   description: 'Master Kubernetes manifest design. Learn YAML best practices for K8s, common syntax pitfalls, linter strategies, and how to build reusable cloud-native infrastructure.',
+  alternates: { canonical: '/guides/devops-kubernetes-yaml' },
 };
 
 export default function KubernetesYamlGuidePage() {
@@ -15,7 +16,7 @@ export default function KubernetesYamlGuidePage() {
       publishDate="March 15, 2026"
       readTime="10 min"
       relatedTools={[
-        { name: "YAML Validator & Linter", url: "/yaml-validator" },
+        { name: "YAML Formatter & Validator", url: "/yaml-formatter" },
         { name: "YAML to JSON Converter", url: "/yaml-to-json" },
         { name: "JSON to YAML Converter", url: "/json-to-yaml" }
       ]}

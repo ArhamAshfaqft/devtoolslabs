@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function PrivacyBadge() {
+interface PrivacyBadgeProps {
+  title?: string;
+  description?: string;
+}
+
+export default function PrivacyBadge({
+  title = 'Local Processing',
+  description = 'Your tool input is processed locally in your browser and is not sent to DevToolsLabs servers.',
+}: PrivacyBadgeProps) {
   return (
     <div className="flex items-center gap-3 bg-green-50 text-green-800 px-5 py-3 rounded-lg border border-green-200 shadow-sm mt-6 max-w-2xl mx-auto md:mx-0">
       <div className="shrink-0 bg-green-100 p-2 rounded-full">
@@ -9,8 +17,8 @@ export default function PrivacyBadge() {
         </svg>
       </div>
       <div>
-        <p className="text-sm font-semibold tracking-wide">100% Private & Secure</p>
-        <p className="text-xs text-green-700 leading-relaxed mt-0.5">This tool runs completely inside your browser using client-side WebAssembly and JS. <strong>Zero data</strong> is ever sent to our servers.</p>
+        <p className="text-sm font-semibold tracking-wide">{title}</p>
+        <p className="text-xs text-green-700 leading-relaxed mt-0.5">{description}</p>
       </div>
     </div>
   );

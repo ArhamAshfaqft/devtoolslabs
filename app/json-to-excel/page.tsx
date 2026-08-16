@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'JSON to Excel Converter | Convert JSON to XLSX Online Free',
   description: 'How to convert JSON to Excel? Import JSON into Excel with our free recursive flattening tool. Cleanly transform nested JSON objects into native .xlsx files locally.',
   keywords: 'json to excel, convert json to excel, how to open json file in excel, import json into excel, json to excel converter, online json to xlsx',
+  alternates: { canonical: '/json-to-excel' },
 };
 
 export default function JsonToExcelPage() {

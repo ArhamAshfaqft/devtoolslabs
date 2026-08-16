@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mock JSON Generator | Fake JSON API Data Creator Online',
     description: 'Generate massive, realistic mock JSON arrays for frontend UI testing and database seeding. Uses faker.js logic client-side to instantly create user avatars, UUIDs, dates, and commerce data.',
-    url: 'https://devtoolslabs.com/mock-json-generator',
+    url: 'https://www.devtoolslabs.com/mock-json-generator',
   },
   alternates: {
     canonical: '/mock-json-generator',
@@ -63,9 +63,9 @@ export default function MockJsonGeneratorPage() {
         }
       ]}
       relatedTools={[
-        { name: "JSON to TypeScript", url: "/json-to-typescript" },
-        { name: "SQL to Object/JSON", url: "/sql-to-object" },
-        { name: "JSON Validator", url: "/json-validator" }
+        { name: "JSON Data Extractor", url: "/json-extractor" },
+        { name: "JSON to MySQL", url: "/json-to-mysql" },
+        { name: "JSON Formatter", url: "/json-formatter" }
       ]}
     />
   );
