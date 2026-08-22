@@ -180,6 +180,41 @@ const ALL_TOOLS: Tool[] = [
     href: '/html-to-jsx',
     categories: ['Frontend', 'Web'],
     isHot: true,
+  },
+  {
+    id: 'regex-generator',
+    name: 'Regex Generator',
+    description: 'Build regular expressions for common matching and validation tasks interactively.',
+    href: '/regex-generator',
+    categories: ['Data Parsing'],
+  },
+  {
+    id: 'sql-formatter',
+    name: 'SQL Formatter',
+    description: 'Format minified SQL into readable queries with consistent indentation.',
+    href: '/sql-formatter',
+    categories: ['Formatting', 'Data Parsing'],
+  },
+  {
+    id: 'jwt-validator',
+    name: 'JWT Signature Validator',
+    description: 'Validate JSON Web Token signatures locally using a secret or verification key.',
+    href: '/jwt-validator',
+    categories: ['Security', 'Web'],
+  },
+  {
+    id: 'csv-to-vcard',
+    name: 'CSV to vCard Converter',
+    description: 'Map CSV contact columns and generate portable vCard VCF records locally.',
+    href: '/csv-to-vcard',
+    categories: ['Data Parsing'],
+  },
+  {
+    id: 'html-entity-encoder',
+    name: 'HTML Entity Encoder',
+    description: 'Escape reserved HTML characters as named entities directly in your browser.',
+    href: '/html-entity-encoder',
+    categories: ['Encoding', 'Web'],
   }
 ];
 
@@ -233,7 +268,7 @@ export default function ToolGrid() {
         </div>
         <input
           type="text"
-          placeholder="Search 35+ developer tools..."
+          placeholder="Search developer tools..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="block w-full pl-14 pr-12 py-5 bg-white border border-gray-200 rounded-2xl text-lg font-poppins text-gray-900 placeholder-gray-400 shadow-sm focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500 transition-all outline-none"
